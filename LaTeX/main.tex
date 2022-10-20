@@ -1,0 +1,46 @@
+\documentclass[
+	12pt,
+	a4paper,
+	oneside,
+	titlepage,
+	ngerman
+]{scrreprt}
+
+\input{core/core}
+\addbibresource{references.bib}
+\input{acronyms}
+\input{glossaries}
+\enableHyperlinksForGlossariesAndAcronyms % TODO or disable with \disableHyperlinksForGlossariesAndAcronyms
+\makeglossaries
+
+\disableFirstLineIndentGlobally
+
+\begin{document}
+	\setPageNumberingToLowercaseRoman
+	
+	\input{kapitel/Offizielles/Offizielles.tex}
+	\tableofcontents
+	\printListOfFigures
+	\printListOfTables
+	\printListOfEquations
+	\printListOfAcronyms
+	\printListOfGlossaries
+	
+	\setPageNumberingToArabicStartingFromOne
+	
+	% <--- content start --->
+	\input{kapitel/Anleitung.tex}
+	\input{kapitel/Einleitung/Einleitung.tex}
+	\input{kapitel/StandDerTechnik/StandDerTechnik.tex}
+	\input{kapitel/Methodik/Methodik.tex}
+	\input{kapitel/Implementierung/Implementierung.tex}
+	\input{kapitel/Ergebnis/Ergebnis.tex}
+	\input{kapitel/Diskussion/Diskussion.tex}
+	\input{kapitel/Zusammenfassung/Zusammenfassung.tex}
+	% <---  content end  --->
+	
+	\startAppendixIncludingRomanPageNumbering
+	\input{kapitel/Anhang/Anhang.tex}
+	
+	\printbibliography[heading=bibintoc]
+\end{document}

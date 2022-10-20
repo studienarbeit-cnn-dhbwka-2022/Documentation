@@ -1,0 +1,80 @@
+%!TEX root = ../main.tex
+
+% character encoding
+\usepackage[utf8]{inputenc}
+
+% page definition
+\usepackage[
+	top=25mm,
+	bottom=25mm,
+	left=25mm,
+	right=25mm,
+	includehead,
+	includefoot,
+	headsep=1cm,
+]{geometry}
+
+% Header/Footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily \theAuthor}
+\fancyhead[R]{\sffamily \nouppercase{\leftmark}}
+\fancyfoot[C]{\sffamily \thepage}
+
+% stuff
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Linespace
+\usepackage[onehalfspacing]{setspace}
+
+% Language = German
+\usepackage[ngerman]{babel}
+\usepackage[
+	babel, 
+	german=quotes,
+]{csquotes}
+
+% generate dummy text
+\usepackage{blindtext}
+
+% images
+\usepackage{subfigure} % multiple images in one row
+\usepackage{float} % figure[H]{...}
+\usepackage{graphicx} % for wrapfig
+\usepackage{wrapfig} % image next to text
+
+% Urls
+\usepackage{url}
+
+% package for todos
+\usepackage{todonotes}
+
+% Lists
+\usepackage{enumitem}
+%\usepackage{listings}
+
+% comment out multiple lines using \begin{comment}...
+\usepackage{comment}
+
+% math
+\usepackage[subfigure]{tocloft} % list of equations
+\usepackage{amsmath}
+
+% must have: http://tug.ctan.org/tex-archive/macros/latex/contrib/microtype/
+\usepackage{microtype}
+
+% citation, bibliography
+\usepackage[
+	backend=biber,
+	sorting=none,
+	style=numeric-comp,
+]{biblatex}
+
+%%%% have to be last and in this order %%%%
+\usepackage{hyperref} % hyperlinks in the document
+\usepackage{acro} % acronyms
+\usepackage[toc]{glossaries} %glossary
+\usepackage[automake]{glossaries-extra}
+\usepackage{cleveref}
