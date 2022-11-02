@@ -25,3 +25,12 @@ Neues Meetup planen
 - Beispieldaten
   - <https://www.image-net.org/>
   - <https://github.com/awesomedata/awesome-public-datasets>
+
+## Ideensammlung: Welche Verfahren wenden wir auf Die Bilder an? 
+- Spiegeln
+- bis zu 45° random drehen 
+- Ausschneiden (Nur Bildbereich verwenden. Müsste aber klar sein, dass er groß genug ist.) 
+- Schwarz/Weiß 
+- Unscharf 
+- Bereiche ausschneiden (schwärzen um corruption zu simulieren) 
+- 
