@@ -25,6 +25,9 @@ Neues Meetup planen
 - Beispieldaten
   - <https://www.image-net.org/>
   - <https://github.com/awesomedata/awesome-public-datasets>
+- Frameworks 
+  - https://pytorch.org/
+  - https://www.tensorflow.org/tutorials/images/cnn
 
 ## Ideensammlung: Welche Verfahren wenden wir auf Die Bilder an? 
 - Spiegeln
