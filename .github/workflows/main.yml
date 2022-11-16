@@ -28,7 +28,6 @@ jobs:
           name: ${{ env.FILE }}.pdf
           path: ./github_artifacts
   deploy:
-    needs: [paper]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
