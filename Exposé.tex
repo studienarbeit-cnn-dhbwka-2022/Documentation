@@ -12,6 +12,20 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 \title{Exposé - Studienarbeit Marc Gökce & Lukas Hörnle}
 \author{Lukas Hörnle 28.02.2023}
@@ -23,17 +37,28 @@
   Ein Abstract lohl
  \end{abstract}
 
- \section{Einführung}
- Was wollen wir ganz ganz grob machen?
  \subsection{die Problemstellung des Schreibprojekts}
+ Das hochskalieren sowie herabskalieren von Bildern, sowie die segmentierung der einzelnen Bilder mit Abgleich auf andere Daten.
  \subsection{Der aktuelle Forschungsstand}
+ Unsere Recherchen konnten kein gleiches Projekt finden wobei einzelne Bereiche des Projektes bereits stark erforscht und umgesetzt wurden.
  \subsection{Fragestellung der Arbeit}
- \subsection{das Erkenntnisinteresse des Verfassers}
+ Wie verhält sich die Qualität einer Sementierung von Bildern mit deren Skalierung.
  \subsection{das Ziel bzw. die der Arbeit zugrundeliegende Hypothese}
- \subsection{die Theorie(n), auf die Bezug genommen werden soll}
+ Ein Vergleich der Segmentierungen bei verschiedenen Bildqualitäten.
+ \subsection{die Theorie, auf die Bezug genommen werden soll}
+ Unsere Theorie ist, dass eine Segmentierung mit niedriger Bildqualität klarere Ergebnisse liefert, jedoch bei Details versagt. Hohe Bildqualität sorgt für mehr Details in der Segmentierung, erhöht allerdings die Anfälligkeit für Fehler und verschlechtert den Fokus auf wichtige Objekte.
  \subsection{die Methode(n), nach der/denen vorgegangen werden soll}
+ Methodiken aus der Bildverarbeitung werden zum Skalieren der Bilder benutzt.
+ KI für Segmentierung nutzen.
  \subsection{die Quellen bzw. das Material, die/das verwendet werden soll/en}
+ Bildmaterial von
+ https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html#bsds500
+ Referenzen zu; (siehe discord)
  \subsection{die vorläufige Gliederung und den Zeitplan bis zum Abgabetermin}
- \subsection{How to include Figures}
- \subsection{Good luck!}
+ 28.02. Kickoff
+ 4.3. klarstellen welche Daten wir nutzen
+ 21.3. Skalierungsteil feritg
+ 01.04. Schreiben über Skalierung feritg
+ 22.04. Segmentierung fertig Entwicklungsstop
+ 01.05. Schreiben fertig
 \end{document}
