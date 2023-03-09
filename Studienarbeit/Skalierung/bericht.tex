@@ -8,13 +8,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[
-   ngerman          % neue deutsche Rechtschreibung
-  ,a4paper          % Papiergrösse
+    ngerman          % neue deutsche Rechtschreibung
+,a4paper          % Papiergrösse
 % ,twoside          % Zweiseitiger Druck (rechts/links)
 % ,10pt             % Schriftgrösse
-  ,11pt
+,11pt
 % ,12pt
-  ,pdftex
+,pdftex
 %  ,disable         % Todo-Markierungen auschalten
 ]{report}
 
@@ -23,8 +23,8 @@
 % \usepackage[applemac]{inputenc}  % Für Apple Mac
 % \usepackage[ansinew]{inputenc}   % Für Microsoft Windows
 \usepackage[utf8]{inputenc}        % UTF-8 codierte Dateien
-                                   % Dieses Dokument ist unter Unix erstellt, daher
-                                   % wird diese Input-Codierung benutzt.
+% Dieses Dokument ist unter Unix erstellt, daher
+% wird diese Input-Codierung benutzt.
 
 \usepackage{bericht}
 
@@ -39,18 +39,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\Autor}{Lukas Hörnle & Marc Gökce}
-\newcommand{\MatrikelNummer}{4711}
-\newcommand{\Kursbezeichnung}{tinf17b3}
+\newcommand{\MatrikelNummer}{TODO}
+\newcommand{\Kursbezeichnung}{TINF20B4}
 
-\newcommand{\FirmenName}{Firmenname}
-\newcommand{\FirmenStadt}{Stadt}
+\newcommand{\FirmenName}{CAS Software AG & 1&1 }
+\newcommand{\FirmenStadt}{Karlsruhe}
 \newcommand{\FirmenLogoDeckblatt}{\fbox{\includegraphics[width=3cm]{lion}}}
 
 % Falls es kein Firmenlogo gibt:
 %  \newcommand{\FirmenLogoDeckblatt}{}
 
-\newcommand{\BetreuerFirma}{Titel Vorname Nachname}
-\newcommand{\BetreuerDHBW}{Titel Vorname Nachname}
+\newcommand{\BetreuerDHBW}{Ralph Lausen}%TODO Titel raussuchen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -63,34 +62,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\Titel}{\LaTeX-Vorlage für diverse Ausarbeitungen\\--\\oder so ähnlich}
-\newcommand{\AbgabeDatum}{1. April 2090}
+\newcommand{\AbgabeDatum}{22.05.2023}
 
-\newcommand{\Dauer}{12 Wochen}
+\newcommand{\Dauer}{TODO raussuchen}
 
 % \newcommand{\Abschluss}{Bachelor of Engineering}
 \newcommand{\Abschluss}{Bachelor of Science}
 
-\newcommand{\Studiengang}{Informatik / Informationstechnik}
+\newcommand{\Studiengang}{Informatik}
 % \newcommand{\Studiengang}{Informatik / Angewandte Informatik}
 
 \hypersetup{%%
-  pdfauthor={\Autor},
-  pdftitle={\Titel},
-  pdfsubject={\Was}
+    pdfauthor={\Autor},
+    pdftitle={\Titel},
+    pdfsubject={\Was}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Wenn \includeonly{..} benutzt wird, werden nur diese Kaptitel ausgegeben.
 \includeonly{
-  abk
- ,kapitel1
- ,kapitel2
- ,kapitel3
- ,kapitel4
- ,kapitel5
- ,kapitel6
- ,changelog
+    abk
+    ,kapitel1
+    ,kapitel2
+    ,kapitel3
+    ,kapitel4
+    ,kapitel5
+    ,kapitel6
+    ,changelog
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,77 +102,76 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{titlepage}
-\begin{center}
-\vspace*{-2cm}
-\FirmenLogoDeckblatt\hfill\includegraphics[width=4cm]{dhbw-logo}\\[2cm]
-{\Huge \Titel}\\[1cm]
-{\Huge\scshape \Was}\\[1cm]
-{\large für die Prüfung zum}\\[0.5cm]
-{\Large \Abschluss}\\[0.5cm]
-{\large des Studienganges \Studiengang}\\[0.5cm]
-{\large an der}\\[0.5cm]
-{\large Dualen Hochschule Baden-Württemberg Karlsruhe}\\[0.5cm]
-{\large von}\\[0.5cm]
-{\large\bfseries \Autor}\\[1cm]
-{\large Abgabedatum \AbgabeDatum}
-\vfill
-\end{center}
-\begin{tabular}{l@{\hspace{2cm}}l}
-Bearbeitungszeitraum	         & \Dauer 			\\
-Matrikelnummer	                 & \MatrikelNummer		\\
-Kurs			         & \Kursbezeichnung		\\
-Ausbildungsfirma	         & \FirmenName			\\
-			         & \FirmenStadt			\\
-Betreuer der Ausbildungsfirma	 & \BetreuerFirma		\\
-Gutachter der Studienakademie	 & \BetreuerDHBW		\\
-\end{tabular}
-\end{titlepage}
+    \begin{titlepage}
+        \begin{center}
+            \vspace*{-2cm}
+            \FirmenLogoDeckblatt\hfill\includegraphics[width=4cm]{dhbw-logo}\\[2cm]
+            {\Huge \Titel}\\[1cm]
+            {\Huge\scshape \Was}\\[1cm]
+            {\large für die Prüfung zum}\\[0.5cm]
+            {\Large \Abschluss}\\[0.5cm]
+            {\large des Studienganges \Studiengang}\\[0.5cm]
+            {\large an der}\\[0.5cm]
+            {\large Dualen Hochschule Baden-Württemberg Karlsruhe}\\[0.5cm]
+            {\large von}\\[0.5cm]
+            {\large\bfseries \Autor}\\[1cm]
+            {\large Abgabedatum \AbgabeDatum}
+            \vfill
+        \end{center}
+        \begin{tabular}{l@{\hspace{2cm}}l}
+            Bearbeitungszeitraum	         & \Dauer 			\\
+            Matrikelnummer	                 & \MatrikelNummer		\\
+            Kurs			         & \Kursbezeichnung		\\
+            Ausbildungsfirma	         & \FirmenName			\\
+            & \FirmenStadt			\\
+            Gutachter der Studienakademie	 & \BetreuerDHBW		\\
+        \end{tabular}
+    \end{titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{erklaerung.tex}
+    \input{erklaerung.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{abstract}
-Dieses \LaTeX-Dokument kann als Vorlage für einen Praxis- oder Projektbericht, eine Studien- oder
-Bachelorarbeit dienen.
+    \begin{abstract}
+        Dieses \LaTeX-Dokument kann als Vorlage für einen Praxis- oder Projektbericht, eine Studien- oder
+        Bachelorarbeit dienen.
 
-Zusammengestellt von Prof.\,Dr.\,Jürgen Vollmer \email{juergen.vollmer@dhbw-karlsruhe.de}\\
-\url{https://www.karlsruhe.dhbw.de}. Die jeweils aktuellste Version dieses \LaTeX-Paketes ist immer
-auf der \emph{FAQ-Seite} des Studiengangs Informatik zu finden:
-\url{https://www.karlsruhe.dhbw.de/inf/studienverlauf-organisatorisches.html} $\to$ \emph{Formulare und Vorlagen}.
+        Zusammengestellt von Prof.\,Dr.\,Jürgen Vollmer \email{juergen.vollmer@dhbw-karlsruhe.de}\\
+        \url{https://www.karlsruhe.dhbw.de}. Die jeweils aktuellste Version dieses \LaTeX-Paketes ist immer
+        auf der \emph{FAQ-Seite} des Studiengangs Informatik zu finden:
+        \url{https://www.karlsruhe.dhbw.de/inf/studienverlauf-organisatorisches.html} $\to$ \emph{Formulare und Vorlagen}.
 
-\centering Stand \verb+$Date: 2020/03/13 15:07:45 $+
-\end{abstract}
+        \centering Stand \verb+$Date: 2020/03/13 15:07:45 $+
+    \end{abstract}
 
-\newpage
-\tableofcontents           % Inhaltsverzeichnis hier ausgeben
+    \newpage
+    \tableofcontents           % Inhaltsverzeichnis hier ausgeben
 
 % Jetzt kommt der "eigentliche" Text
-\include{kapitel1}
-\include{kapitel2}
-\include{kapitel3}
-\include{kapitel4}
-\include{kapitel5}
-\include{kapitel6}
+    \include{kapitel1}
+    \include{kapitel2}
+    \include{kapitel3}
+    \include{kapitel4}
+    \include{kapitel5}
+    \include{kapitel6}
 
-\clearpage
-\include{abk}              % Abkürzungsverzeichnis
-\listoffigures             % Liste der Abbildungen
-\listoftables              % Liste der Tabellen
-\lstlistoflistings         % Liste der Listings
-\listofequations           % Liste der Formeln
+    \clearpage
+    \include{abk}              % Abkürzungsverzeichnis
+    \listoffigures             % Liste der Abbildungen
+    \listoftables              % Liste der Tabellen
+    \lstlistoflistings         % Liste der Listings
+    \listofequations           % Liste der Formeln
 
 % Ab hier beginnt der Anhang
-\appendix
-\addcontentsline{toc}{chapter}{Anhang}
+    \appendix
+    \addcontentsline{toc}{chapter}{Anhang}
 
-\addcontentsline{toc}{chapter}{Index}
-\printindex
+    \addcontentsline{toc}{chapter}{Index}
+    \printindex
 
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+    \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 
 % Haben Sie das "biblatex"-Paket nicht installiert, benutzen Sie folgendes:
 % Ohne das "biblatex"-Paket (s. bericht.sty) produziert folgendes
@@ -189,16 +187,16 @@ auf der \emph{FAQ-Seite} des Studiengangs Informatik zu finden:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % BIBLATEX
 % Benutzt man das "biblatex"-Paket, muß man folgendes schreiben:
-\def\refname{Literaturverzeichnis}
-\printbibliography
+    \def\refname{Literaturverzeichnis}
+    \printbibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 
-\include{changelog}
+    \include{changelog}
 
-\newpage
-\addcontentsline{toc}{chapter}{Liste der ToDo's}
-\listoftodos[Liste der ToDo's]
+    \newpage
+    \addcontentsline{toc}{chapter}{Liste der ToDo's}
+    \listoftodos[Liste der ToDo's]
 
 
 \end{document}
