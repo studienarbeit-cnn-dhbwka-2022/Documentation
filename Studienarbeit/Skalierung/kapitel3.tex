@@ -1,9 +1,60 @@
 
 \chapter{Klassische Skalierungsmethoden}
 
-    \section{Pixel-Verdopplung}
-    \section{Nearest-Neighbor-Interpolation}
-    \section{Bilineare Interpolation}
-    \section{Bicubische Interpolation}
-    \section{Lanczos-Interpolation}
-    \section{Vor- und Nachteile der klassischen Methoden}
+\section{Pixel-Verdopplung}
+Die Pixel-Verdopplung vergrößert das Bild indem jeder Pixel dupliziert wird.
+Diese Methode kann schnell und einfach umgesetzt werden, indem jeder Pixelwert einfach auf den Nachbarpixel übertragen wird. 
+Wenn Bilder mit dieser Methode stark vergrößert werden, ergeben sich oft pixelige und unscharfe Ausgaben, da die Details nicht wirklich vorhanden sind, sondern nur durch die Duplizierung von Pixeln aufgefüllt werden. 
+Aus diesem Grund wird Pixel-Verdopplung oft als eine minderwertige Skalierungsmethode betrachtet und findet in professinellen Anwendungen selten Gebrauch.\footfullcite{WANG1983363}
+\newpage
+Eine Beispielhafte Implementierung in Python sieht folgendermaßen aus: 
+\begin{lstlisting}
+import numpy as np
+import cv2
+
+def pixel_doubling(image, scale_factor):
+    new_size = (int(image.shape[1] * scale_factor), int(image.shape[0] * scale_factor))
+    
+    scaled_image = np.zeros(new_size + (image.shape[2],), dtype=np.uint8)
+    for i in range(new_size[0]):
+        for j in range(new_size[1]):
+            x = int(i / scale_factor)
+            y = int(j / scale_factor)
+            scaled_image[j, i] = image[y, x]
+    
+    return scaled_image
+
+image = cv2.imread('cactus.jpg')
+scaled_image = pixel_doubling(image, 2)
+cv2.imshow(scaled_image)
+\end{lstlisting}
+%TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
+\section{Nearest-Neighbor-Interpolation}
+
+\begin{lstlisting}
+import numpy as np
+import cv2
+
+def nearest_neighbor_interpolation(image, scale_factor):
+    new_size = (int(image.shape[1] * scale_factor), int(image.shape[0] * scale_factor))
+    
+    scaled_image = np.zeros(new_size + (image.shape[2],), dtype=np.uint8)
+    for i in range(new_size[0]):
+        for j in range(new_size[1]):
+            x = int(i / scale_factor)
+            y = int(j / scale_factor)
+            scaled_image[j, i] = image[y, x]
+    
+    return scaled_image
+
+
+image = cv2.imread('example_image.jpg')
+scaled_image = nearest_neighbor_interpolation(image, 2)
+cv2.imshow(image)
+cv2.imshow(scaled_image)
+\end{lstlisting}
+%TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
+\section{Bilineare Interpolation}
+\section{Bicubische Interpolation}
+\section{Lanczos-Interpolation}
+\section{Vor- und Nachteile der klassischen Methoden}
