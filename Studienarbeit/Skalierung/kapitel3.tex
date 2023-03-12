@@ -30,7 +30,17 @@ cv2.imshow(scaled_image)
 \end{lstlisting}
 %TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
 \section{Nearest-Neighbor-Interpolation}
-
+Die Nearest-Neighbor-Interpolation ist eine weitere Methode zur Skalierung von Bildern. 
+Es wird für jeden Pixel im Ausgabebild der am nächsten liegende Pixel im Eingabebild ausgewählt und der Farbwert des ausgewählten Pixels wird als Farbwert des entsprechenden Pixels im Ausgabebild verwendet.
+Die Verwendung von Nearest-Neighbor-Interpolation ist einfach und schnell zu implementieren. 
+Aufgrund ihrer geringen Komplexität ist sie daher sehr beliebt. 
+Die Methode eignet sich besonders gut für die Vergrößerung von Bildern mit großen, einheitlichen Bereichen oder harten Kanten. 
+Bei der Verkleinerung von Bildern erleiden diese jedoch oft einen Qualitätsverlust.
+Hier kommt es zu Unschärfe und Blockbildung. 
+Diese Effekt verstärkt sich, wenn das Verhältniss zwischen Quellbild und Audgabebild kein Vielfaches ist. 
+\begin{acronym}
+  \acro{NNI}{Nearest Neighbor Interpolation}
+\end{acronym}
 \begin{lstlisting}
 import numpy as np
 import cv2
@@ -52,9 +62,36 @@ image = cv2.imread('example_image.jpg')
 scaled_image = nearest_neighbor_interpolation(image, 2)
 cv2.imshow(image)
 cv2.imshow(scaled_image)
-\end{lstlisting}
+\end{lstlisting}\footfullcite{jiang2015quantum}
 %TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
 \section{Bilineare Interpolation}
+\begin{lstlisting}
+import numpy as np
+from scipy import interpolate
+from PIL import Image
+
+def bilinear_interpolation(img, scale):
+    """
+    Performs bilinear interpolation on the input image with a given scale factor.
+    """
+    width, height = img.shape
+    new_width = int(width * scale)
+    new_height = int(height * scale)
+    
+    x_scale = np.arange(0, new_width, 1) / scale
+    y_scale = np.arange(0, new_height, 1) / scale
+    
+    interpolator = interpolate.interp2d(np.arange(height), np.arange(width), img, kind='linear')
+    new_img = interpolator(y_scale, x_scale)
+    
+    return new_img.astype(np.uint8)
+
+# Beispielaufruf
+img = np.array(Image.open('bild.jpg').convert('L'))
+scaled_img = bilinear_interpolation(img, 2)
+\end{lstlisting}\footfullcite{1409828}
+
 \section{Bicubische Interpolation}
+
 \section{Lanczos-Interpolation}
 \section{Vor- und Nachteile der klassischen Methoden}
