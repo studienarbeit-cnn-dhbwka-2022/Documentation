@@ -52,7 +52,7 @@ SVG ist außerdem ein offenes Format und unterstützt Interaktivität, Animation
 Da SVG auf XML basiert, kann es auch mit anderen Webtechnologien wie HTML, CSS und JavaScript integriert werden.\footfullcite{mdn_svg} 
 
 \subsubsection{Weitere Standards}
-%TODO einführungstext formulieren
+%TODO MEHR TEXT!!!! 
 \begin{description}
 \item[GIF] \\
 Ein Format für animierte Rastergrafiken mit einer begrenzten Farbpalette von 256 Farben. Es verwendet eine verlustfreie Kompression, die aber nicht sehr effizient ist. Es ist geeignet für einfache Animationen und Grafiken mit wenigen Farben. \\
@@ -67,6 +67,50 @@ Ein Format für vektorbasierte Grafiken, das Kurven, Texte und andere Elemente s
 \end{description}
 Weiterhin gibt es unzählige Standards um Grafiken darzustellen. Diese übersteigen jedoch den Umfang dieser Arbeit.\footfullcite{prepressure_file_formats}\footfullcite{ionos_file_formats}\footfullcite{rabbani2002overview}\footfullcite{marcellin2000overview}\footfullcite{britannica_jpeg}\footfullcite{elsevier_artwork}
 \subsection{Wichtige Aspekte der Skalierung}
+\subsubsection{Segmentierung}
 
+Die Segmentierung von Bildern ist ein wichtiges Verfahren der Bildverarbeitung, da es ermöglicht, ein Bild in sinnvolle Regionen zu unterteilen. 
+Hierbei können verschiedene Verfahren, wie Schwellenwert- oder Clustering-Methoden eingesetzt werden. 
+Die Genauigkeit der Segmentierung hängt dabei maßgeblich von der Komplexität des Bildes und der gewählten Methode ab.
+Eine erfolgreiche Segmentierung kann für viele Anwendungen von Nutzen sein.
+Die automatischen Erkennung von Gesichtern oder die Identifizierung von Verkehrszeichen auf Straßenbildern sind die populärsten Beispiele.
+Jedoch ist es oft schwer genaue Grenzen zwischen Objekten in Bildern mit komplexen Strukturen zu erkennen.
+
+\subsubsection{Klassifizierung}
+
+Die Klassifizierung von Bildinhalten ist ein weiterer wichtiger Aspekt der Bildverarbeitung.
+Hierbei werden Bilder in automatisch bestimmte Kategorien eingeteilt. 
+Beispielanwendungen inkludierewn das Erkennen von Tierarten auf Naturfotos oder das Identifizieren von Gesichtern auf Fotos. 
+Hierfür können verschiedene Techniken verwendet werden. Beispiele sind Deep Learning oder Entscheidungsbaum-Algorithmen.
+Eine erfolgreiche Klassifizierung kann für viele Anwendungen genutzt werden, wie zum Beispiel zur Automatisierung von Aufgaben oder im maschinellen Lernen. 
+Die Geneauigkeit einer Klassifizierung wird von Faktoren, wie zum Beispiel von der Qualität der Trainingsdaten oder der Komplexität der verwendeten Klassifikationsmethode beeinflusst.
+
+\subsubsection{Objekterkennung und -verfolgung}
+
+Die Objekterkennung und -verfolgung ist ein wichtiger Aspekt der Bildverarbeitung, der oft in Anwendungen wie der Überwachung und Robotik genutzt wird. 
+Hier geht es darum, Objekte in Bildern oder Videos zu erkennen und ihre Bewegungen zu verfolgen. 
+Es können verschiedene Techniken eingesetzt werden, wie zum Beispiel Hintergrundsubtraktion oder optische Flussberechnung.
+Eine erfolgreiche Objekterkennung und -verfolgung kann für viele Anwendungen genutzt werden, wie zum Beispiel in der Videoüberwachung oder bei der Steuerung von autonomen Fahrzeugen. 
+Allerdings gibt es auch Herausforderungen bei der Objekterkennung und -verfolgung, wie zum Beispiel die Bewältigung von Hintergrundrauschen oder die Verfolgung von Objekten bei hoher Geschwindigkeit.
+
+\subsubsection{3D-Bildverarbeitung}
+In der 3D-Bildverarbeitung werden dreidimensionale Bilder und Modelle analysiert und verarbeitet.
+Die Anwendungsfelder dieser Technologien reichen von medizinischen Umgebungen bis hin zur industriellen Fertigung.
+In bildgebenden medizinischen verfahren werden 3D-Bilder für die Diagnose von Krankheiten und Verletzungen verwendet. 
+In der industriellen Fertigung werden 3D-Modelle für die Qualitätssicherung und die Fehlererkennung verwendet.
+
+\subsubsection{Bildkompression}
+Da Bilder in der Regel große Datenmengen erzeugen, die für die Übertragung und Speicherung unpraktisch sind, benötigt es oft eine Bildkompression. 
+Durch Kompressionstechniken wie z.B. die JPEG-Kompression kann die Größe von Bildern erheblich reduziert werden ohne dabei große QUalitätsverluste zu erleiden.
+
+\section{Echtzeitverarbeitung von Bildern}
+
+Die Echtzeitverarbeitung von Bildern stellt eine Herausforderung in der Bildverarbeitung dar, da eine sehr schnelle Verarbeitung notwendig ist, um zeitkritische Anwendungen wie z.B. autonomes Fahren oder Augmented Reality zu realisieren.
+Bei diesen Aufgaben müssen Bilder in Echtzeit erfasst, verarbeitet und angezeigt werden, um eine reibungslose Funktionalität zu gewährleisten.
+Die Echtzeitverarbeitung von Bildern erfordert in der Regel eine hohe Rechenleistung, um die Daten schnell genug zu verarbeiten.
+Hierbei kommen spezielle Algorithmen zum Einsatz, die für eine effiziente Verarbeitung sorgen.
+Eine weitere Herausforderung bei der Echtzeitverarbeitung von Bildern ist die Echtzeit-Kommunikation zwischen den verschiedenen Komponenten des Systems. Hierbei müssen Daten schnell und zuverlässig ausgetauscht werden, um Verzögerungen zu vermeiden. 
+Hierfür kommen oft spezielle Systeme zum Einsatz, die für eine schnelle Übertragung und parallele Verarbeitung von Daten optimiert sind.\footfullcite{oehlrich1992transputersystem}
 \section{Anwendungen von Skalierungsmethoden}
 % help
+\newpage
