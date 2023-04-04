@@ -1,4 +1,5 @@
-
+\usepackage{amsmath}
+\usepackage{amssymb}
 \chapter{Klassische Skalierungsmethoden}
 
 \section{Pixel-Verdopplung}
@@ -8,26 +9,7 @@ Wenn Bilder mit dieser Methode stark vergrößert werden, ergeben sich oft pixel
 Aus diesem Grund wird Pixel-Verdopplung oft als eine minderwertige Skalierungsmethode betrachtet und findet in professinellen Anwendungen selten Gebrauch.\footfullcite{WANG1983363}
 \newpage
 Eine Beispielhafte Implementierung in Python sieht folgendermaßen aus: 
-\begin{lstlisting}
-import numpy as np
-import cv2
 
-def pixel_doubling(image, scale_factor):
-    new_size = (int(image.shape[1] * scale_factor), int(image.shape[0] * scale_factor))
-    
-    scaled_image = np.zeros(new_size + (image.shape[2],), dtype=np.uint8)
-    for i in range(new_size[0]):
-        for j in range(new_size[1]):
-            x = int(i / scale_factor)
-            y = int(j / scale_factor)
-            scaled_image[j, i] = image[y, x]
-    
-    return scaled_image
-
-image = cv2.imread('cactus.jpg')
-scaled_image = pixel_doubling(image, 2)
-cv2.imshow(scaled_image)
-\end{lstlisting}
 %TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
 \section{Nearest-Neighbor-Interpolation}
 Die Nearest-Neighbor-Interpolation ist eine weitere Methode zur Skalierung von Bildern. 
@@ -93,5 +75,98 @@ scaled_img = bilinear_interpolation(img, 2)
 
 \section{Bicubische Interpolation}
 
+    \subsection{Mathematische Grundlagen}
+
+    Erläuterung der mathematischen Grundlagen der bikubischen Interpolation, einschließlich der Verwendung von kubischen Polynomen und der Stichprobentheorie.
+    Herleitung der bikubischen Interpolationsformel und der Eigenschaften der resultierenden Funktion.
+    Diskussion der Vor- und Nachteile der Verwendung kubischer Funktionen für die Interpolation im Vergleich zu anderen Funktionstypen.
+    Überblick über die Rolle der Fourier-Analyse und der Fourier-Transformationen bei der Bildinterpolation und wie sich dies auf die bikubische Interpolation bezieht.
+
+    \subsection{Algorithmische Implementierung}
+
+    Überblick über die algorithmischen Schritte bei der bikubischen Interpolation, einschließlich der Auswahl der umgebenden Pixel und der Gewichte sowie der Berechnung der neuen Pixelwerte.
+    Diskussion von Techniken zur Optimierung der Leistung der bikubischen Interpolation, wie z. B. die Vorberechnung von Lookup-Tabellen, Parallelisierung und Speicherverwaltung.
+    Untersuchung von Grenzfällen und Randbedingungen, die bei der bikubischen Interpolation auftreten können, und wie diese effektiv behandelt werden können.
+    Vergleich der algorithmischen Implementierung der bikubischen Interpolation mit anderen Interpolationsverfahren, wie z.B. der bilinearen Interpolation und der Lanczos-Interpolation.
+
+    \subsection{Implementation}
+    \begin{lstlisting}[language=python,
+                   frame=single,           % Ein Rahmen um den Code
+                   framexleftmargin=15pt,  % Rahmen link von den Zahlen
+                   style=algoBericht,
+                   label={algo-quicksort},
+                   captionpos=b,           % Caption unter den Code setzen
+		   caption={quicksort in C}]
+    def _cubic(self, x, a=-0.5):
+        abs_x = abs(x)
+        if abs_x <= 1:
+            return (a + 2) * (abs_x ** 3) - (a + 3) * (abs_x ** 2) + 1
+        elif abs_x < 2:
+            return a * (abs_x ** 3) - (5 * a) * (abs_x ** 2) + (8 * a) * abs_x - (4 * a)
+        return 0
+\end{lstlisting}
+
+The \_cubic method calculates the cubic coefficients for the bicubic interpolation. It takes a value x and an optional parameter a. It first takes the absolute value of x. If abs\_x is less than or equal to 1, it returns the value (a + 2) * (abs\_x ** 3) - (a + 3) * (abs\_x ** 2) + 1. If abs\_x is between 1 and 2, it returns the value a * (abs\_x ** 3) - (5 * a) * (abs\_x ** 2) + (8 * a) * abs\_x - (4 * a). Otherwise, it returns 0.
+    
+
+    \subsection{Analyse der Leistung}
+
+    Erläuterung der Kriterien, die zur Bewertung der Leistung von Bildinterpolationsverfahren verwendet werden, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz.
+    Vergleich der Leistung der bikubischen Interpolation mit anderen Interpolationstechniken unter Verwendung einer Reihe von Testbildern und Datensätzen.
+    Untersuchung der Auswirkungen verschiedener Parameter wie Bildgröße, Auflösung und Inhalt auf die Leistung der bikubischen Interpolation.
+    Diskussion der potenziellen Einschränkungen und Kompromisse, die mit der Verwendung der bikubischen Interpolation verbunden sind, sowie der Faktoren, die ihre Leistung in verschiedenen Kontexten beeinflussen können.
+
+    \subsection{Anwendungen}
+
+    Überblick über die verschiedenen Anwendungen der bikubischen Interpolation in der Bildverarbeitung, einschließlich Bildskalierung und -größenänderung, Bildrotation und -transformation sowie Bildentrauschung und -wiederherstellung.
+    Diskussion der spezifischen Herausforderungen und Möglichkeiten, die sich in verschiedenen Anwendungsbereichen ergeben, z. B. in der medizinischen Bildgebung, der Satellitenbildgebung und der Videoverarbeitung.
+    Erforschung der potenziellen Vor- und Nachteile der bikubischen Interpolation in verschiedenen Anwendungen und der Faktoren, die ihre Eignung für bestimmte Aufgaben beeinflussen können.
+
+    \subsection{Erweiterungen und Variationen}
+
+    Erläuterung der verschiedenen Erweiterungen und Variationen der bikubischen Interpolation, wie z. B. Super-Resolution-Techniken, Multiskalen- und pyramidenbasierte Interpolation und adaptive Interpolationstechniken.
+    Diskussion der Vor- und Nachteile dieser Varianten und ihrer Eignung für verschiedene Bildtypen und Anwendungen.
+    Erkundung potenzieller künftiger Forschungsrichtungen in diesem Bereich, z. B. auf Deep Learning basierende Ansätze, ungleichmäßige und unregelmäßige Abtastverfahren sowie mehrdimensionale und mehrkanalige Interpolation.
+
+
 \section{Lanczos-Interpolation}
+Die Lanczos-Interpolation ist eine Methode zur Rekonstruktion von Werten im Bild aus diskreten Abtastungen. In diesem Abschnitt wird die mathematische Grundlage und die praktische Anwendung der Lanczos-Interpolation kurz erläutert.
+
+\subsection{Mathematische Grundlage}
+
+Die Lanczos-Interpolation basiert auf der Idee, ein kontinuierliches Signal $f(x)$ durch eine Summe von gewichteten Basisfunktionen zu approximieren. 
+Dieses Signal können zum Beispiel Farbwerte in einem Bild sein.
+Die Basisfunktionen werden durch das sogenannte Lanczos-Kernel definiert:
+
+\begin{equation}
+MARC HIER Formel aus BILD EINFÜGEN
+\end{equation}
+\footfullcite{duchon1979lanczos}
+
+Das Lanczos-Kernel hat eine kompakte Trägerfunktion.
+Eine kompakte Träägerformel bedeutet, sie ist nur in einem begrenzten Bereich von Null verschieden. In der Praxis hat dies den Vorteil, dass das Signalrauschen in Bereichen außerhalb des Bereichs im Signalraum reduziert wird und somit eine bessere Interpolation des Signals erreicht werden kann.
+Die Gewichtungen der Basisfunktionen werden durch die Interpolationskoeffizienten bestimmt, die durch die diskreten Abtastungen des Signals berechnet werden.
+
+Die Lanczos-Interpolation wird in der Regel auf gleichmäßig verteilten Stützstellen angewendet. 
+Die Interpolationsmethode verwendet diese Stützstellen als Ausgangspunkt, um eine Schätzung des Signals an anderen Orten zu berechnen. 
+Seien $x_1, x_2, \ldots, x_n$ die Stützstellen des Signals und $y_1, y_2, \ldots, y_n$ die zugehörigen Abtastungen. Die Interpolationsfunktion $s(x)$ kann dann wie folgt berechnet werden:
+
+\begin{equation}
+Interpolationsfunktion bro hilfe @marc
+\end{equation}
+
+wobei $h$ der Abstand zwischen den Stützstellen ist.
+\footfullcite{BENTBIB2016233}
+
+\subsection{Praktische Anwendung}
+
+Die Lanczos-Interpolation findet Anwendung in vielen Bereichen der Bildverarbeitung. 
+Ein Anwendungsbeispiel ist die Upsampling von digitalen Bildern, um eine höhere Auflösung zu erreichen.
+
+Die praktische Umsetzung der Lanczos-Interpolation erfordert die Berechnung der Interpolationskoeffizienten und die Bestimmung der Stützstellen des Signals. In der Regel werden hierfür spezielle Algorithmen eingesetzt, die auf der effizienten Berechnung der Basisfunktionen basieren.
+
+\\Hier Implementierung einfügen (TODO) 
+
 \section{Vor- und Nachteile der klassischen Methoden}
+
+\newpage
