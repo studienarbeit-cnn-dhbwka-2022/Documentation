@@ -90,25 +90,20 @@ scaled_img = bilinear_interpolation(img, 2)
     Vergleich der algorithmischen Implementierung der bikubischen Interpolation mit anderen Interpolationsverfahren, wie z.B. der bilinearen Interpolation und der Lanczos-Interpolation.
 
     \subsection{Implementation}
-    \begin{lstlisting}[language=python,
-                   frame=single,           % Ein Rahmen um den Code
-                   framexleftmargin=15pt,  % Rahmen link von den Zahlen
-                   style=algoBericht,
-                   label={algo-quicksort},
-                   captionpos=b,           % Caption unter den Code setzen
-		   caption={quicksort in C}]
-    def _cubic(self, x, a=-0.5):
-        abs_x = abs(x)
-        if abs_x <= 1:
-            return (a + 2) * (abs_x ** 3) - (a + 3) * (abs_x ** 2) + 1
-        elif abs_x < 2:
-            return a * (abs_x ** 3) - (5 * a) * (abs_x ** 2) + (8 * a) * abs_x - (4 * a)
-        return 0
-\end{lstlisting}
+    \begin{lstlisting}
+    from scipy import interpolate
+    import numpy as np
 
-The \_cubic method calculates the cubic coefficients for the bicubic interpolation. It takes a value x and an optional parameter a. It first takes the absolute value of x. If abs\_x is less than or equal to 1, it returns the value (a + 2) * (abs\_x ** 3) - (a + 3) * (abs\_x ** 2) + 1. If abs\_x is between 1 and 2, it returns the value a * (abs\_x ** 3) - (5 * a) * (abs\_x ** 2) + (8 * a) * abs\_x - (4 * a). Otherwise, it returns 0.
-    
-
+    def bicubic_interpolation(image, new_shape):
+    height, width = image.shape[:2]
+    x = np.arange(0, width)
+    y = np.arange(0, height)
+    f = interpolate.interp2d(x, y, image, kind='cubic')
+    new_width, new_height = new_shape
+    new_x = np.linspace(0, width-1, new_width)
+    new_y = np.linspace(0, height-1, new_height)
+    return f(new_x, new_y)
+    \end{lstlisting}
     \subsection{Analyse der Leistung}
 
     Erläuterung der Kriterien, die zur Bewertung der Leistung von Bildinterpolationsverfahren verwendet werden, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz.
