@@ -6,144 +6,150 @@
 \section{Convolutional Neural Networks / Deep learning}
     \subsection{Grundlagen von Convolutional Neural Networks (CNNs)}
         %TODO Abkürzung in latex 
-        Convolutional Neural Networks (CNNs) sind eine Art von Deep-Learning-Modell, welches besonders im Hinblick auf die Verarbeitung von Daten mit räumlicher Struktur den aktuellen Stand der Technik darstellt. 
-        Räum.iche Daten, wie z.B. Bilder können bearbeitet, verarbeitet, erstellt und analysiert werden. 
+        Convolutional Neural Networks (CNNs) sind eine Art von Deep-Learning-Modell, welches besonders im Hinblick auf die Verarbeitung von Daten mit räumlicher Struktur den aktuellen Stand der Technik darstellt.      
+        Räum.iche Daten, wie z.B.      Bilder können bearbeitet, verarbeitet, erstellt und analysiert werden.      
         CNNs bestehen aus mehreren Schichten von Neuronen, die so angeordnet sind, dass sie räumliche Beziehungen in den Daten erfassen können.
-        Die grundlegende Idee hinter CNNs ist die Verwendung von Faltung (engl. convolution) anstelle der vollständigen Verbindung (engl. fully connected) zwischen den Schichten. 
-        Dies bedeutet, dass jedes Neuron in einer Schicht nur mit einem Teil des Eingangs verbunden ist, anstatt mit jedem Eingangsneuron. 
+        Die grundlegende Idee hinter CNNs ist die Verwendung von Faltung (engl.      convolution) anstelle der vollständigen Verbindung (engl.      fully connected) zwischen den Schichten.      
+        Dies bedeutet, dass jedes Neuron in einer Schicht nur mit einem Teil des Eingangs verbunden ist, anstatt mit jedem Eingangsneuron.      
         Diese Art der Verbindung spart Rechenleistung und ermöglicht eine effektivere sowie schnellere Verarbeitung von großen Datensätzen.
         \footfullcite(kolbentwicklung,oshea2015introduction)
     \subsection{Architekturen von CNNs}
     
-        Es gibt mehrere bekannte Architekturen von CNNs, darunter AlexNet, ResNet und Inception. 
-        AlexNet war das erste CNN, das auf einem großen Datensatz erfolgreich angewendet wurde. 
-        ResNet zeichnet sich durch seine Fähigkeit aus, sehr tiefe Netzwerke zu trainieren, ohne dass das Problem des Verschwindens des Gradienten auftritt. 
+        Es gibt mehrere bekannte Architekturen von CNNs, darunter AlexNet, ResNet und Inception.      
+        AlexNet war das erste CNN, das auf einem großen Datensatz erfolgreich angewendet wurde.      
+        ResNet zeichnet sich durch seine Fähigkeit aus, sehr tiefe Netzwerke zu trainieren, ohne dass das Problem des Verschwindens des Gradienten auftritt.      
         Inception wiederum ist für seine Fähigkeit bekannt, die Effizienz von CNNs durch die Verwendung von sogenannten Inception-Modulen zu erhöhen.
         %TODO Grafiken für die Netzwerke raussuchen (BV Vorlesung?)
 
     
     \subsection{Anwendungen von CNNs}
     
-        CNNs haben zahlreiche Anwendungen, darunter Bildklassifizierung, Objekterkennung und Gesichtserkennung. 
-        Bei der Bildklassifizierung werden Bilder automatisch in verschiedene Kategorien eingeteilt. 
-        Beispielsweise können Bilder in Klassen wie Hunde, Katzen oder Autos eingeteilt werden. 
-        Bei der Objekterkennung wird das Modell darauf trainiert, bestimmte Objekte in einem Bild zu erkennen, wie z.B. Personen oder Straßenschilder. 
+        CNNs haben zahlreiche Anwendungen, darunter Bildklassifizierung, Objekterkennung und Gesichtserkennung.      
+        Bei der Bildklassifizierung werden Bilder automatisch in verschiedene Kategorien eingeteilt.      
+        Beispielsweise können Bilder in Klassen wie Hunde, Katzen oder Autos eingeteilt werden.      
+        Bei der Objekterkennung wird das Modell darauf trainiert, bestimmte Objekte in einem Bild zu erkennen, wie z.B.      Personen oder Straßenschilder.      
         Die Gesichtserkennung wird oft zur Identifikation von Personen in Sicherheitsanwendungen eingesetzt.
         \footfullcite{wu2017squeezedet,liu2015deep,jaderberg2015spatial}
         %TODO Grafik für Ergebnisse von Klassifizierung, Objekterkennung etc einfgn
         \footfullcite(oshea2015introduction)
     \subsection{Transfer Learning mit CNNs}
     
-        Transfer Learning ist eine Technik, bei der ein bereits trainiertes CNN auf eine neue Aufgabe angewendet wird, ohne es von Grund auf neu zu trainieren. 
-        Dies ist nützlich, wenn man nur über begrenzte Trainingsdaten verfügt oder wenn das Trainieren eines neuen Modells zu viel Zeit oder Ressourcen in Anspruch nimmt. 
+        Transfer Learning ist eine Technik, bei der ein bereits trainiertes CNN auf eine neue Aufgabe angewendet wird, ohne es von Grund auf neu zu trainieren.      
+        Dies ist nützlich, wenn man nur über begrenzte Trainingsdaten verfügt oder wenn das Trainieren eines neuen Modells zu viel Zeit oder Ressourcen in Anspruch nimmt.      
         Ein Beispiel hierfür ist ????????, bei denen das Modell auf einem bereits trainierten CNN basieren kann, das auf ?????? trainiert wurde.
         %TODO mir is kein Beispiel eingefallen
     \subsection{Limitationen von CNNs und aktuelle Forschungsrichtungen}
 
-        Obwohl CNNs sehr erfolgreich bei der Verarbeitung von Bildern sind, haben sie auch einige Limitationen. 
-        Zum Beispiel sind sie nicht gut geeignet, um komplexe Abhängigkeiten zwischen verschiedenen Eingabemerkmalen zu erfassen, wie z.B. das Verhalten von Objekten in einem Video.
+        Obwohl CNNs sehr erfolgreich bei der Verarbeitung von Bildern sind, haben sie auch einige Limitationen.      
+        Zum Beispiel sind sie nicht gut geeignet, um komplexe Abhängigkeiten zwischen verschiedenen Eingabemerkmalen zu erfassen, wie z.B.      das Verhalten von Objekten in einem Video.
         Zudem benötigen CNNs weiterhin viel Rechenlleistung und Ressourcen
         \footfullcite{li2018visualizing}
 
 \section{Super Resolution}
     \subsection{Grundlagen von Super Resolution (SR)}
     
-        Super Resolution (SR) ist eine Technik, um aus einer niedrig aufgelösten Eingabe ein hochauflösendes Bild zu generieren. 
+        Super Resolution (SR) ist eine Technik, um aus einer niedrig aufgelösten Eingabe ein hochauflösendes Bild zu generieren.      
         Dies wird oft als Upscaling bezeichnet und findet in vielen Anwendungen wie der Bildrekonstruktion und Videoanalyse Anwendung.
-        Die Grundidee hinter SR ist, dass hochauflösende Informationen in einem niedrig aufgelösten Bild versteckt sein können. 
-        Die Herausforderung besteht darin, diese Informationen zu extrahieren und in ein hochauflösendes Bild zu integrieren. 
+        Die Grundidee hinter SR ist, dass hochauflösende Informationen in einem niedrig aufgelösten Bild versteckt sein können.      
+        Die Herausforderung besteht darin, diese Informationen zu extrahieren und in ein hochauflösendes Bild zu integrieren.      
         SR ist somit ein Problem der inversen Bildgebung, bei dem eine hohe Auflösung aus einer niedrigen Auflösung abgeleitet werden muss.
         \footfullcite(7115171)
     \subsection{Super Resolution-Methoden auf Basis von Deep Learning}
     
-        Super Resolution-Methoden auf Basis von Deep Learning haben in den letzten Jahren viel Aufmerksamkeit erhalten und sind derzeit der Stand der Technik für SR. 
+        Super Resolution-Methoden auf Basis von Deep Learning haben in den letzten Jahren viel Aufmerksamkeit erhalten und sind derzeit der Stand der Technik für SR.      
         Diese Methoden verwenden Convolutional Neural Networks (CNNs) zur Verarbeitung von Bildern und zur Generierung von hochauflösenden Bildern.
-        Es gibt verschiedene Arten von SR-Methoden auf Basis von Deep Learning, darunter Single-Image Super Resolution (SISR) und Multi-Image Super Resolution (MISR). 
+        Es gibt verschiedene Arten von SR-Methoden auf Basis von Deep Learning, darunter Single-Image Super Resolution (SISR) und Multi-Image Super Resolution (MISR).      
         SISR-Methoden verwenden nur ein niedrig aufgelöstes Bild als Eingabe, während MISR-Methoden mehrere Bilder verwenden, um ein hochauflösendes Bild zu generieren.
         %TODO mehr auf sisr und misr eingehen hab ich aber nur semi verstanden so far 
     
     \subsubsection{Anwendungen von SR}
     
         SR hat viele Anwendungen in der Bild- und Videoanalyse, einschließlich der Rekonstruktion von Bildern aus medizinischen Scans, der Verbesserung von Bildern für die forensische Analyse und der Verbesserung von Bildern für die Erkennung von Gesichtern und Objekten.
-        In der Videoanalyse kann SR verwendet werden, um Videos zu stabilisieren, indem Bewegungsunschärfe reduziert und die Schärfe der Bilder verbessert wird. 
+        In der Videoanalyse kann SR verwendet werden, um Videos zu stabilisieren, indem Bewegungsunschärfe reduziert und die Schärfe der Bilder verbessert wird.      
         SR kann auch bei der Entschlüsselung von unscharfen und verschwommenen Bildern in Überwachungsaufnahmen helfen.
     
     \subsubsection{Evaluierung von SR-Methoden}
     
-        Die Evaluierung von SR-Methoden ist eine wichtige Aufgabe, um die Qualität und Effektivität der generierten Bilder zu bestimmen. 
+        Die Evaluierung von SR-Methoden ist eine wichtige Aufgabe, um die Qualität und Effektivität der generierten Bilder zu bestimmen.      
         Die gängigen Evaluierungsmethoden umfassen die Verwendung von visuellen Qualitätsmetriken wie Peak Signal-to-Noise Ratio (PSNR) und Structural Similarity Index Measure (SSIM).
         Es gibt auch speziellere Evaluierungsmethoden wie die Verwendung von Perceptual Quality Assessment (PQA)-Maßnahmen, die menschliche Wahrnehmungseigenschaften berücksichtigen, um die Qualität der generierten Bilder zu bestimmen.
     
     \subsubsection{Herausforderungen und zukünftige Forschungsziele von Super Resolution}
     
         Obwohl SR-Methoden auf Basis von Deep Learning vielversprechende Ergebnisse erzielt haben, gibt es immer noch Herausforderungen und zukünftige Forschungsziele, die erforscht werden müssen.
-        Eine der Herausforderungen besteht darin, dass SR-Methoden häufig dazu neigen, Artefakte in den generierten Bildern zu erzeugen, insbesondere bei der Verwendung von sehr hohen Upscaling-Faktoren. %TODO Beispielbild Artefakte erklären
+        Eine der Herausforderungen besteht darin, dass SR-Methoden häufig dazu neigen, Artefakte in den generierten Bildern zu erzeugen, insbesondere bei der Verwendung von sehr hohen Upscaling-Faktoren.      %TODO Beispielbild Artefakte erklären
         Dies kann die visuelle Qualität der generierten Bilder beeinträchtigen und die Anwendbarkeit von SR-Methoden in bestimmten Szenarien einschränken.
-        Eine weitere Herausforderung besteht darin, dass SR-Methoden häufig sehr rechenaufwändig sind, insbesondere wenn sie auf großen Datensätzen oder in Echtzeit angewendet werden müssen. 
+        Eine weitere Herausforderung besteht darin, dass SR-Methoden häufig sehr rechenaufwändig sind, insbesondere wenn sie auf großen Datensätzen oder in Echtzeit angewendet werden müssen.      
         Die benötigten Ressourcen sind teuer.
-        Dies kann die praktische Anqwendbarkeit von SR-Methoden in einigen Anwendungen einschränken.   
-        Zukünftige Forschungsziele könnten sich darauf konzentrieren, diese Herausforderungen zu überwinden, indem sie neue SR-Methoden entwickeln, die sowohl effektiv als auch effgizient sind. 
-        Eine mögliche Lösung wäre die Verwendung von Generative Adversarial Networks (GANs) zur Verbesserung der visuellen Qualität der generierten Bilder und zur Reduzierung von Artefakten. %TODO näher auf GAN eingehen 
+        Dies kann die praktische Anqwendbarkeit von SR-Methoden in einigen Anwendungen einschränken.        
+        Zukünftige Forschungsziele könnten sich darauf konzentrieren, diese Herausforderungen zu überwinden, indem sie neue SR-Methoden entwickeln, die sowohl effektiv als auch effgizient sind.      
+        Eine mögliche Lösung wäre die Verwendung von Generative Adversarial Networks (GANs) zur Verbesserung der visuellen Qualität der generierten Bilder und zur Reduzierung von Artefakten.      %TODO näher auf GAN eingehen 
         Eine weitere mögliche Lösung wäre die Entwicklung von neuartigen Architekturen von Deep Learning-Netzwerken, die weniger rechenaufwändig sind und schneller ausgeführt werden können.
         % I want a tea party with Y'ha-nthlei
-        Insgesamt bleibt SR ein aktives Forschungsfeld mit großem Potenzial für Anwendungen in der Bild- und Videoanalyse. 
+        Insgesamt bleibt SR ein aktives Forschungsfeld mit großem Potenzial für Anwendungen in der Bild- und Videoanalyse.      
         Mit weiteren Fortschritten in der Forschung können SR-Methoden immer leistungsfähiger und praktischer werden, um die Bedürfnisse der Industrie und der Geselllschaft zu erfüllen.
 
 \section{Generative Adversarial Networks (GANs)}
 
     \subsection{Grundlagen von Generative Adversarial Networks (GANs)}
         
-        Generative Adversarial Networks (GANs) sind ein leistungsstarkes Framework für das Training von Deep Learning-Modellen zur Generierung von Daten. 
-        GANs bestehen aus zwei miteinander konkurrierenden neuronalen Netzwerken, einem Generator und einem Diskriminator. Der Generator erzeugt neue Daten, während der Diskriminator versucht, zwischen den vom Generator erzeugten Daten und den echten Daten zu unterscheiden. Im Laufe des Trainings passt sich der Generator kontinuierlich an und verbessert seine Fähigkeit, realistische Daten zu generieren, während der Diskriminator gleichzeitig verbessert wird, um zwischen den generierten und echten Daten zu unterscheiden.
+        Generative Adversarial Networks (GANs) sind ein leistungsstarkes Framework für das Training von Deep Learning-Modellen zur Generierung von Daten.      
+        GANs bestehen aus zwei miteinander konkurrierenden neuronalen Netzwerken, einem Generator und einem Diskriminator.      
+        Der Generator erzeugt neue Daten, während der Diskriminator versucht, zwischen den vom Generator erzeugten Daten und den echten Daten zu unterscheiden.     Im Laufe des Trainings passt sich der Generator kontinuierlich an und verbessert seine Fähigkeit, realistische Daten zu generieren, während der Diskriminator gleichzeitig verbessert wird, um zwischen den generierten und echten Daten zu unterscheiden.
         %TODO GRAFIK! LUKAS! GRAFIK!
     
     \subsection{Architekturen von GANs}
     
-        Es gibt verschiedene Architekturen von GANs, die für verschiedene Arten von Anwendungen geeignet sind. 
-        in Beispiel ist das Deep Convolutional GAN (DCGAN), das speziell für die Generierung von Bildern entwickelt wurde. %TODO Bild? ALso so architekkturbild oder so idk
+        Es gibt verschiedene Architekturen von GANs, die für verschiedene Arten von Anwendungen geeignet sind.      
+        in Beispiel ist das Deep Convolutional GAN (DCGAN), das speziell für die Generierung von Bildern entwickelt wurde.      %TODO Bild? ALso so architekkturbild oder so idk
         DCGAN nutzt Convolutional Neural Networks (CNNs) und Transposed Convolutional Neural Networks, um Bilder zu generieren, die visuell realistisch aussehen und strukturell konsistent sind.
-        Ein weiteres Beispiel ist das CycleGAN, das für die Bildübersetzung zwischen verschiedenen Domänen verwendet werden kann. 
+        Ein weiteres Beispiel ist das CycleGAN, das für die Bildübersetzung zwischen verschiedenen Domänen verwendet werden kann.      
         CycleGAN nutzt einen Generator und einen Diskriminator sowie zusätzliche Cycle-Verlustfunktionen, um die Transformationen zwischen den Bildern in verschiedenen Domänen zu erlernen.%todo quellen vergessen
     
     \subsection{Anwendungen von GANs}
     
-        GANs finden Anwendungen in verschiedenen Bereichen wie der Bildgenerierung, Style Transfer, der Verbesserung von Bildern und der Videoanalyse. 
-        Zum Beispiel können GANs verwendet werden, um realistisch aussehende Bilder von Gesichtern, Landschaften oder anderen Objekten zu generieren. %TODO Beispielbild
-        Style Transfer ermöglicht es, das visuelle Erscheinungsbild von Bildern zu verändern, indem der Stil von einem Bild auf ein anderes übertragen wird. %TODO Beispielbild
-        GANs können auch verwendet werden, um Bilder mit höherer Auflösung oder besserer Qualität zu generieren, indem sie niedrig aufgelöste Bilder als Eingabe verwenden. 
+        GANs finden Anwendungen in verschiedenen Bereichen wie der Bildgenerierung, Style Transfer, der Verbesserung von Bildern und der Videoanalyse.      
+        Zum Beispiel können GANs verwendet werden, um realistisch aussehende Bilder von Gesichtern, Landschaften oder anderen Objekten zu generieren.      %TODO Beispielbild
+        Style Transfer ermöglicht es, das visuelle Erscheinungsbild von Bildern zu verändern, indem der Stil von einem Bild auf ein anderes übertragen wird.      %TODO Beispielbild
+        GANs können auch verwendet werden, um Bilder mit höherer Auflösung oder besserer Qualität zu generieren, indem sie niedrig aufgelöste Bilder als Eingabe verwenden.      
         In der Videoanalyse können GANs verwendet werden, um Videosequenzen zu generieren oder zu verbessern.%TODO Quelle
 
     \subsection{Training von GANs und Evaluierung von generierten Ergebnissen}
 
-        Das Training von GANs ist eine Herausforderung, da es sich um ein adversariales Lernverfahren handelt. 
-        Das bedeutet, dass es zwei Netze gibt, die sich gegenseitig trainieren und verbessern. %TODO Grafik & Quellen
-        Das generative Netzwerk versucht, Bilder zu erzeugen, die von einem diskriminierenden Netzwerk nicht von echten Bildern unterschieden werden können. 
+        Das Training von GANs ist eine Herausforderung, da es sich um ein adversariales Lernverfahren handelt.      
+        Das bedeutet, dass es zwei Netze gibt, die sich gegenseitig trainieren und verbessern.      %TODO Grafik & Quellen
+        Das generative Netzwerk versucht, Bilder zu erzeugen, die von einem diskriminierenden Netzwerk nicht von echten Bildern unterschieden werden können.      
         Das diskriminierende Netzwerk wird trainiert, um echte Bilder von den vom generativen Netzwerk generierten Bildern zu unterscheiden.
-        Das Training von GANs erfolgt durch die Minimierung einer Verlustfunktion, die als GAN-Verlust bezeichnet wird. 
-        Der GAN-Verlust besteh taus zwei Komponenten: dem Verlust des generativen Netzes und dem Verlust des diskriminierenden Netzes. Der Verlust des generativen Netzes wird minimiert, wenn dasd Netzwerk Bilder erzeugt, die vom diskriminierenden Netzwerk nicht als gefälscht erkannt werden. 
+        Das Training von GANs erfolgt durch die Minimierung einer Verlustfunktion, die als GAN-Verlust bezeichnet wird.      
+        Der GAN-Verlust besteh taus zwei Komponenten: dem Verlust des generativen Netzes und dem Verlust des diskriminierenden Netzes.      
+        Der Verlust des generativen Netzes wird minimiert, wenn dasd Netzwerk Bilder erzeugt, die vom diskriminierenden Netzwerk nicht als gefälscht erkannt werden.      
         Der Verlust des diskriminierenden Netzes wird minimiert, wenn das Netzwerk in der Lage ist, besonders zuverlässig und schneöö zwischen echten und generierten Bildern zu unterscheiden.
-        Die Evaluierung von generierten Ergebnissen ist eine wichtige Aufgabe bei der Arbeit mit GANs. 
-        Es gibt verschiedene Methoden zur Bewertung von GANs, wie beispielsweise die visuelle Bewertung, die qualitative Bewertung und die quantitative Bewertung. Die visuelle Bewertung beinhaltet das Betrachten der generierten Bilder, um zu beurteilen, ob sie realistisch aussehen oder nicht. Die qualitative Bewertung beinhaltet die Verwendung von Bewertungsskalen, um die Qualität der generierten Bilder zu bewerten. Die quantitative Bewertung beinhaltet die Verwendung von Metriken wie der Inception Score oder der Frechet Inception Distance, um die Qualität der generierten Bilder zu bewerten.
+        Die Evaluierung von generierten Ergebnissen ist eine wichtige Aufgabe bei der Arbeit mit GANs.      
+        Es gibt verschiedene Methoden zur Bewertung von GANs, wie beispielsweise die visuelle Bewertung, die qualitative Bewertung und die quantitative Bewertung.  
+        Die visuelle Bewertung beinhaltet das Betrachten der generierten Bilder, um zu beurteilen, ob sie realistisch aussehen oder nicht.      
+        Die qualitative Bewertung beinhaltet die Verwendung von Bewertungsskalen, um die Qualität der generierten Bilder zu bewerten.      
+        Die quantitative Bewertung beinhaltet die Verwendung von Metriken wie der Inception Score oder der Frechet Inception Distance, um die Qualität der generierten Bilder zu bewerten.
 
     \subsection{Ethische und soziale Implikationen von GANs}
     
-        Obwohl GANs eine vielversprechende Technologie sind, gibt es auch ethische und soziale Implikationen, die berücksichtigt werden müssen. 
-        Ein Problem bei der Verwendung von GANs ist, dass sie zur Erzeugung gefälschter Bilder oder Videos verwensdet werden können. 
+        Obwohl GANs eine vielversprechende Technologie sind, gibt es auch ethische und soziale Implikationen, die berücksichtigt werden müssen.      
+        Ein Problem bei der Verwendung von GANs ist, dass sie zur Erzeugung gefälschter Bilder oder Videos verwensdet werden können.      
         Dies kann zu Fälschungen und Manipulationen führen, die negative Auswirkungen auf die Gesellschaft haben können.
         Auch Rufschädigung kann durch GANs errleichtert werden.
-        Ein weiteres Problem bei der Verwendung von GANs ist, dass sie möglicherweise nicht fair sind. 
-        GANs können aufgrund ihrer Lernmethode unbewusste Vorurteile aufnehmen und in ihren generierten Ergebnissen widerspiegeln. 
+        Ein weiteres Problem bei der Verwendung von GANs ist, dass sie möglicherweise nicht fair sind.      
+        GANs können aufgrund ihrer Lernmethode unbewusste Vorurteile aufnehmen und in ihren generierten Ergebnissen widerspiegeln.      
         Dies kann zu diskriminierenden Ergebnissen führen, die unfaire Entscheidungen unterstützen.%TODO verweis auf gescheiterte Google AIs auf Twitter einbauen
-        Es ist wichtig, dass bei der Verwendung von GANs Ethik und soziale Verantwortung berücksichtigt werden. 
-        Es sollten Maßnahmen ergriffen werden, um sicherzustellen, dass GANs fair und ethisch korrekt arbeiten. 
-        Zum Beispiel können spezielle Algorithmen entwickelt werden, um unbewusste Vorurteile zu minimieren. 
-        Weiterhin können Regierungsbehörden und andere Organisationen Maßnahmen ergreifen, um den Missbrauch von GANs zu verhindern. 
-        Das finden eines Kompromiss aus Forschung und politischer Einschränkung übersteigt jedoch den Rahmen dieser Arbeit. 
+        Es ist wichtig, dass bei der Verwendung von GANs Ethik und soziale Verantwortung berücksichtigt werden.      
+        Es sollten Maßnahmen ergriffen werden, um sicherzustellen, dass GANs fair und ethisch korrekt arbeiten.      
+        Zum Beispiel können spezielle Algorithmen entwickelt werden, um unbewusste Vorurteile zu minimieren.      
+        Weiterhin können Regierungsbehörden und andere Organisationen Maßnahmen ergreifen, um den Missbrauch von GANs zu verhindern.      
+        Das finden eines Kompromiss aus Forschung und politischer Einschränkung übersteigt jedoch den Rahmen dieser Arbeit.      
     
 \section{Multiscale-Skalierung}
 
-    In vielen Anweendungen der Bildverarbeitung und Computergrafik ist es notwendig, Objekte oder Strukturen in verschiedenen Größenordnungen zu analysieren oder darzustellen. 
-    Multiscale-Skalierung bezeichnet Techniken und Vorgehen, die es ermöglichen, Objekte oder Signale auf verschiedeenen Skalen zu untersuchen oder zu manipulieren. Dabei können sowohl lokale als auch globale Eigenschaften eines Objekts berücksichtigt werden.
+    In vielen Anweendungen der Bildverarbeitung und Computergrafik ist es notwendig, Objekte oder Strukturen in verschiedenen Größenordnungen zu analysieren oder darzustellen.      
+    Multiscale-Skalierung bezeichnet Techniken und Vorgehen, die es ermöglichen, Objekte oder Signale auf verschiedeenen Skalen zu untersuchen oder zu manipulieren.      
+    Dabei können sowohl lokale als auch globale Eigenschaften eines Objekts berücksichtigt werden.
     Diese Möglichkeiten komplementieren häufig Implementierungen von künstlichen Intellegenzen
     %TODO Zitat richtig einbauen
     "Machine learning and multiscale modeling mutually complement one another"
@@ -153,36 +159,66 @@
     
         Multiscale-Skalierung ist ein Konzept aus der Signal- und Bildverarbeitung, das auf der Idee basiert, dass Signale und Bilder auds verschiedenen Skalen von Strukturen aufgebaut sind.
         In der Praxis bedeutet dies, dass ein Signal oder Bild auf verschiedene Skalen abgetastet oder transformiert wird, um Informationen auf verschiedenen Größenskalen zu erhalten.
-        Ein grundlegendes Konzept der Multiscale-Skalierung ist die Skaleninvarianz. Das bedeutet, dass die Informationen in einem Signal oder Bild unabhängig von der Skala erhalten bleiben sollten. Das heißt, dass dieselben Merkmale oder Strukturen auf verschiedenen Skalen erkennbar sein sollten.
+        Ein grundlegendes Konzept der Multiscale-Skalierung ist die Skaleninvarianz.      
+        Das bedeutet, dass die Informationen in einem Signal oder Bild unabhängig von der Skala erhalten bleiben sollten.      
+        Das heißt, dass dieselben Merkmale oder Strukturen auf verschiedenen Skalen erkennbar sein sollten.
         \footfullcite{mallat1989theory,huang2017densely}
     
     \subsection{Methoden zur Multiskalenanalyse}
     
-        Es gibt verschiedene Techniken zur Multiskalenanalyse, darunter Wavelet-Transformation und pyramidenartige Strukturen. Wavelet-Transformation ist eine Methode zur Analyse und Synthese von Signalen oder Bildern auf verschiedenen Skalen. Dabei wird das Signal oder Bild auf verschiedene Skalen und Frequenzen zerlegt, um Informationen auf verschiedenen Skalen zu erhalten.
-        Pyramidenartige Strukturen sind eine weitere Methode zur Multiskalenanalyse, die in der Bildverarbeitung häufig verwendet wird. Dabei wird das Signal oder Bild auf verschiedenen Skalen durch wiederholte Subsampling- und Filterungsoperationen reduziert. Auf jeder Ebene der Pyramide wird das Signal oder Bild auf eine kleinere Größe reduziert, um Informationen auf verschiedenen Skalen zu erhalten.
+        Es gibt verschiedene Techniken zur Multiskalenanalyse, darunter Wavelet-Transformation und pyramidenartige Strukturen.      
+        Wavelet-Transformation ist eine Methode zur Analyse und Synthese von Signalen oder Bildern auf verschiedenen Skalen.      
+        Dabei wird das Signal oder Bild auf verschiedene Skalen und Frequenzen zerlegt, um Informationen auf verschiedenen Skalen zu erhalten.
+        Pyramidenartige Strukturen sind eine weitere Methode zur Multiskalenanalyse, die in der Bildverarbeitung häufig verwendet wird.      
+        Dabei wird das Signal oder Bild auf verschiedenen Skalen durch wiederholte Subsampling- und Filterungsoperationen reduziert.      
+        Auf jeder Ebene der Pyramide wird das Signal oder Bild auf eine kleinere Größe reduziert, um Informationen auf verschiedenen Skalen zu erhalten.
         \footfullcite{burt1987laplacian,nah2017deep}
     
     \subsection{Methoden zur Multiskalenanalyse}
-        Es gibt verschiedene Methoden zur Multiskalenanalyse, darunter Wavelets und Pyramiden. Wavelets basieren auf der Zerlegung von Signalen in unterschiedliche Frequenzbänder, wodurch eine Multiskalenanalyse ermöglicht wird. Eine Wavelet-Transformation kann auf ein Signal angewendet werden, um es in seine Hoch- und Niederfrequenzkomponenten zu zerlegen. Diese Komponenten können dann unabhängig voneinander verarbeitet werden, um eine Analyse auf verschiedenen Skalen durchzuführen.
-        Pyramiden sind eine weitere Methode zur Multiskalenanalyse, die auf der Idee der rekursiven Unterteilung von Signalen in immer feinere Skalen basiert. Dabei wird ein Signal in eine Pyramide aus verschiedenen Ebenen unterteilt, wobei jede Ebene eine andere Skala darstellt. Die unterste Ebene enthält das Originalsignal, während die oberen Ebenen eine immer gröbere Approximation des Signals enthalten.
+        Es gibt verschiedene Methoden zur Multiskalenanalyse, darunter Wavelets und Pyramiden.      
+        Wavelets basieren auf der Zerlegung von Signalen in unterschiedliche Frequenzbänder, wodurch eine Multiskalenanalyse ermöglicht wird.      
+        Eine Wavelet-Transformation kann auf ein Signal angewendet werden, um es in seine Hoch- und Niederfrequenzkomponenten zu zerlegen.      
+        Diese Komponenten können dann unabhängig voneinander verarbeitet werden, um eine Analyse auf verschiedenen Skalen durchzuführen.
+        Pyramiden sind eine weitere Methode zur Multiskalenanalyse, die auf der Idee der rekursiven Unterteilung von Signalen in immer feinere Skalen basiert.      Dabei wird ein Signal in eine Pyramide aus verschiedenen Ebenen unterteilt, wobei jede Ebene eine andere Skala darstellt.      
+        Die unterste Ebene enthält das Originalsignal, während die oberen Ebenen eine immer gröbere Approximation des Signals enthalten.
         \footfullcite{simoncelli1996noise}
     
     \subsection{Anwendungen von Multiscale-Skalierung}
-        Multiscale-Skalierung hat viele Anwendungen in der Bildverarbeitung und Computer Vision. Ein Beispiel ist die Texturanalyse, bei der Texturen auf verschiedenen Skalen analysiert werden, um Muster und Strukturen zu identifizieren. Multiscale-Skalierung wird auch in der Bildkompression verwendet, um Bilder auf verschiedene Auflösungen zu skalieren und so Speicherplatz zu sparen.
-        In jüngerer Zeit wurde die Multiskalenanalyse auch in Verbindung mit Deep Learning eingesetzt, um Modelle zu entwickeln, die auf verschiedenen Skalen arbeiten können. Ein Beispiel ist das Multiscale Dense Network (MSDN), das eine skalierbare Architektur für die Bilderkennung bietet, die auf mehreren Skalen arbeiten kann.
+        Multiscale-Skalierung hat viele Anwendungen in der Bildverarbeitung und Computer Vision.      
+        Ein Beispiel ist die Texturanalyse, bei der Texturen auf verschiedenen Skalen analysiert werden, um Muster und Strukturen zu identifizieren.      
+        Multiscale-Skalierung wird auch in der Bildkompression verwendet, um Bilder auf verschiedene Auflösungen zu skalieren und so Speicherplatz zu sparen.
+        In jüngerer Zeit wurde die Multiskalenanalyse auch in Verbindung mit Deep Learning eingesetzt, um Modelle zu entwickeln, die auf verschiedenen Skalen arbeiten können.      
+        Ein Beispiel ist das Multiscale Dense Network (MSDN), das eine skalierbare Architektur für die Bilderkennung bietet, die auf mehreren Skalen arbeiten kann.
     
     \subsection{Limitationen und zukünftige Forschungsziele von Multiscale-Skalierung}
-        Obwohl die Multiskalenanalyse in vielen Bereichen der Bildverarbeitung und Computer Vision erfolgreich eingesetzt wurde, gibt es auch einige Limitationen. Eines der Hauptprobleme ist die Herausforderung, die richtige Skala für eine bestimmte Aufgabe zu wählen. In einigen Fällen kann dies schwierig sein, da verschiedene Skalen unterschiedliche Informationen enthalten.
-        Eine weitere Herausforderung besteht darin, die Multiskalenanalyse mit Deep Learning-Methoden zu integrieren. Während einige Fortschritte in diesem Bereich gemacht wurden, gibt es immer noch Raum für Verbesserungen, um die Multiskalenanalyse nahtlos in Deep Learning-Architekturen zu integrieren.
+        Obwohl die Multiskalenanalyse in vielen Bereichen der Bildverarbeitung und Computer Vision erfolgreich eingesetzt wurde, gibt es auch einige Limitationen.  
+        Eines der Hauptprobleme ist die Herausforderung, die richtige Skala für eine bestimmte Aufgabe zu wählen.      
+        In einigen Fällen kann dies schwierig sein, da verschiedene Skalen unterschiedliche Informationen enthalten.
+        Eine weitere Herausforderung besteht darin, die Multiskalenanalyse mit Deep Learning-Methoden zu integrieren.      
+        Während einige Fortschritte in diesem Bereich gemacht wurden, gibt es immer noch Raum für Verbesserungen, um die Multiskalenanalyse nahtlos in Deep Learning-Architekturen zu integrieren.
         \footfullcite{he2016deep}
-        Zukünftige Forschungsrichtungen könnten sich auf die Entwicklung von verbesserten Methoden zur Skalierung und Multiskalenanalyse konzentrieren, die eine höhere Genauigkeit und Effizienz ermöglichen. Darüber hinaus könnten Forscher daran arbeiten, die Integration der Multiskalenanalyse in Deep Learning-Architekturen weiter zu verbessern, um noch bessere Ergebnisse zu erzielen.
+        Zukünftige Forschungsrichtungen könnten sich auf die Entwicklung von verbesserten Methoden zur Skalierung und Multiskalenanalyse konzentrieren, die eine höhere Genauigkeit und Effizienz ermöglichen.      
+        Darüber hinaus könnten Forscher daran arbeiten, die Integration der Multiskalenanalyse in Deep Learning-Architekturen weiter zu verbessern, um noch bessere Ergebnisse zu erzielen.
 
 \section{Vor- und Nachteile der fortgeschrittenen Methoden}
 
-- Vergleich der verschiedenen fortgeschrittenen Skalierungsmethoden
-- Vorteile von fortgeschrittenen Methoden im Vergleich zu traditionellen Methoden
-- Herausforderungen bei der Anwendung fortgeschrittener Methoden
-- Auswirkungen von fortgeschrittenen Methoden auf die Leistung und Effizienz von Systemen
-- Zukunftsaussichten für fortgeschrittene Skalierungsmethoden.
+    Im Hinblick auf die Bildqualität sind Deep-Learning-basierte Methoden wie Super Resolution und GANs den traditionellen Methoden wie der Bilinear-Interpolation überlegen.      
+    Diese Methoden können hochwertige Bilder mit hoher Auflösung und Details erzeugen, die den Originalbildern nahe kommen.      
+    Insbesondere die GANs erlauben die Erzeugung von realistisch aussehenden Bildern, die schwer von echten Bildern zu unterscheiden sind.
+    Ein weiterer Vorteil der fortgeschrittenen Methoden ist ihre Fähigkeit zur Generierung von neuen Inhalten.      
+    So können GANs und Style Transfer genutzt werden, um neue Bilder zu erzeugen, die auf den Stil und Inhalt anderer Bilder basieren.      
+    Dies bietet neue kreative Möglichkeiten in der Kunst und Design.
+    Jedoch stellen siese fortgeschrittene Methoden auch Herausforderungen bei der Anwem<dung dar.      
+    Beispielsweise benötigen Deep-Learning-Methoden große Datensätze und Rechenleistung, um optimal zu funktionieren.      
+    Ein weiteres Problem ist die Interpretierbarkeit der Ergebnisse, da es schwierig sein kann, zu verstehen, wie ein Modell zu seinen Ergebnissen gekommen ist.
+    Die Anwendung von fortgeschrittenen Skalierungsmethoden hat auch Auswirkungen auf die Leistung und Effizienz von Systemen.      
+    So können Deep-Learning-basierte Methoden in Echtzeit-Anwendungen, wie beispielsweise autonomen Fahrzeugen, zu Verzögerungen führen.      
+    Es ist daher wichtig, dass die Anforderungen an Leistung und Effizienz bei der Auswahl der Skalierungsmethode berücksichtigt werden.      
+    Es gibt moderne Architekturen und Techniken für höchst effiziente und leistungsstarke Ergebnisse..
+    Zukunftsaussichten für fortgeschrittene Skalierungsmethoden liegen in der Kombination verschiedener Methoden.      
+    So können beispielsweise GANs und Super Resolution zusammen genutzt werden, um qualitativ hochwertige und realistisch aussehende Bilder zu erzeugen.      
+    Ein weiteres Forschungsgebiet ist die Verbesserung der Interpretierbarkeit und Erklärbarkeit von Deep-Learning-Modellen.      
+    Insgesamt bieten fortgeschrittene Skalierungsmethoden in der Bildverarbeitung und Computergrafik viele Vorteile, jedoch müssen auch die Herausforderungen bei der Anwendung und die Auswirkungen auf die Leistung und Effizienz von Systemen berücksichtigt werden.      
+    Zukünftige Forschung sollte darauf abzielen, die verschiedenen Methoden zu kombinieren und die Interpretierbarkeit von Deep-Learning-Modellen zu verbessern.
 
 \newpage
