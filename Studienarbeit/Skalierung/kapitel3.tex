@@ -7,16 +7,66 @@ Die Pixel-Verdopplung vergrößert das Bild indem jeder Pixel dupliziert wird.
 Diese Methode kann schnell und einfach umgesetzt werden, indem jeder Pixelwert einfach auf den Nachbarpixel übertragen wird. 
 Wenn Bilder mit dieser Methode stark vergrößert werden, ergeben sich oft pixelige und unscharfe Ausgaben, da die Details nicht wirklich vorhanden sind, sondern nur durch die Duplizierung von Pixeln aufgefüllt werden. 
 Aus diesem Grund wird Pixel-Verdopplung oft als eine minderwertige Skalierungsmethode betrachtet und findet in professinellen Anwendungen selten Gebrauch.\footfullcite{WANG1983363}
+
+
 \newpage
 Eine Beispielhafte Implementierung in Python sieht folgendermaßen aus: 
 
-%TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
+\begin{figure}
+    \centering
+    \begin{lstlisting}
+class PixelVerdopplung(Image):
+    def __init__(self, path):
+        extend = "p2"
+        super().__init__(path, extend)
+    
+    def manipulate(self, new_size):
+        super().manipulate(new_size)
+    
+        for y in range(self.new_height):
+            for x in range(self.new_width):
+                x_old = int(x / (self.new_width / self.width))
+                y_old = int(y / (self.new_height / self.height))
+    
+                # Check that x_old and y_old are within
+                # bounds of original image
+                if x_old >= self.width:
+                    x_old = self.width - 1
+                if y_old >= self.height:
+                    y_old = self.height - 1
+    
+                old_pixel = self.img.getpixel((x_old, y_old))
+                self.newImg.putpixel((x, y), old_pixel)
+    
+        return self.save()
+\end{lstlisting}
+    \caption{Python-Implementierung der Klasse zu Verdopplung von Pixeln.}
+    \label{fig:my_label}
+\end{figure}
+
+
+Die vorliegende Implementierung in Python beschreibt die Realisierung der Pixelverdopplungsklasse, welche in der Lage ist, ein größeres Bild zu erzeugen, indem die leeren Pixel mit demselben Pixelwert wie der nächste Nachbarpixel befüllt werden.
+
+Der Code ist darauf ausgelegt, eine einfache Möglichkeit bereitzustellen, um ein Bild auf eine höhere Auflösung zu skalieren, wodurch fehlende Details ausgeglichen werden können. Dabei wird eine lineare Interpolation auf der Basis der Nachbarpixel durchgeführt, um das neue Bild zu generieren.
+
+Die Klasse "PixelVerdopplung" erbt von der Klasse "Image" und besitzt einen Konstruktor, der den Pfad zum Bild und die Erweiterung "p2" als Argumente erhält. Die Methode "manipulate" ist dafür zuständig, das Bild auf die gewünschte Größe zu skalieren und zu manipulieren.
+
+Innerhalb der Methode werden Schleifen durchlaufen, um jeden neuen Pixel im manipulierten Bild zu generieren. Die Koordinaten des jeweiligen alten Pixels werden durch Division der neuen Koordinaten durch die Skalierungsfaktoren berechnet und auf den nächstgelegenen Integer gerundet.
+
+Um sicherzustellen, dass die berechneten Koordinaten innerhalb der Grenzen des ursprünglichen Bildes liegen, werden sie in einem nächsten Schritt auf den maximalen Index des Bildes zurückgesetzt, falls sie außerhalb liegen sollten. Anschließend wird der Pixelwert des entsprechenden alten Pixels abgerufen und als neuer Pixel an der berechneten Stelle im neuen Bild platziert.
+
+Die Implementierung dieses Algorithmus stellt eine einfache Möglichkeit dar, um ein Bild auf eine höhere Auflösung zu skalieren, wodurch ein besseres visuelles Ergebnis erzielt werden kann. Dabei ist darauf zu achten, dass die lineare Interpolation eine höhere Laufzeit und Speicheranforderungen aufweist als andere Interpolationsmethoden.
+
+
+
 \section{Nearest-Neighbor-Interpolation}
 Die Nearest-Neighbor-Interpolation ist eine weitere Methode zur Skalierung von Bildern. 
 Es wird für jeden Pixel im Ausgabebild der am nächsten liegende Pixel im Eingabebild ausgewählt und der Farbwert des ausgewählten Pixels wird als Farbwert des entsprechenden Pixels im Ausgabebild verwendet.
 Die Verwendung von Nearest-Neighbor-Interpolation ist einfach und schnell zu implementieren. 
 Aufgrund ihrer geringen Komplexität ist sie daher sehr beliebt. 
 Die Methode eignet sich besonders gut für die Vergrößerung von Bildern mit großen, einheitlichen Bereichen oder harten Kanten. 
+
+
 Bei der Verkleinerung von Bildern erleiden diese jedoch oft einen Qualitätsverlust.
 Hier kommt es zu Unschärfe und Blockbildung. 
 Diese Effekt verstärkt sich, wenn das Verhältniss zwischen Quellbild und Audgabebild kein Vielfaches ist. 
@@ -47,33 +97,109 @@ cv2.imshow(scaled_image)
 \end{lstlisting}\footfullcite{jiang2015quantum}
 %TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
 \section{Bilineare Interpolation}
+
+Interpolation cool weil, schnell und ergebniss recht schön.
+%TODO Noch was schreiben
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/pixel_verdopplung.png}
+    \caption{Beispielgrafik zur Pixelverdopplung.}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{img/pixel_verdopplung_graph.png}
+    \caption{Graph über bilineare Skalierung.}
+    \label{fig:my_label}
+\end{figure}
+
+
 \begin{lstlisting}
-import numpy as np
-from scipy import interpolate
-from PIL import Image
+for y in range(self.new_height):
+    for x in range(self.new_width):
+        x_old = x / (self.new_width / self.width)
+        y_old = y / (self.new_height / self.height)
 
-def bilinear_interpolation(img, scale):
-    """
-    Performs bilinear interpolation on the input image with a given scale factor.
-    """
-    width, height = img.shape
-    new_width = int(width * scale)
-    new_height = int(height * scale)
-    
-    x_scale = np.arange(0, new_width, 1) / scale
-    y_scale = np.arange(0, new_height, 1) / scale
-    
-    interpolator = interpolate.interp2d(np.arange(height), np.arange(width), img, kind='linear')
-    new_img = interpolator(y_scale, x_scale)
-    
-    return new_img.astype(np.uint8)
+        # Find the surrounding pixels
+        x1 = int(x_old)
+        x2 = min(x1 + 1, self.width - 1)
+        y1 = int(y_old)
+        y2 = min(y1 + 1, self.height - 1)
 
-# Beispielaufruf
-img = np.array(Image.open('bild.jpg').convert('L'))
-scaled_img = bilinear_interpolation(img, 2)
+        # Check if x2 and y2 are out of bounds, if they are substract one
+        if x2 == self.width - 1:
+            x2 = x1
+            x1 -= 1
+        if y2 == self.height - 1:
+            y2 = y1
+            y1 -= 1
+
+        # Find the weights
+        w1 = (x2 - x_old) * (y2 - y_old)
+        w2 = (x_old - x1) * (y2 - y_old)
+        w3 = (x2 - x_old) * (y_old - y1)
+        w4 = (x_old - x1) * (y_old - y1)
+
+        # Get the pixel values of the surrounding pixels
+        p1 = self.img.getpixel((x1, y1))
+        p2 = self.img.getpixel((x2, y1))
+        p3 = self.img.getpixel((x1, y2))
+        p4 = self.img.getpixel((x2, y2))
+
+        # Interpolate the pixel value
+        new_pixel = (
+            int(w1 * p1[0] + w2 * p2[0] + w3 * p3[0] + w4 * p4[0]),
+            int(w1 * p1[1] + w2 * p2[1] + w3 * p3[1] + w4 * p4[1]),
+            int(w1 * p1[2] + w2 * p2[2] + w3 * p3[2] + w4 * p4[2])
+        )
+        self.newImg.putpixel((x, y), new_pixel)
 \end{lstlisting}\footfullcite{1409828}
 
 \section{Bicubische Interpolation}
+
+\subsection{Mathematische Grundlagen}
+
+Die bikubische Interpolation ist ein mathematisches Verfahren zur Schätzung der Werte einer kontinuierlichen Funktion an einer gegebenen Stelle, indem eine Funktion mit kubischen Polynomen verwendet wird, die durch benachbarte Funktionswerte verläuft. Dabei wird das umliegende Gebiet untersucht und die Werte werden basierend auf der Stichprobentheorie geschätzt.
+
+Die bikubische Interpolationsformel ist eine Erweiterung der Bilinearinterpolation auf vier umliegende Pixel und verwendet eine Funktion, die durch benachbarte Funktionswerte verläuft. Die resultierende Funktion ist stetig differenzierbar und besitzt glatte partielle Ableitungen.
+
+Im Vergleich zu anderen Interpolationsverfahren wie der bilinearen Interpolation und der Lanczos-Interpolation hat die bikubische Interpolation den Vorteil, dass sie eine höhere Genauigkeit bei der Schätzung von Pixelwerten bietet. Ein Nachteil ist jedoch, dass sie im Allgemeinen höhere Rechenaufwendungen erfordert.
+
+Die Fourier-Analyse und die Fourier-Transformationen spielen eine wichtige Rolle bei der Bildinterpolation, da sie es ermöglichen, die Funktion in den Frequenzraum zu transformieren und damit eine effektivere Interpolation zu erreichen.
+
+\subsection{Algorithmische Implementierung}
+
+Die bikubische Interpolation erfolgt durch die Auswahl von umgebenden Pixeln und deren Gewichte sowie der Berechnung der neuen Pixelwerte. Eine Möglichkeit zur Optimierung der Leistung besteht darin, Lookup-Tabellen vorzubereiten, Parallelisierungstechniken zu verwenden und die Speicherverwaltung zu optimieren.
+
+Grenzfälle und Randbedingungen können bei der bikubischen Interpolation auftreten und müssen effektiv behandelt werden. Die algorithmische Implementierung der bikubischen Interpolation kann mit anderen Interpolationsverfahren wie der bilinearen Interpolation und der Lanczos-Interpolation verglichen werden.
+
+Ein Beispiel für die Implementierung der bikubischen Interpolation in Python ist der folgende Code:
+
+Die Methode `manipulate` der Klasse `BicubicInterpolation` implementiert die bicubische Interpolation für das Vergrößern von Bildern. Der wichtigste Teil des Codes ist die Schleife, die über jedes Pixel einen Kernel berechnet, der die jeweiligen Gewichte der benachbarten Pixel erechnet. In den genannten Zeilen wird ein 4x4-Kern um das aktuelle Pixel herum gebildet und für jeden Pixel im Kern werden die Gewichte berechnet. Dabei wird die `_get_weight`-Funktion aufgerufen, welche auf der Basis einer kubischen Kurve das Gewicht für einen bestimmten Abstand berechnet. Die berechneten Gewichte werden in eine Liste `weights` hinzugefügt. Diese Gewichte dienen später bei der Interpolation des aktuellen Pixels als multiplikative Faktoren für die umliegenden Pixel im Originalbild.
+
+\begin{lstlisting}
+weights = []
+for j in range(-1, 3):
+    for i in range(-1, 3):
+        weight = _get_weight(i - dx) * _get_weight(dy - j)
+        weights.append(weight)
+\end{lstlisting}
+
+\subsection{Analyse der Leistung}
+
+Zur Bewertung der Leistung von Bildinterpolationsverfahren werden verschiedene Kriterien verwendet, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz. Die Leistung der bikubischen Interpolation kann mit anderen Interpolationstechniken anhand von Testbildern und Datensätzen verglichen werden. Dabei werden verschiedene Parameter wie Bildgröße, Auflösung und Inhalt untersucht, um ihre Auswirkungen auf die Leistung der bikubischen Interpolation zu analysieren. %...
+
+
+% Ich hab das obere vom bot schreiben lassn
+
+
+
+
+
+
 
     \subsection{Mathematische Grundlagen}
 
@@ -192,7 +318,7 @@ Die bicubische Interpolation ist eine Methode, bei der die neuen Pixelwerte aus 
 Diese Methode führt oft zu einer noch glatteren Interpolation als die bilineare Interpolation, aber sie kann auch zu einer Überbetonung von Bildstrukturen führen.
 
 \subsection{Lanczos Interpolation}
-
+y
 Die Lanczos Interpolation ist eine Methode, bei der die neuen Pixelwerte aus einer Lanczos-Funktion berechnet werden, die aus einer begrenzten Anzahl von nächstgelegenen Pixeln im Originalbild abgeleitet wird. 
 Diese Methode führt oft zu einer sehr glatten Interpolation und reduziert das Rauschen im Bild, aber sie kann auch zu einer gewissen Unschärfe im Bild führen.
 
