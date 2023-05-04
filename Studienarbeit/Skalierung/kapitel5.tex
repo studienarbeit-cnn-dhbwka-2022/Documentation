@@ -1,44 +1,98 @@
 
 
-
 \chapter{Evaluation von Skalierungsmethoden}
 
 \section{Qualitätsmetriken zur Bewertung von Skalierungsmethoden}
 
-\subsection{Peak Signal-to-Noise Ratio (PSNR)}
+    Die Evaluation von Skalierungsmethoden in der Bildverarbeitung bedarf einer facettenreichen Palette an Qualitätsmetriken, welche eine präzise Analyse und Vergleichbarkeit unterschiedlicher Methoden ermöglichen. 
+    Im Rahmen dieser Arbeit werden ausgewählte sowie zentrale Qualitätsmetriken für die Bewertung von Skalierungsmethoden erörtert und diskutiert.
 
-- Definition und Berechnung von PSNR
-- Anwendung von PSNR bei der Bewertung von Bildqualität
-- Limitationen von PSNR
+    \subsection{Peak Signal-to-Noise Ratio (PSNR)}
+        Das Peak Signal-to-Noise Ratio (PSNR) ist eine der am häufigsten verwendeten Metriken zur Bewertung der Qualität von Bildern. 
+        Es misst die Qualität einer Bildrekonstruktion, indem es den Unterschied zwischen einem Originalbild und einem rekonstruierten Bild berechnet und diesen Unterschied durch das maximale Signal (Peak) und das Rauschen (Noise) im Originalbild teilt. 
+        Je höher der PSNR-Wert, desto geringer ist der Unterschied zwischen Original- und Rekonstruktionsbildern und desto besser ist die Qualität der Rekonstruktion.
+        \footfullcite{wang2004image,sheikh2006image,mittal2012no}
+        
+        \subsubsection{Definition und Berechnung von \ac{PSNR}}
+            Die Definition von PSNR lautet wie folgt:
+            \begin{equation}
+            PSNR = 10 \log_{10} \left( \frac{Peak^2}{MSE} \right) 
+            %TODO prüf malob die Formel stimmt. Bin verzweifelt und hab die irwo aus stackoverflow geholt
+            \end{equation}
+            
+            wobei Peak der höchste mögliche Wert des Signals ist, der meist auf 255 bei 8-Bit-Graustufenbildern oder 65535 bei 16-Bit-Graustufenbildern gesetzt wird. %nur so semi verstanden aber die Quellen haben da ünbereingestimmt (stackoverflow help me) 
+            Der Mean Squared Error (MSE) ist definiert als der Durchschnitt der quadrierten Unterschiede zwischen jedem Pixel des Originalbildes und dem rekonstruierten Bild. 
+            Je höher der PSNR-Wert, desto geringer ist der MSE und desto besser ist die Qualität der Rekonstruktion.
+        %TODO Quelle für Formel (wWill kein Stackoverflow link angeben) 
+        \subsubsection{Anwendung von PSNR bei der Bewertung von Bildqualität}
+            Obwohl PSNR eine weiz verbreitete Methode zur Bewertung der Qualität von Bildern ist, hat sie auch ihere Limitationen.
+            Zum einen berücksichtigt sie nur die Fehler zwichen Original- und Rekonstruktionsbildern und vernachlässigt andere Faktoren wie Bildverzehrrungen, die durch Komprimierung oder Filterung entstehen können.
+            Zum andern ist der PSNR-Wert nicht sensativ für menschlich wargenommene Verzehrrungen, wie z.B. Farbverschiebungen oder Artefakte.
+            Troz dieser Limitazionen bleibt PSNR eine wichtige Metrik in der Bildverarbeitung und wird oft in der Praxis verwendet, um die Qualität von Bildrekunstruktionen zu bewerten und zu vergleichen.
+            \footfullcite{korhonen2012peak}
+    \subsection{Structural Similarity Index (SSIM)}
 
-\subsection{Structural Similarity Index (SSIM)}
-
-- Definition und Berechnung von SSIM
-- Anwendung von SSIM bei der Bewertung von Bildqualität
-- Vorteile von SSIM im Vergleich zu PSNR
-- Limitationen von SSIM
-
-\subsection{Computational Speed}
-
-- Bedeutung von Computational Speed bei der Wahl einer Skalierungsmethode
-- Methoden zur Messung von Computational Speed
-- Trade-offs zwischen Bildqualität und Computational Speed
-
-\subsection{Root-Mean-Square Error (RMSE)}
-
-- Definition und Berechnung von RMSE
-- Anwendung von RMSE bei der Bewertung von Bildqualität
-- Limitationen von RMSE
-
+        Der Structural Similarity Index (SSIM) ist eine Metrik zur Bewertung der strukturellen Ähnlichkeit zwischen einem Originalbild und einem rekonstruierten Bild. 
+        Im Gegensatz zum PSNR berücksichtigt der SSIM nicht nur die Pixelwerte, sondern auch die Struktur und Textur des Bildes. 
+        Der SSIM berechnet die Ähnlichkeit zwischen den beiden Bildern anhand von drei Faktoren: Helligkeit, Kontrast und Struktur. Die Formel zur Berechnung von SSIM ist wie folgt:
+        \begin{equation}
+        %Hier muss ne Formel hin
+        \end{equation}
+        %TODO Erklärung der Formel
+        \footfullcite{chen2011fast}
+        \subsubsection{Anwendung von SSIM bei der Bewertung von Bildqualität}
+        
+            SSIM wird häufg verwendet, um die Qualität von Bildrekunstruktionen zu bewertn. Es hat sich gezeigt, dass SSIM bessr als PSNR die wahrgenomme Bildqulität widrspieglt. 
+            Dies ligt daran, dass SSIM die strukturele Ähnlichkeit zwishen den beiden Bilddern berücksichtigt, währed PSNR nur die Differnz der Pixelwete betrachtet.
+        \footfullcite{1284395}
+        \subsubsection{Vorteile von SSIM im Vergleich zu PSNR}
+        
+            Im Vergleich zum PSNR hat SSIM mehrere Vorteile. Zum einen berücksichtigt es die strukturelle Ähnlichkeit zwischen den beiden Bildern, was zu einer besseren Bewertung der wahrgenommenen Bildqualität führt. 
+            Zum anderen ist SSIMin der Lage, Verzerrungen zu erkennen, die durch Kompression oder andere Arten von Bildverarbeitung verursacht werden, während PSNR dies nicht tut.
+        \footfullcite{5596999}
+        \subsubsection{Limitationen von SSIM}
+        
+            Obwohl SSIM eine bessere Metrik zur Bewertung der Bildqualität als PSNR darstellt, hat es auch seine Limitationen. 
+            SSIM ist anfällig für Helligkeits- und Kontrastunterschiede zwischen den beiden Bildern und kann bei der Bewertung von stark komprimierten Bildern ungenau sein. 
+            Auch bei der Anwendung auf Bilder mit unterschiedlichen Strukturen kann die SSIM-Metrik eine ungenaue Bewertung liefern.
+        \footfullcite{1284395}
+    \subsection{Mean Opinion Score (MOS)}
+        Der Mean Opinion Score \ac{MOS} ist eine subjektive Metrik, die die wahrgenommene Qualität einer Bildrekonstruktion misst.
+        MOS basiert auf der Bewertung durch menschliche Beobachter, die gebeten werden, die Qualität von Original- und Rekonstruktionsbildern auf einer Skala von 1 bis 5 oder 1 bis 10 zu bewerten.
+        MOS ist eine wichtige Metrik, da sie die subjektive Wahrnehmung der Qualität eines Bildes durch den Betrachter berücksichtigt.
+        \footfullcite{sheikh2006image}
+    \subsection{Peak Signal-to-Noise Ratio der Y-Komponente (PSNR-Y)}
+        Die Y-Komponente im YCbCr-Farbraum enthält die Helligkeitsinformationen des Bildes. 
+        Das Peak Signal-to-Noise Ratio der Y-Komponente \ac{PSNR-Y} ist eine spezielle Version des PSNR, die nur die Helligkeitsinformationen des Originalbildes und des rekonstruierten Bildes berücksichtigt. 
+        PSNR-Y ist eine wichtige Metrik zur Bewertung der Qualität von Skalierungsmethoden für Graustufen- oder Schwarz-Weiß-Bilder.        
+        Diese Qualitätsmetriken sind wichtigeWerkzeuge für diew Bewertung und den Vergleich von Skalierungsmelthoden in der Bildverarbeitung.
+        Es ist jedoch wichtig zu beachten, dass keine einzelne Metrik alle Aspekte der Bildqualität abdeckt. Eine umfassende Bewertung sollte mehrere Metriken kombinieren und auch die subjektive Wahrnehmung %Ich hoffe ich erinnere mich morgen noch an all den Mist, den ich mir gerade in den Schädel gehämmert habe 
+        \footfullcite{huang2010new}
+    \subsection{Computational Speed}
+    
+        Die Wahl einer Skalierungsmethode hängt nicht nur von der Bildqualität, sondern auch von der benötigten Rechenleistung ab. 
+        Die Computational Speed ist daher ein wichtiger Faktor bei der Auswahl einer Skalierungsmethode.
+        Es gibt verschiedene Methoden zur Messung von Computational Speed, wie z.B. die Messung der benötigten Zeit, um ein Bild zu skalieren oder die Berechnung von \ac{FLOPS}. 
+        Eine genauere Messung kann durch die Verwendung von Benchmarks erreicht werden, die es ermöglichen, verschiedene Skalierungsmethoden auf derselben Hardware zu vergleichen.
+        Jedoch muss bei der Messung der Computational Speed berücksichtigt werden, dass die Leistung des verwendeten Computers die Ergebnisse beeinflussen kann. 
+        Ein schnellerer Computer kann eine Methode schneller ausführen als ein langsamerer Computer. 
+        Daher ist es wichtig, die Messungen auf einem vergleichbaren Computer durchzuführen und die Ergebnisse zu normalisieren.
+        Ein wichtiger Trade-off besteht zwischen der Bildqualität und der Computational Speed. 
+        Eine Methode, die eine höhere Bildqualität liefert, benötigt in der Regel mehr Rechenleistung und ist daher langsamer als eine Methode mit niedrigerer Bildqualität. 
+        Es ist daher wichtig, die gewünschte Bildqualität und die verfügbare Rechenleistung abzuwägen und eine Methode zu wählen, die den Anforderungen am besten entspricht. 
+        Es können auch Techniken wie progressiver Skalierung verwendet werden, um eine gute Bildqualität mit einer angemessenen Geschwindigkeit zu erreichen.
+        \footfullcite{xu2017efficient,choi2019lightweight}
+    \subsection{Root-Mean-Square Error (RMSE)}
+    
+        Der Root-Mean-Square Error \ac{RMSE} ist eine Metrik zur Bewertung der Qualität von Bildrekonstruktionen. 
+        Ein Nachteil von RMSE ist, dass er nur den Fehler zwischen Pixelwerten betrachtet und keine Berücksichtigung von strukturellen Unterschieden im Bild nimmt. 
+        Daher wird RMSE oft in Kombination mit anderen Metriken wie PSNR und SSIM verwendet, um ein umfassenderes Bild der Bildqualität zu erhalten.
+        Abschließend ist zu sagen, dass beider Bewertung von Bildqualität die Wahl der Metrik von der spezifischen Anwendung abhängt. 
+        Während PSNR und SSIM für die Bewertung von Bildern in vielen Anwendungen ausreichend sein können, kann in anderen Fällen die subjektive Wahrnehmung des menschlichen Betrachters durch MOS eine bessere Metrik sein. 
+        Darüber hinaus ist bei der Wahl einer Skalierungsmethode auch die Messung von Computational Speed und das Abwägen von Trade-offs zwischen Bildqualität und Geschwindigkeit von entscheidender Bedeutung.
+        \footfullcite{morad1996role}
 \section{Kriterien zur Wahl der besten Methode}
-
-\subsection{Mean Opinion Score (MOS)}
-
-- Definition von MOS und dessen Bedeutung bei der Bewertung von Bildqualität
-- Anwendung von MOS bei der Evaluierung von Skalierungsmethoden
-- Limitationen von MOS
-- Vergleich von MOS mit anderen Qualitätsmetriken 
-
+%todo
 \subsection{Bildvergleich und visuelle Bewertung}
 
 - Visuelle Bewertung von Bildern durch menschliche Beobachter
