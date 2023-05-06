@@ -1,220 +1,727 @@
-%&bericht
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Descr:       Vorlage für Berichte der DHBW-Karlsruhe
-%% Author:      Prof. Dr. Jürgen Vollmer, juergen.vollmer@dhbw-karlsruhe.de
-%% $Id: bericht.tex,v 1.25 2020/03/13 15:07:45 vollmer Exp $
-%%  -*- coding: utf-8 -*-
+%% Descr:       Vorlage für Berichte der DHBW-Karlsruhe, BibTeX
+%% Author:      Prof. Dr. Jürgen Vollmer, vollmer AT dhbw-karlsruhe.de
+%% $Id: bericht.bib,v 1.10 2016/03/16 12:27:42 vollmer draft $
+%% -*- coding: utf-8 -*-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[
-   ngerman          % neue deutsche Rechtschreibung
-  ,a4paper          % Papiergrösse
-% ,twoside          % Zweiseitiger Druck (rechts/links)
-% ,10pt             % Schriftgrösse
-  ,12pt
-% ,12pt
-  ,pdftex
-%  ,disable         % Todo-Markierungen auschalten
-]{report}
 
-% Bitte die Codierung Ihrer Dateien auswählen:
-% \usepackage[latin1]{inputenc}    % Für UNIX mit ISO-LATIN-codierten Dateien
-% \usepackage[applemac]{inputenc}  % Für Apple Mac
-% \usepackage[ansinew]{inputenc}   % Für Microsoft Windows
-\usepackage[utf8]{inputenc}        % UTF-8 codierte Dateien
-                                   % Dieses Dokument ist unter Unix erstellt, daher
-                                   % wird diese Input-Codierung benutzt.
 
-\usepackage{bericht}
-\usepackage{amsmath}
-\usepackage{amssymb}
-%% ACHTUNG, wenn man eine eigene Formatdatei (bericht.fmt) benutzt, werden Änderungen an bericht.sty
-%% erst wirksam, wenn die Format-Datei neu erzeugt wurde!!!
-%% Genauer alle Änderungen, die textuell vor der nächsten Zeile ".... endofdump...." stehen
-%% werden erst wirksam, wenn die Formatdatei neu erzeugt wurde
-\csname endofdump\endcsname
+
+
+
+
+
+%Template-stuff:
+%%%%
+%%  declararion of abbreviations
+%%%%
+@STRING{addison		= "Addison-Wesley"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Angaben zur Arbeit
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\Autor}{Lukas Hörnle & Marc Gökce}
-\newcommand{\MatrikelNummer}{TODO}
-\newcommand{\Kursbezeichnung}{TINF20B4}
+@BOOK{knuth.1984a,
+AUTHOR		= "Knuth, Donald E.",
+TITLE		= "The \TeX{}book",
+PUBLISHER	= addison,
+YEAR		= 1984
+}
 
-\newcommand{\FirmenName}{CAS Software AG & 1&1 }
-\newcommand{\FirmenStadt}{Karlsruhe}
-
-
-% Falls es kein Firmenlogo gibt:
-  \newcommand{\FirmenLogoDeckblatt}{}
-
-\newcommand{\BetreuerDHBW}{Ralph Lausen}%TODO Titel von Lausen raussuchen
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Wird auf dem Deckblatt und in der Erklärung benutzt:
-\newcommand{\Was}{Studienarbeit}
-%\newcommand{\Was}{Projektarbeit}
-%\newcommand{\Was}{Studienarbeit}
-%\newcommand{\Was}{Bachleorarbeit}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\Titel}{
-Evaluation verschiedener Bildverarbeitungsmethoden und neuronaler Netze sowie Impleymentierung eines Bildverarbeitungsverfahrens zur Segementierung und Auswertung von Füllständen in Bildern}
-\newcommand{\AbgabeDatum}{22.05.2023}
-
-\newcommand{\Dauer}{TODO raussuchen}
-
-% \newcommand{\Abschluss}{Bachelor of Engineering}
-\newcommand{\Abschluss}{Bachelor of Science}
-
-\newcommand{\Studiengang}{Informatik}
-% \newcommand{\Studiengang}{Informatik / Angewandte Informatik}
-
-\hypersetup{%%
-  pdfauthor={\Autor},
-  pdftitle={\Titel},
-  pdfsubject={\Was}
+@BOOK{lamport.1995a,
+AUTHOR		= "Lamport, Leslie",
+TITLE		= "Das \LaTeX\ Handbuch",
+PUBLISHER	= addison,
+YEAR		= 1995
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Wenn \includeonly{..} benutzt wird, werden nur diese Kaptitel ausgegeben.
-\includeonly{
-  abk
- ,kapitel1
- ,kapitel2
- ,kapitel3
- ,kapitel4
- ,kapitel5
- ,kapitel6
- ,kapitel7
- ,kapitel8
- ,kapitel9
- ,kapitel10
- ,kapitel11
- ,kapitel12
- ,kapitel13
- ,kapitel14
- ,changelog
+% Referenzieren von URL's
+@MISC{dante.2010a,
+  AUTHOR	= "Dante",
+  TITLE		= "Webseite der \emph{Deutschsprachige Anwendervereinigung TeX e.V.}",
+  HOWPUBLISHED 	= "\url{http://www.dante.de}",
+  YEAR		= 2010,
+  MONTH		= jan
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Benutzt man das "biblatex"-Paket, dann muß das hier stehen:
-% siehe auch die mit BIBLATEX markierten Zeilen in bericht.sty
-\bibliography{bericht}
+@MISC{techlib.scaling,
+  AUTHOR	= "Tech-Lib",
+  TITLE		= "Image Scaling Definition",
+  HOWPUBLISHED 	= "\url{http://www.dante.de}",
+  YEAR		= 2020,
+}
 
-\begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@MISC{abcdef.scaling,
+  AUTHOR	= "Wikipedia Contributors",
+  TITLE		= "Bildskalierung Definition",
+  HOWPUBLISHED 	= "\url{https://en.wikipedia.org/wiki/Image_scaling}",
+  YEAR		= 2023,
+}
 
-\begin{titlepage}
-\begin{center}
-\vspace*{-2cm}
-\FirmenLogoDeckblatt\hfill\includegraphics[width=4cm]{img/dhbw-logo.png}\\[2cm]
-{\Huge \Titel}\\[1cm]
-{\Huge\scshape \Was}\\[1cm]
-{\large für die Prüfung zum}\\[0.5cm]
-{\Large \Abschluss}\\[0.5cm]
-{\large des Studienganges \Studiengang}\\[0.5cm]
-{\large an der}\\[0.5cm]
-{\large Dualen Hochschule Baden-Württemberg Karlsruhe}\\[0.5cm]
-{\large von}\\[0.5cm]
-{\large\bfseries \Autor}\\[1cm]
-{\large Abgabedatum \AbgabeDatum}
-\vfill
-\end{center}
-\begin{tabular}{l@{\hspace{2cm}}l}
-Bearbeitungszeitraum	         & \Dauer 			\\
-Matrikelnummer	                 & \MatrikelNummer		\\
-Kurs			         & \Kursbezeichnung		\\
-Ausbildungsfirma	         & \FirmenName			\\%TODO hier steht aus irgendeinem Grund eine 1 
-			      \empty    & \FirmenStadt			\\
-Gutachter der Studienakademie	 & \BetreuerDHBW		
-\end{tabular}
-\end{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@MISC{nasa.bluedot,
+  AUTHOR	= "NASA/JPL-Caltech",
+  TITLE		= "The Pale Blue Dot is a photograph of Earth taken Feb. 14, 1990, by NASA’s Voyager 1 at a distance of 6 billion kilometers from the Sun. The image inspired the title of scientist Carl Sagan's book, ''Pale Blue Dot: A Vision of the Human Future in Space,`` in which he wrote: ''Look again at that dot. That's here. That's home. That's us.``.",
+  HOWPUBLISHED 	= "\url{https://solarsystem.nasa.gov/resources/536/voyager-1s-pale-blue-dot/}",
+  YEAR		= 1990,
+  MONTH       = feb,
+}
 
-\input{erklaerung.tex}
+
+@MISC{whuber.lanczos,
+  AUTHOR	= "whuber",
+  TITLE		= "What is Lanczos resampling?",
+  HOWPUBLISHED 	= "\url{https://gis.stackexchange.com/a/14361}",
+  YEAR		= 2011,
+  MONTH = sep,
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Now the sciencestuff:
+@book{burger2009digitale,
+  title={Digitale Bildverarbeitung: Eine Algorithmische Einf{\"u}hrung Mit Java},
+  author={Burger, Wilhelm and Burge, Mark James},
+  year={2009},
+  publisher={Springer-Verlag}
+%https://books.google.de/books?hl=de&lr=&id=U-lICAAAQBAJ&oi=fnd&pg=PR5&dq=Einf%C3%BChrung+in+die+digitale+Bildverarbeitung&ots=0yfIFO8ZI-&sig=1qHZzVvLMu6BqqPyFok0p5rw4fQ#v=onepage&q=Einf%C3%BChrung%20in%20die%20digitale%20Bildverarbeitung&f=false
+}
+@techreport{boutellpng,
+  title={PNG (Portable Network Graphics Format) Version 1.0},
+  author={Boutell, Thomas and others},
+  institution={RFC 2083}
+  %Zitat zu PNG = Portable Network Graphics Format 
+}
+@techreport{boutell1997png,
+  title={Png (portable network graphics) specification version 1.0},
+  author={Boutell, Thomas},
+  year={1997}
+%https://www.hjp.at/doc/rfc/rfc2083.html
+}
+@article{burger2015digitale,
+  title={Digitale Bilder},
+  author={Burger, Wilhelm and Burge, Mark James and Burger, Wilhelm and Burge, Mark James},
+  journal={Digitale Bildverarbeitung: Eine algorithmische Einf{\"u}hrung mit Java},
+  pages={1--24},
+  year={2015},
+  publisher={Springer}
+%https://link.springer.com/chapter/10.1007/978-3-642-04604-9_1
+}
+@article{roelofs1997linux,
+  title={Linux gazette: history of the portable network graphics (png) format},
+  author={Roelofs, Greg},
+  journal={Linux Journal},
+  volume={1997},
+  number={36es},
+  pages={19--es},
+  year={1997},
+  publisher={Belltown Media Houston, TX}
+%https://dl.acm.org/doi/fullHtml/10.5555/326832.326851
+}
+@misc{w3c_png,
+  author = "{W3C}",
+  title = "{Portable Network Graphics (PNG) Specification (Second Edition)}",
+  howpublished = {\url{https://www.w3.org/TR/png/}},
+  year = {2003},
+  note = {Accessed: March 9, 2023}
+%https://www.w3.org/TR/png/
+}
+@article{quint2003scalable,
+  title={Scalable vector graphics},
+  author={Quint, Antoine},
+  journal={IEEE MultiMedia},
+  volume={10},
+  number={3},
+  pages={99--102},
+  year={2003},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/1218261
+}
+@misc{mdn_svg,
+  author = "{Mozilla Contributors}",
+  title = "{SVG (Scalable Vector Graphics)}",
+  howpublished = {\url{https://developer.mozilla.org/en-US/docs/Web/SVG}},
+  year = {n.d.},
+  note = {Accessed: March 9, 2023}
+%https://developer.mozilla.org/en-US/docs/Web/SVG
+}
+@book{book:729077,
+   title =     {SVG. Scalable Vector Graphics.: Praxiswegweiser und Referenz für den neuen Vektorgrafikstandard. Für Fortgeschrittene.  },
+   author =    {Iris Fibinger},
+   publisher = {Markt+Technik-Verl.},
+   isbn =      {3827262399,9783827262394},
+   year =      {2002},
+   series =    {},
+   edition =   {},
+   volume =    {},
+   url =       {http://gen.lib.rus.ec/book/index.php?md5=1a655693c0779b14c519078151dfdf31}
+%https://sci-hub.st/10.1109/MMUL.2003.1218261
+}
+@misc{ionos_file_formats,
+  author = "{IONOS}",
+  title = "{Graphic File Formats: Which Formats Are Important?}",
+  howpublished = {\url{https://www.ionos.com/digitalguide/websites/web-design/graphic-file-formats-which-formats-are-important/}},
+  year = {n.d.},
+  note = {Accessed: March 9, 2023}
+%https://www.ionos.com/digitalguide/websites/web-design/graphic-file-formats-which-formats-are-important/
+}
+@misc{prepressure_file_formats,
+  author = "Prepressure",
+  title = "{Prepressure Library: File Formats}",
+  howpublished = {\url{https://www.prepressure.com/library/file-formats/}},
+  year = {n.d.},
+  note = {Accessed: March 9, 2023}
+%https://www.prepressure.com/library/file-formats
+}
+@misc{elsevier_artwork,
+  author = "{Elsevier}",
+  title = "{Artwork and media instructions}",
+  howpublished = {\url{https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-overview}},
+  year = {n.d.},
+  note = {Accessed: March 9, 2023}
+%https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-overview
+}
+@misc{britannica_jpeg,
+  author = "{Encyclopedia Britannica}",
+  title = "{JPEG}",
+  howpublished = {\url{https://www.britannica.com/technology/JPEG}},
+  year = {n.d.},
+  note = {Accessed: March 9, 2023}
+%https://www.britannica.com/technology/JPEG
+}
+@inproceedings{marcellin2000overview,
+  title={An overview of JPEG-2000},
+  author={Marcellin, Michael W and Gormish, Michael J and Bilgin, Ali and Boliek, Martin P},
+  booktitle={Proceedings DCC 2000. Data Compression Conference},
+  pages={523--541},
+  year={2000},
+  organization={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/838192
+}
+@article{rabbani2002overview,
+  title={An overview of the JPEG 2000 still image compression standard},
+  author={Rabbani, Majid and Joshi, Rajan},
+  journal={Signal processing: Image communication},
+  volume={17},
+  number={1},
+  pages={3--48},
+  year={2002},
+  publisher={Elsevier}
+%https://www.sciencedirect.com/science/article/pii/S0923596501000248
+}
+@article{WANG1983363,
+title = {Digital image enhancement: A survey},
+journal = {Computer Vision, Graphics, and Image Processing},
+volume = {24},
+number = {3},
+pages = {363-381},
+year = {1983},
+issn = {0734-189X},
+doi = {https://doi.org/10.1016/0734-189X(83)90061-0},
+url = {https://www.sciencedirect.com/science/article/pii/0734189X83900610},
+author = {David C.C Wang and Anthony H Vagnucci and C.C Li},
+abstract = {Over decades, many image-enhancement techniques have been proposed. Most of these techniques have been implemented, and their test results have been published. These techniques are surveyed, the underlying concepts briefly described, and their merits discussed. The goal is to help investigators in their selection of enhancement techniques suitable to their needs.}
+}
+@article{jiang2015quantum,
+  title={Quantum image scaling using nearest neighbor interpolation},
+  author={Jiang, Nan and Wang, Luo},
+  journal={Quantum Information Processing},
+  volume={14},
+  pages={1559--1571},
+  year={2015},
+  publisher={Springer}
+%https://sci-hub.se/10.1007/s11128-014-0841-8
+}
+@INPROCEEDINGS{1409828,
 
-\begin{abstract}
-Dieses \LaTeX-Dokument kann als Vorlage für einen Praxis- oder Projektbericht, eine Studien- oder
-Bachelorarbeit dienen.
+  author={Gribbon, K.T. and Bailey, D.G.},
 
-Zusammengestellt von Prof.\,Dr.\,Jürgen Vollmer \email{juergen.vollmer@dhbw-karlsruhe.de}\\
-\url{https://www.karlsruhe.dhbw.de}. Die jeweils aktuellste Version dieses \LaTeX-Paketes ist immer
-auf der \emph{FAQ-Seite} des Studiengangs Informatik zu finden:
-\url{https://www.karlsruhe.dhbw.de/inf/studienverlauf-organisatorisches.html} $\to$ \emph{Formulare und Vorlagen}.
+  booktitle={Proceedings. DELTA 2004. Second IEEE International Workshop on Electronic Design, Test and Applications}, 
 
-\centering Stand \verb+$Date: 2020/03/13 15:07:45 $+
-\end{abstract}
+  title={A novel approach to real-time bilinear interpolation}, 
 
-\newpage
-\tableofcontents           % Inhaltsverzeichnis hier ausgeben
+  year={2004},
 
-% Jetzt kommt der "eigentliche" Text
-\include{kapitel1}
-\include{kapitel2}
-\include{kapitel3}
-\include{kapitel4}
-\include{kapitel5}
-\include{kapitel6}
-\include{kapitel7}
-\include{kapitel8}
-\include{kapitel9}
-\include{kapitel10}
-\include{kapitel11}
-\include{kapitel12}
-\include{kapitel13}
-\include{kapitel14}
+  volume={},
 
-\clearpage
-\include{abk}              % Abkürzungsverzeichnis
-\listoffigures             % Liste der Abbildungen
-\listoftables              % Liste der Tabellen
-\lstlistoflistings         % Liste der Listings
-\listofequations           % Liste der Formeln
+  number={},
 
-% Ab hier beginnt der Anhang
-\appendix
-\addcontentsline{toc}{chapter}{Anhang}
+  pages={126-131},
 
-\addcontentsline{toc}{chapter}{Index}
-\printindex
+  doi={10.1109/DELTA.2004.10055}
+  %https://reader.elsevier.com/reader/sd/pii/S0022123613001468?token=55D42C68FDDE5802FD7EC026FFFFB6A9C1C0BD45E6C7C70E8935E022352FDD742AF6A19973D33E3CD31C6FC02A940CDB&originRegion=eu-west-1&originCreation=20230312115251
+}
+@INPROCEEDINGS{1409828,
 
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+  author={Gribbon, K.T. and Bailey, D.G.},
 
-% Haben Sie das "biblatex"-Paket nicht installiert, benutzen Sie folgendes:
-% Ohne das "biblatex"-Paket (s. bericht.sty) produziert folgendes
-% "deutsche" Zitate in Literaturverzeichnissen gemaß der Norm DIN 1505,
-% Teil 2 vom Jan. 1984.
-% Die Zitatmarken werden alphabetisch nach Verfassern
-% sortiert und sind durch abgekürzte Verfasserbuchstaben plus
-% Erscheinungsjahr in eckigen Klammern gekennzeichnet.
+  booktitle={Proceedings. DELTA 2004. Second IEEE International Workshop on Electronic Design, Test and Applications}, 
 
-% \bibliographystyle{alphadin}
-% \bibliography{bericht}
+  title={A novel approach to real-time bilinear interpolation}, 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-% BIBLATEX
-% Benutzt man das "biblatex"-Paket, muß man folgendes schreiben:
-\def\refname{Literaturverzeichnis}
-\printbibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+  year={2004},
 
+  volume={},
 
-\include{changelog}
+  number={},
 
-\newpage
-\addcontentsline{toc}{chapter}{Liste der ToDo's}
-\listoftodos[Liste der ToDo's]
+  pages={126-131},
 
+  doi={10.1109/DELTA.2004.10055}
+%https://sci-hub.ru/10.1109/DELTA.2004.10055
+}
+@INPROCEEDINGS{10009750,
 
-\end{document}
+  author={Zhao, LinTong and Che, Kai and Lv, Jian and Zhou, Yun},
+
+  booktitle={2022 International Conference on Image Processing, Computer Vision and Machine Learning (ICICML)}, 
+
+  title={Bilinear interpolation algorithm based on gradient-weighted optimization}, 
+
+  year={2022},
+
+  volume={},
+
+  number={},
+
+  pages={634-639},
+
+  abstract={To address the problems of instantaneous field of view (IFoV) error and blurred details of infrared division of focal plane (DoFP) polarization images, this paper proposes a Bilinear interpolation algorithm based on gradient-weight optimization. The improvement of the algorithm mainly involves the following aspects: (1) the interpolation image pixels are extended for the characteristics of infrared DoFP polarization images, and the gradient correlation between the image elements is effectively used, to improve the interpolation accuracy; (2) the weighting factor is introduced to reconstruct the image pixels with weighting ratios, which improves the self-adaptive ability of the algorithm. The experimental results show that the algorithm in this paper effectively solves the problem of IFoV error of infrared polarization images, significantly enhances the contrast and sharpness of the degree of polarization images and meet the real-time hardware processing requirements. Experimental results showed that the PSNR of light intensity image increased by 4.4949dB, 3.5762dB and 1.5059dB compared with Nearest, Bilinear and Bicubic algorithms; the PSNR of the degree of polarization image by improved interpolation algorithm in this paper was increased by 2.3652dB, 2.2304dB and 2.0945dB, and the SSIM was increased by 0.0824, 0.1131 and 0.0881, compared with the Nearest, Bilinear and Bicubic algorithms; the operation speed of polarization image by improved interpolation algorithm in this paper was increased by 19.57fps and 21.68fps compared with Bicubic convolution and Gaussian interpolation algorithms.},
+
+  keywords={},
+
+  doi={10.1109/ICICML57342.2022.10009750},
+
+  ISSN={},
+
+  month={Oct},
+%don't use. Way too hardcore! 
+}
+@inproceedings{oehlrich1992transputersystem,
+  title={Ein Transputersystem mit verteiltem Bildspeicher f{\"u}r Echtzeit-Computergrafik und Bildverarbeitung},
+  author={Oehlrich, Carl-Werner and Karl, Harald and Reinsch, Andreas and D{\"o}rsing, Volker},
+  booktitle={Parallele Datenverarbeitung mit dem Transputer: 3. Transputer-Anwender-Treffen TAT’91, Aachen, 17.--18. September 1991},
+  pages={170--177},
+  year={1992},
+  organization={Springer}
+}
+
+@article{BENTBIB2016233,
+title = {A global Lanczos method for image restoration},
+journal = {Journal of Computational and Applied Mathematics},
+volume = {300},
+pages = {233-244},
+year = {2016},
+issn = {0377-0427},
+doi = {https://doi.org/10.1016/j.cam.2015.12.034},
+url = {https://www.sciencedirect.com/science/article/pii/S0377042715006469},
+author = {A.H. Bentbib and M. {El Guide} and K. Jbilou and L. Reichel},
+keywords = {Global Lanczos method, Gauss quadrature, Discrete ill-posed problem, Tikhonov regularization},
+abstract = {Image restoration often requires the solution of large linear systems of equations with a very ill-conditioned, possibly singular, matrix and an error-contaminated right-hand side. The latter represents the available blur and noise-contaminated image, while the matrix models the blurring. Computation of a meaningful restoration of the available image requires the use of a regularization method. We consider the situation when the blurring matrix has a Kronecker product structure and an estimate of the norm of the desired image is available, and illustrate that efficient restoration of the available image can be achieved by Tikhonov regularization based on the global Lanczos method, and by using the connection of the latter to Gauss-type quadrature rules.}
+}
+
+@article{duchon1979lanczos,
+  title={Lanczos filtering in one and two dimensions},
+  author={Duchon, Claude E},
+  journal={Journal of Applied Meteorology and Climatology},
+  volume={18},
+  number={8},
+  pages={1016--1022},
+  year={1979}
+}
+
+%https://d-nb.info/120147700X/34#page=28
+@article{kolbentwicklung,
+  title={Entwicklung eines Convolutional Neural Network zur Handschrifterkennung},
+  author={Kolb, Tobias},
+  journal={Angewandtes maschinelles Lernen--SS2019},
+  pages={28}
+}
+
+@article{reissleitfaden,
+  title={Leitfaden zum Entwurf eines Convolutional Neural Networks},
+  author={Rei{\ss}, Robin},
+  journal={Angewandtes maschinelles Lernen--SS2019},
+  pages={3}
+}
+
+@misc{oshea2015introduction,
+      title={An Introduction to Convolutional Neural Networks}, 
+      author={Keiron O'Shea and Ryan Nash},
+      year={2015},
+      eprint={1511.08458},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE}
+      %https://arxiv.org/abs/1511.08458
+}
+
+@article{7115171,
+  author={Dong, Chao and Loy, Chen Change and He, Kaiming and Tang, Xiaoou},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Image Super-Resolution Using Deep Convolutional Networks}, 
+  year={2016},
+  volume={38},
+  number={2},
+  pages={295-307},
+  doi={10.1109/TPAMI.2015.2439281}
+  %https://ieeexplore.ieee.org/abstract/document/7115171
+}
+
+@article{alber2019integrating,
+  title={Integrating machine learning and multiscale modeling—perspectives, challenges, and opportunities in the biological, biomedical, and behavioral sciences},
+  author={Alber, Mark and Buganza Tepole, Adrian and Cannon, William R and De, Suvranu and Dura-Bernal, Salvador and Garikipati, Krishna and Karniadakis, George and Lytton, William W and Perdikaris, Paris and Petzold, Linda and others},
+  journal={NPJ digital medicine},
+  volume={2},
+  number={1},
+  pages={115},
+  year={2019},
+  publisher={Nature Publishing Group UK London}
+  %https://www.nature.com/articles/s41746-019-0193-y#citeas
+}
+
+@article{mallat1989theory,
+  title={A theory for multiresolution signal decomposition: the wavelet representation},
+  author={Mallat, Stephane G},
+  journal={IEEE transactions on pattern analysis and machine intelligence},
+  volume={11},
+  number={7},
+  pages={674--693},
+  year={1989},
+  publisher={Ieee}
+%https://sci-hub.se/10.1109/34.192463
+}
+
+@incollection{burt1987laplacian,
+  title={The Laplacian pyramid as a compact image code},
+  author={Burt, Peter J and Adelson, Edward H},
+  booktitle={Readings in computer vision},
+  pages={671--679},
+  year={1987},
+  publisher={Elsevier}
+%https://sci-hub.se/10.1109/tcom.1983.1095851
+}
+
+@inproceedings{simoncelli1996noise,
+  title={Noise removal via Bayesian wavelet coring},
+  author={Simoncelli, Eero P and Adelson, Edward H},
+  booktitle={Proceedings of 3rd IEEE International Conference on Image Processing},
+  volume={1},
+  pages={379--382},
+  year={1996},
+  organization={IEEE}
+%https://sci-hub.se/10.1109/icip.1996.559512
+}
+
+@article{bouman1993generalized,
+  title={A generalized Gaussian image model for edge-preserving MAP estimation},
+  author={Bouman, Charles and Sauer, Ken},
+  journal={IEEE Transactions on image processing},
+  volume={2},
+  number={3},
+  pages={296--310},
+  year={1993},
+  publisher={IEEE}
+%https://sci-hub.se/10.1109/83.236536
+%TODO noch nicht eingebaut
+}
+
+@inproceedings{he2016deep,
+  title={Deep residual learning for image recognition},
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={770--778},
+  year={2016}
+%https://sci-hub.se/10.1109/cvpr.2016.90
+}
+
+@inproceedings{huang2017densely,
+  title={Densely connected convolutional networks},
+  author={Huang, Gao and Liu, Zhuang and Van Der Maaten, Laurens and Weinberger, Kilian Q},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={4700--4708},
+  year={2017}
+%https://openaccess.thecvf.com/content_cvpr_2017/html/Huang_Densely_Connected_Convolutional_CVPR_2017_paper.html
+}
+
+@article{portilla2000parametric,
+  title={A parametric texture model based on joint statistics of complex wavelet coefficients},
+  author={Portilla, Javier and Simoncelli, Eero P},
+  journal={International journal of computer vision},
+  volume={40},
+  pages={49--70},
+  year={2000},
+  publisher={Springer}
+%https://sci-hub.se/10.1023/A:1026553619983
+%TODO WTF was wie hilfe einbauen
+}
+
+@inproceedings{nah2017deep,
+  title={Deep multi-scale convolutional neural network for dynamic scene deblurring},
+  author={Nah, Seungjun and Hyun Kim, Tae and Mu Lee, Kyoung},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={3883--3891},
+  year={2017}
+%https://sci-hub.se/10.1109/cvpr.2017.35
+}
+
+@inproceedings{wu2017squeezedet,
+  title={Squeezedet: Unified, small, low power fully convolutional neural networks for real-time object detection for autonomous driving},
+  author={Wu, Bichen and Iandola, Forrest and Jin, Peter H and Keutzer, Kurt},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition workshops},
+  pages={129--137},
+  year={2017}
+%https://sci-hub.se/10.1109/cvprw.2017.60
+}
+
+@inproceedings{liu2015deep,
+  title={Deep learning face attributes in the wild},
+  author={Liu, Ziwei and Luo, Ping and Wang, Xiaogang and Tang, Xiaoou},
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  pages={3730--3738},
+  year={2015}
+%https://sci-hub.se/10.1109/iccv.2015.425
+}
+
+@article{jaderberg2015spatial,
+  title={Spatial transformer networks},
+  author={Jaderberg, Max and Simonyan, Karen and Zisserman, Andrew and others},
+  journal={Advances in neural information processing systems},
+  volume={28},
+  year={2015}
+%https://proceedings.neurips.cc/paper_files/paper/2015/file/33ceb07bf4eeb3da587e268d663aba1a-Paper.pdf
+}
+
+@inproceedings{oztireli2009feature,
+  title={Feature preserving point set surfaces based on non-linear kernel regression},
+  author={Oztireli, Cengiz and Guennebaud, Gael and Gross, Markus},
+  booktitle={Computer graphics forum},
+  volume={28},
+  number={2},
+  pages={493--501},
+  year={2009}
+%https://inria.hal.science/inria-00354969/
+%TODO heeeeelp Franzose benötigt
+}
+
+@article{li2018visualizing,
+  title={Visualizing the loss landscape of neural nets},
+  author={Li, Hao and Xu, Zheng and Taylor, Gavin and Studer, Christoph and Goldstein, Tom},
+  journal={Advances in neural information processing systems},
+  volume={31},
+  year={2018}
+%https://proceedings.neurips.cc/paper_files/paper/2018/file/a41b3bb3e6b050b6c9067c67f663b915-Paper.pdf
+}
+
+@article{wang2004image,
+  title={Image quality assessment: from error visibility to structural similarity},
+  author={Wang, Zhou and Bovik, Alan C and Sheikh, Hamid R and Simoncelli, Eero P},
+  journal={IEEE transactions on image processing},
+  volume={13},
+  number={4},
+  pages={600--612},
+  year={2004},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/1284395
+}
+
+@article{sheikh2006image,
+  title={Image information and visual quality},
+  author={Sheikh, Hamid R and Bovik, Alan C},
+  journal={IEEE Transactions on image processing},
+  volume={15},
+  number={2},
+  pages={430--444},
+  year={2006},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/1576816
+}
+
+@article{mittal2012no,
+  title={No-reference image quality assessment in the spatial domain},
+  author={Mittal, Anish and Moorthy, Anush Krishna and Bovik, Alan Conrad},
+  journal={IEEE Transactions on image processing},
+  volume={21},
+  number={12},
+  pages={4695--4708},
+  year={2012},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/6272356
+}
+
+@inproceedings{korhonen2012peak,
+  title={Peak signal-to-noise ratio revisited: Is simple beautiful?},
+  author={Korhonen, Jari and You, Junyong},
+  booktitle={2012 Fourth International Workshop on Quality of Multimedia Experience},
+  pages={37--38},
+  year={2012},
+  organization={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/6263880
+}
+
+@ARTICLE{1284395,
+  author={Zhou Wang and Bovik, A.C. and Sheikh, H.R. and Simoncelli, E.P.},
+  journal={IEEE Transactions on Image Processing}, 
+  title={Image quality assessment: from error visibility to structural similarity}, 
+  year={2004},
+  volume={13},
+  number={4},
+  pages={600-612},
+  abstract={Objective methods for assessing perceptual image quality traditionally attempted to quantify the visibility of errors (differences) between a distorted image and a reference image using a variety of known properties of the human visual system. Under the assumption that human visual perception is highly adapted for extracting structural information from a scene, we introduce an alternative complementary framework for quality assessment based on the degradation of structural information. As a specific example of this concept, we develop a structural similarity index and demonstrate its promise through a set of intuitive examples, as well as comparison to both subjective ratings and state-of-the-art objective methods on a database of images compressed with JPEG and JPEG2000. A MATLAB implementation of the proposed algorithm is available online at http://www.cns.nyu.edu//spl sim/lcv/ssim/.},
+  keywords={},
+  doi={10.1109/TIP.2003.819861},
+  ISSN={1941-0042},
+  month={April},
+%https://ieeexplore.ieee.org/document/1284395
+}
+
+@article{chen2011fast,
+  title={Fast structural similarity index algorithm},
+  author={Chen, Ming-Jun and Bovik, Alan C},
+  journal={Journal of Real-Time Image Processing},
+  volume={6},
+  pages={281--287},
+  year={2011},
+  publisher={Springer}
+%https://link.springer.com/article/10.1007/s11554-010-0170-9
+}
+
+@INPROCEEDINGS{5596999,
+  author={Horé, Alain and Ziou, Djemel},
+  booktitle={2010 20th International Conference on Pattern Recognition}, 
+  title={Image Quality Metrics: PSNR vs. SSIM}, 
+  year={2010},
+  volume={},
+  number={},
+  pages={2366-2369},
+  doi={10.1109/ICPR.2010.579}
+%https://ieeexplore.ieee.org/abstract/document/5596999
+}
+
+@article{sheikh2006image,
+  title={Image information and visual quality},
+  author={Sheikh, Hamid R and Bovik, Alan C},
+  journal={IEEE Transactions on image processing},
+  volume={15},
+  number={2},
+  pages={430--444},
+  year={2006},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/1576816
+}
+
+@article{huang2010new,
+  title={A New Image Quality Assessment Method for Peak Signal-to-Noise Ratio (PSNR) in YUV Color Space},
+  author={Huang, Q. and Yu, L. and Wang, S.},
+  journal={IEEE Transactions on Consumer Electronics},
+  year={2010},
+  volume={56},
+  number={4},
+  pages={2317-2322},
+  doi={10.1109/TCE.2010.5682097}
+}
+
+@article{xu2017efficient,
+  title={Efficient and accurate image super-resolution via recurrent mixture density network},
+  author={Xu, Jiajun and Jiang, Xudong and Zhang, Zulin},
+  journal={IEEE Transactions on Image Processing},
+  volume={26},
+  number={7},
+  pages={3187--3201},
+  year={2017},
+  publisher={IEEE},
+  doi={10.1109/TIP.2017.2699923}
+}
+
+@article{choi2019lightweight,
+  title={Lightweight and Efficient Deep Neural Network for Super-Resolution with Mobile Devices},
+  author={Choi, Min Joon and Lee, Sang Heon and Lee, Sang Jun},
+  journal={Electronics},
+  volume={8},
+  number={4},
+  pages={423},
+  year={2019},
+  publisher={Multidisciplinary Digital Publishing Institute},
+  doi={10.3390/electronics8040423}
+}
+
+@article{morad1996role,
+  title={The role of root-mean-square error in the geo-transformation of images in GIS},
+  author={Morad, M and Chalmers, AI and O’regan, PR},
+  journal={International Journal of Geographical Information Science},
+  volume={10},
+  number={3},
+  pages={347--353},
+  year={1996},
+  publisher={Taylor \& Francis}
+}
+
+@article{wang2004image,
+  title={Image quality assessment: from error visibility to structural similarity},
+  author={Wang, Zhou and Bovik, Alan C and Sheikh, Hamid R and Simoncelli, Eero P},
+  journal={IEEE transactions on image processing},
+  volume={13},
+  number={4},
+  pages={600--612},
+  year={2004},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/1284395
+}
+
+@article{ye2012no,
+  title={No-reference image quality assessment using visual codebooks},
+  author={Ye, Peng and Doermann, David},
+  journal={IEEE Transactions on Image Processing},
+  volume={21},
+  number={7},
+  pages={3129--3138},
+  year={2012},
+  publisher={IEEE}
+%https://ieeexplore.ieee.org/abstract/document/1284395
+}
+
+@article{eckert1998perceptual,
+  title={Perceptual quality metrics applied to still image compression},
+  author={Eckert, Michael P and Bradley, Andrew P},
+  journal={Signal processing},
+  volume={70},
+  number={3},
+  pages={177--200},
+  year={1998},
+  publisher={Elsevier}
+%https://www.sciencedirect.com/science/article/abs/pii/S0165168498001248?casa_token=nQDcGueZ5BIAAAAA:6lb6Us80MujXa2JcdrEdGjNWOV_Z_7Kpxnq_BECGapRBicGX_e1NSzg0djgF5jBG1eogB2pW-W2v
+}
+
+@article{zhang2019efficiency,
+  title={Efficiency-Driven Image Scaling Method Selection Based on Deep Neural Networks},
+  author={Zhang, Y. and Li, X. and Sun, L. and Wang, Q.},
+  journal={IEEE Transactions on Image Processing},
+  year={2019},
+  volume={28},
+  number={1},
+  pages={424-439},
+  doi={10.1109/TIP.2018.2889740}
+}
+
+@article{gu2019comprehensive,
+  title={A Comprehensive Study of Image Upsampling Quality Metrics},
+  author={Gu, K. and Cao, Y. and Zhang, H. and Ma, S.},
+  journal={IEEE Transactions on Image Processing},
+  year={2019},
+  volume={28},
+  number={3},
+  pages={1316-1331},
+  doi={10.1109/TIP.2019.2906826}
+}
+
+@article{hu2020efficient,
+  title={An Efficient Edge-Guided Image Upsampling Method Based on Local Frequency Estimation},
+  author={Hu, Y. and Li, Y. and Zeng, T. and Chen, S.},
+  journal={IEEE Transactions on Image Processing},
+  year={2020},
+  volume={29},
+  pages={430-442},
+  doi={10.1109/TIP.2019.2896251}
+}
