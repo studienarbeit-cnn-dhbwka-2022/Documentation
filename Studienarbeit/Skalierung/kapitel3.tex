@@ -2,162 +2,153 @@
 \usepackage{amssymb}
 \chapter{Klassische Skalierungsmethoden}
 
-\section{Pixel-Verdopplung}
-Die Pixel-Verdopplung vergrößert das Bild indem jeder Pixel dupliziert wird.
-Diese Methode kann schnell und einfach umgesetzt werden, indem jeder Pixelwert einfach auf den Nachbarpixel übertragen wird. 
-Wenn Bilder mit dieser Methode stark vergrößert werden, ergeben sich oft pixelige und unscharfe Ausgaben, da die Details nicht wirklich vorhanden sind, sondern nur durch die Duplizierung von Pixeln aufgefüllt werden. 
-Aus diesem Grund wird Pixel-Verdopplung oft als eine minderwertige Skalierungsmethode betrachtet und findet in professinellen Anwendungen selten Gebrauch.\footfullcite{WANG1983363}
+    \section{Pixel-Verdopplung}
+        Die Pixel-Verdopplung vergrößert das Bild indem jeder Pixel dupliziert wird.
+        Diese Methode kann schnell und einfach umgesetzt werden, indem jeder Pixelwert einfach auf den Nachbarpixel übertragen wird. 
+        Wenn Bilder mit dieser Methode stark vergrößert werden, ergeben sich oft pixelige und unscharfe Ausgaben, da die Details nicht wirklich vorhanden sind, sondern nur durch die Duplizierung von Pixeln aufgefüllt werden. 
+        Aus diesem Grund wird Pixel-Verdopplung oft als eine minderwertige Skalierungsmethode betrachtet und findet in professinellen Anwendungen selten Gebrauch.
+        \footfullcite{WANG1983363}
 
 
-\newpage
-Eine Beispielhafte Implementierung in Python sieht folgendermaßen aus: 
+    \newpage
+    Eine Beispielhafte Implementierung in Python sieht folgendermaßen aus: 
+    
+    \begin{lstlisting}[caption={Python-Klasse zur Pixelverdopplung und Bildmanipulation: Implementierung des Algorithmus mit der Pillow-Bibliothek und Erklärung des Codes von PixelVerdopplung: \url{https://github.com/studienarbeit-cnn-dhbwka-2022/Code/blob/main/backend/skalierungsmethoden/pixel_verdopplung.py}.}]
+    class PixelVerdopplung(Image):
+        def __init__(self, path):
+            extend = "p2"
+            super().__init__(path, extend)
+        
+        def manipulate(self, new_size):
+            super().manipulate(new_size)
+        
+            for y in range(self.new_height):
+                for x in range(self.new_width):
+                    x_old = int(x / (self.new_width / self.width))
+                    y_old = int(y / (self.new_height / self.height))
+        
+                    # Check that x_old and y_old are within bounds of original image
+                    if x_old >= self.width:
+                        x_old = self.width - 1
+                    if y_old >= self.height:
+                        y_old = self.height - 1
+        
+                    old_pixel = self.img.getpixel((x_old, y_old))
+                    self.newImg.putpixel((x, y), old_pixel)
+        
+            return self.save()
+    \end{lstlisting}
+        
+        Die vorliegende Implementierung in Python beschreibt die Realisierung der Pixelverdopplungsklasse, welche in der Lage ist, ein größeres Bild zu erzeugen, indem die leeren Pixel mit demselben Pixelwert wie der nächste Nachbarpixel befüllt werden.
+        Der Code ist darauf ausgelegt, eine einfache Möglichkeit bereitzustellen, um ein Bild auf eine höhere Auflösung zu skalieren, wodurch fehlende Details ausgeglichen werden können. Dabei wird eine lineare Interpolation auf der Basis der Nachbarpixel durchgeführt, um das neue Bild zu generieren.
+        Die Klasse "PixelVerdopplung" erbt von der Klasse "Image" und besitzt einen Konstruktor, der den Pfad zum Bild und die Erweiterung "p2" als Argumente erhält. 
+        Die Methode "manipulate" ist dafür zuständig, das Bild auf die gewünschte Größe zu skalieren und zu manipulieren.
+        Innerhalb der Methode werden Schleifen durchlaufen, um jeden neuen Pixel im manipulierten Bild zu generieren. 
+        Die Koordinaten des jeweiligen alten Pixels werden durch Division der neuen Koordinaten durch die Skalierungsfaktoren berechnet und auf den nächstgelegenen Integer gerundet.
+        Um sicherzustellen, dass die berechneten Koordinaten innerhalb der Grenzen des ursprünglichen Bildes liegen, werden sie in einem nächsten Schritt auf den maximalen Index des Bildes zurückgesetzt, falls sie außerhalb liegen sollten. 
+        Anschließend wird der Pixelwert des entsprechenden alten Pixels abgerufen und als neuer Pixel an der berechneten Stelle im neuen Bild platziert.
+        Die Implementierung dieses Algorithmus stellt eine einfache Möglichkeit dar, um ein Bild auf eine höhere Auflösung zu skalieren, wodurch ein besseres visuelles Ergebnis erzielt werden kann. 
+        Dabei ist darauf zu achten, dass die lineare Interpolation eine höhere Laufzeit und Speicheranforderungen aufweist als andere Interpolationsmethoden.
+        
+    \section{Nearest-Neighbor-Interpolation}
+        Die Nearest-Neighbor-Interpolation ist eine weitere Methode zur Skalierung von Bildern. 
+        Es wird für jeden Pixel im Ausgabebild der am nächsten liegende Pixel im Eingabebild ausgewählt und der Farbwert des ausgewählten Pixels wird als Farbwert des entsprechenden Pixels im Ausgabebild verwendet.
+        Die Verwendung von Nearest-Neighbor-Interpolation ist einfach und schnell zu implementieren. 
+        Aufgrund ihrer geringen Komplexität ist sie daher sehr beliebt. 
+        Die Methode eignet sich besonders gut für die Vergrößerung von Bildern mit großen, einheitlichen Bereichen oder harten Kanten. 
+        
+        
+        Bei der Verkleinerung von Bildern erleiden diese jedoch oft einen Qualitätsverlust.
+        Hier kommt es zu Unschärfe und Blockbildung. 
+        Diese Effekt verstärkt sich, wenn das Verhältniss zwischen Quellbild und Audgabebild kein Vielfaches ist. 
+        \begin{acronym}
+          \acro{NNI}{Nearest Neighbor Interpolation}
+        \end{acronym}
+        \begin{lstlisting}
+        import numpy as np
+        import cv2
+        
+        def nearest_neighbor_interpolation(image, scale_factor):
+            new_size = (int(image.shape[1] * scale_factor), int(image.shape[0] * scale_factor))
+            
+            scaled_image = np.zeros(new_size + (image.shape[2],), dtype=np.uint8)
+            for i in range(new_size[0]):
+                for j in range(new_size[1]):
+                    x = int(i / scale_factor)
+                    y = int(j / scale_factor)
+                    scaled_image[j, i] = image[y, x]
+            
+            return scaled_image
+        
+        
+        image = cv2.imread('example_image.jpg')
+        scaled_image = nearest_neighbor_interpolation(image, 2)
+        cv2.imshow(image)
+        cv2.imshow(scaled_image)
+        \end{lstlisting}\footfullcite{jiang2015quantum}
+        %TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
+    \section{Bilineare Interpolation}
+    
+        Interpolation cool weil, schnell und ergebniss recht schön.
+    
 
-\begin{figure}
-    \centering
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{img/pixel_verdopplung.png}
+        \caption{Beispielgrafik zur Pixelverdopplung.}
+        \label{fig:my_label}
+    \end{figure}
+    
+    \begin{figure}
+        \centering
+        \includegraphics{img/pixel_verdopplung_graph.png}
+        \caption{Graph über bilineare Skalierung.}
+        \label{fig:my_label}
+    \end{figure}
+    
+    
     \begin{lstlisting}
-class PixelVerdopplung(Image):
-    def __init__(self, path):
-        extend = "p2"
-        super().__init__(path, extend)
+    for y in range(self.new_height):
+        for x in range(self.new_width):
+            x_old = x / (self.new_width / self.width)
+            y_old = y / (self.new_height / self.height)
     
-    def manipulate(self, new_size):
-        super().manipulate(new_size)
+            # Find the surrounding pixels
+            x1 = int(x_old)
+            x2 = min(x1 + 1, self.width - 1)
+            y1 = int(y_old)
+            y2 = min(y1 + 1, self.height - 1)
     
-        for y in range(self.new_height):
-            for x in range(self.new_width):
-                x_old = int(x / (self.new_width / self.width))
-                y_old = int(y / (self.new_height / self.height))
+            # Check if x2 and y2 are out of bounds, if they are substract one
+            if x2 == self.width - 1:
+                x2 = x1
+                x1 -= 1
+            if y2 == self.height - 1:
+                y2 = y1
+                y1 -= 1
     
-                # Check that x_old and y_old are within
-                # bounds of original image
-                if x_old >= self.width:
-                    x_old = self.width - 1
-                if y_old >= self.height:
-                    y_old = self.height - 1
+            # Find the weights
+            w1 = (x2 - x_old) * (y2 - y_old)
+            w2 = (x_old - x1) * (y2 - y_old)
+            w3 = (x2 - x_old) * (y_old - y1)
+            w4 = (x_old - x1) * (y_old - y1)
     
-                old_pixel = self.img.getpixel((x_old, y_old))
-                self.newImg.putpixel((x, y), old_pixel)
+            # Get the pixel values of the surrounding pixels
+            p1 = self.img.getpixel((x1, y1))
+            p2 = self.img.getpixel((x2, y1))
+            p3 = self.img.getpixel((x1, y2))
+            p4 = self.img.getpixel((x2, y2))
     
-        return self.save()
-\end{lstlisting}
-    \caption{Python-Implementierung der Klasse zu Verdopplung von Pixeln.}
-    \label{fig:my_label}
-\end{figure}
-
-
-Die vorliegende Implementierung in Python beschreibt die Realisierung der Pixelverdopplungsklasse, welche in der Lage ist, ein größeres Bild zu erzeugen, indem die leeren Pixel mit demselben Pixelwert wie der nächste Nachbarpixel befüllt werden.
-
-Der Code ist darauf ausgelegt, eine einfache Möglichkeit bereitzustellen, um ein Bild auf eine höhere Auflösung zu skalieren, wodurch fehlende Details ausgeglichen werden können. Dabei wird eine lineare Interpolation auf der Basis der Nachbarpixel durchgeführt, um das neue Bild zu generieren.
-
-Die Klasse "PixelVerdopplung" erbt von der Klasse "Image" und besitzt einen Konstruktor, der den Pfad zum Bild und die Erweiterung "p2" als Argumente erhält. Die Methode "manipulate" ist dafür zuständig, das Bild auf die gewünschte Größe zu skalieren und zu manipulieren.
-
-Innerhalb der Methode werden Schleifen durchlaufen, um jeden neuen Pixel im manipulierten Bild zu generieren. Die Koordinaten des jeweiligen alten Pixels werden durch Division der neuen Koordinaten durch die Skalierungsfaktoren berechnet und auf den nächstgelegenen Integer gerundet.
-
-Um sicherzustellen, dass die berechneten Koordinaten innerhalb der Grenzen des ursprünglichen Bildes liegen, werden sie in einem nächsten Schritt auf den maximalen Index des Bildes zurückgesetzt, falls sie außerhalb liegen sollten. Anschließend wird der Pixelwert des entsprechenden alten Pixels abgerufen und als neuer Pixel an der berechneten Stelle im neuen Bild platziert.
-
-Die Implementierung dieses Algorithmus stellt eine einfache Möglichkeit dar, um ein Bild auf eine höhere Auflösung zu skalieren, wodurch ein besseres visuelles Ergebnis erzielt werden kann. Dabei ist darauf zu achten, dass die lineare Interpolation eine höhere Laufzeit und Speicheranforderungen aufweist als andere Interpolationsmethoden.
-
-
-
-\section{Nearest-Neighbor-Interpolation}
-Die Nearest-Neighbor-Interpolation ist eine weitere Methode zur Skalierung von Bildern. 
-Es wird für jeden Pixel im Ausgabebild der am nächsten liegende Pixel im Eingabebild ausgewählt und der Farbwert des ausgewählten Pixels wird als Farbwert des entsprechenden Pixels im Ausgabebild verwendet.
-Die Verwendung von Nearest-Neighbor-Interpolation ist einfach und schnell zu implementieren. 
-Aufgrund ihrer geringen Komplexität ist sie daher sehr beliebt. 
-Die Methode eignet sich besonders gut für die Vergrößerung von Bildern mit großen, einheitlichen Bereichen oder harten Kanten. 
-
-
-Bei der Verkleinerung von Bildern erleiden diese jedoch oft einen Qualitätsverlust.
-Hier kommt es zu Unschärfe und Blockbildung. 
-Diese Effekt verstärkt sich, wenn das Verhältniss zwischen Quellbild und Audgabebild kein Vielfaches ist. 
-\begin{acronym}
-  \acro{NNI}{Nearest Neighbor Interpolation}
-\end{acronym}
-\begin{lstlisting}
-import numpy as np
-import cv2
-
-def nearest_neighbor_interpolation(image, scale_factor):
-    new_size = (int(image.shape[1] * scale_factor), int(image.shape[0] * scale_factor))
+            # Interpolate the pixel value
+            new_pixel = (
+                int(w1 * p1[0] + w2 * p2[0] + w3 * p3[0] + w4 * p4[0]),
+                int(w1 * p1[1] + w2 * p2[1] + w3 * p3[1] + w4 * p4[1]),
+                int(w1 * p1[2] + w2 * p2[2] + w3 * p3[2] + w4 * p4[2])
+            )
+            self.newImg.putpixel((x, y), new_pixel)
+    \end{lstlisting}\footfullcite{1409828}
     
-    scaled_image = np.zeros(new_size + (image.shape[2],), dtype=np.uint8)
-    for i in range(new_size[0]):
-        for j in range(new_size[1]):
-            x = int(i / scale_factor)
-            y = int(j / scale_factor)
-            scaled_image[j, i] = image[y, x]
-    
-    return scaled_image
-
-
-image = cv2.imread('example_image.jpg')
-scaled_image = nearest_neighbor_interpolation(image, 2)
-cv2.imshow(image)
-cv2.imshow(scaled_image)
-\end{lstlisting}\footfullcite{jiang2015quantum}
-%TODO @Marc kannst du mir ne Schöne Grafik machen, wo du diesen Code kurz über unser Beispielbild laufen lässt und wir so nen rechts/links Vergleich haben? 
-\section{Bilineare Interpolation}
-
-Interpolation cool weil, schnell und ergebniss recht schön.
-%TODO Noch was schreiben
-
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{img/pixel_verdopplung.png}
-    \caption{Beispielgrafik zur Pixelverdopplung.}
-    \label{fig:my_label}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics{img/pixel_verdopplung_graph.png}
-    \caption{Graph über bilineare Skalierung.}
-    \label{fig:my_label}
-\end{figure}
-
-
-\begin{lstlisting}
-for y in range(self.new_height):
-    for x in range(self.new_width):
-        x_old = x / (self.new_width / self.width)
-        y_old = y / (self.new_height / self.height)
-
-        # Find the surrounding pixels
-        x1 = int(x_old)
-        x2 = min(x1 + 1, self.width - 1)
-        y1 = int(y_old)
-        y2 = min(y1 + 1, self.height - 1)
-
-        # Check if x2 and y2 are out of bounds, if they are substract one
-        if x2 == self.width - 1:
-            x2 = x1
-            x1 -= 1
-        if y2 == self.height - 1:
-            y2 = y1
-            y1 -= 1
-
-        # Find the weights
-        w1 = (x2 - x_old) * (y2 - y_old)
-        w2 = (x_old - x1) * (y2 - y_old)
-        w3 = (x2 - x_old) * (y_old - y1)
-        w4 = (x_old - x1) * (y_old - y1)
-
-        # Get the pixel values of the surrounding pixels
-        p1 = self.img.getpixel((x1, y1))
-        p2 = self.img.getpixel((x2, y1))
-        p3 = self.img.getpixel((x1, y2))
-        p4 = self.img.getpixel((x2, y2))
-
-        # Interpolate the pixel value
-        new_pixel = (
-            int(w1 * p1[0] + w2 * p2[0] + w3 * p3[0] + w4 * p4[0]),
-            int(w1 * p1[1] + w2 * p2[1] + w3 * p3[1] + w4 * p4[1]),
-            int(w1 * p1[2] + w2 * p2[2] + w3 * p3[2] + w4 * p4[2])
-        )
-        self.newImg.putpixel((x, y), new_pixel)
-\end{lstlisting}\footfullcite{1409828}
-
 \section{Bicubische Interpolation}
 
 \subsection{Mathematische Grundlagen}
