@@ -1,39 +1,202 @@
-\chapter{Basics of Convolutional Neural Networks}
+\chapter{Grundlagen von Convolutional Neural Networks}
 
-\section{How do Machine learning models learn?}
+\section{Wie lernen Maschinen?}
 
-\subsection{Definition Machine Learning and Deep Learning}
-\subsection{Definition and applications of CNNs}
-\subsection{Applications of CNNs}
-\subsection{How are CNNs different from other neural network architectures?}
-\subsection{Why are CNNs particularly useful for image and video data?}
-
-
-
-
-\section{Applications of CNNs}
+    In diesem Abschnitt werden die fundamentalen Konzepte des maschinellen Lernens und des Deep Learnings erläutert. 
+    Das maschinelle Lernen bezieht sich auf einen Prozess, bei dem maschinelle Systeme mithilfe von statistischen Modellen und Algorithmen automatisch aus Erfahrung lernen, ohne dass eine explizite Programmierung erforderlich ist. 
+    Das Deep Learning stellt einen spezifischen Teilbereich des maschinellen Lernens dar und konzentriert sich auf die Anwendung von neuronalen Netzwerken mit zahlreichen Schichten, um komplexe abstrakte Repräsentationen zu erlernen.
     
-\subsection{Image classification}
-\subsection{Object detection}
-\subsection{Face recognition}
-\subsection{Natural Language Processing}
-\subsection{Other applications}
+\subsection{Definition von maschinellem Lernen}
+    
+    Das maschinelle Lernen ist ein Prozess, bei dem computergestützte Systeme mithilfe von statistischen Methoden und Algorithmen aus Erfahrung lernen, ohne dass eine explizite Programmierung erforderlich ist. 
+    Im Gegensatz zur traditionellen Programmierung, bei der eine festgelegte Abfolge von Anweisungen gegeben wird, basiert das maschinelle Lernen auf der Analyse und Verarbeitung großer Mengen an Daten. 
+    Durch diesen iterativen Lernprozess können Maschinen Muster, Zusammenhänge und Regeln erkennen, um Vorhersagen zu treffen oder komplexe Aufgaben zu automatisieren.
+    Der Kern des maschinellen Lernens liegt in der Verwendung von Algorithmen und statistischen Modellen, um aus den vorhandenen Daten zu lernen. 
+    Diese Modelle werden trainiert, indem sie mit Eingabedaten gefüttert werden und ihre internen Parameter so angepasst werden, dass sie die gewünschten Ausgabewerte erzeugen. 
+    Der Trainingsprozess erfolgt durch die Optimierung von Modellparametern unter Verwendung von mathematischen Optimierungsmethoden wie dem Gradientenabstieg.
+    Durch wiederholtes Training und Feinabstimmung der Modelle können sie kontinuierlich verbessert werden, um präzisere Vorhersagen zu generieren oder überlegene Leistungen bei bestimmten Aufgaben zu erzielen.
 
-\section{How do CNNs work?}
+\subsection{Deep Learning}
+
+    Deep Learning ist ein Teilbereich des maschinellen Lernens, der sich auf die Verwendung neuronaler Netzwerke mit vielen Schichten konzentriert. 
+    Neuronale Netzwerke sind mathematische Modelle, die biologische Neuronen simulieren und miteinander verbundene Schichten von Neuronen enthalten. 
+    Jede Schicht nimmt Eingaben von der vorherigen Schicht entgegen und gibt Ausgaben an die nächste Schicht weiter.
+    Der Hauptvorteil von Deep Learning liegt in der Fähigkeit, automatisch Merkmale aus den Daten zu extrahieren, anstatt dass diese manuell von einem Experten definiert werden müssen. 
+    Durch die Kombination vieler Schichten können neuronale Netzwerke komplexe Muster und abstrakte Darstellungen erfassen, wodurch sie in der Lage sind, hochdimensionale Daten effektiv zu verarbeiten.
+    Das Training von Deep-Learning-Modellen erfolgt in der Regel mit Hilfe von großen Datensätzen und leistungsstarken GPUs, um die erforderlichen Berechnungen effizient durchführen zu können. 
+    Durch das iterative Training der Netzwerke werden die Gewichtungen und Parameter der einzelnen Neuronen angepasst, um die Fähigkeit des Modells zu verbessern, genaue Vorhersagen zu treffen oder komplexe Aufgaben zu lösen.
+    In den folgenden Abschnitten werden wir uns mit den grundlegenden Komponenten und Funktionen von Convolutional Neural Networks (CNNs) befassen, die eine spezielle Art von neuronalen Netzwerken sind, die insbesondere in der Bildverarbeitung weit verbreitet sind.
+    \footfullcite{lecun2015deep,schmidhuber2015deep}
+
+\subsection{Grundlagen von Convolutional Neural Networks}
+
+    Convolutional Neural Networks (CNNs) sind eine spezielle Art von neuronalen Netzwerken, die in der Lage sind, Muster und Merkmale in Bildern effektiv zu erkennen. 
+    Sie zeichnen sich durch ihre Fähigkeit aus, lokale Verbindungen und Gewichtungen zwischen den Neuronen herzustellen und so räumliche Informationen in den Daten zu berücksichtigen.
+    Die grundlegende Architektur eines CNNs besteht aus mehreren Schichten, darunter Convolutional Layers, Pooling Layers und Fully Connected Layers. 
+    In den Convolutional Layers werden Filter verwendet, um lokale Muster und Merkmale zu extrahieren, indem sie über das Eingabebild verschoben werden und die Faltungsoperation durchgeführt wird. 
+    Diese Filter können beispielsweise Kanten, Texturen oder spezifische Formen erfassen.
+    Nach den Convolutional Layers folgen Pooling Layers, die dazu dienen, die räumliche Dimension der Merkmale zu reduzieren und die wichtigsten Informationen beizubehalten. 
+    Typische Pooling-Operationen umfassen das Max-Pooling, bei dem der maximale Wert in einem Bereich ausgewählt wird, und das Average-Pooling, bei dem der Durchschnittswert berechnet wird.
+    Die Ausgabe der Pooling Layers wird dann an die Fully Connected Layers weitergeleitet, die eine traditionelle neuronale Netzwerkstruktur aufweisen. Diese Schichten dienen dazu, die erfassten Merkmale zu klassifizieren oder eine Vorhersage zu treffen, indem sie die Gewichtungen der Neuronen anpassen und die Aktivierungsfunktionen anwenden.
+    Die Stärke von CNNs liegt in ihrer Fähigkeit, hierarchische Merkmale in den Daten zu erfassen. 
+    Die früheren Schichten lernen einfache Merkmale wie Kanten und Ecken, während die späteren Schichten komplexere Merkmale und abstrakte Darstellungen lernen. 
+    Durch das Training des Netzwerks mit großen Datensätzen können CNNs die Gewichtungen ihrer Neuronen so anpassen, dass sie die gewünschte Aufgabe, wie beispielsweise die Klassifizierung von Bildern, mit hoher Genauigkeit erfüllen können.
+    CNNs haben eine breite Anwendungspalette in der Bildverarbeitung und sind in der Lage, komplexe Aufgaben wie Objekterkennung, Gesichtserkennung, Semantische Segmentierung und Bildgenerierung zu bewältigen. 
+    Ihre Leistungsfähigkeit beruht auf der Fähigkeit, automatisch relevante Merkmale aus den Daten zu extrahieren und sie in einer hierarchischen Weise zu verarbeiten.
+    In den nächsten Abschnitten werden wir uns genauer mit den einzelnen Komponenten von CNNs befassen, ihre Funktionsweise im Detail untersuchen und verschiedene Architekturen und Techniken kennenlernen, die in der Praxis weit verbreitet sind.
+    \footfullcite{lecun1998gradient,krizhevsky2012imagenet,simonyan2014very,he2016deep}
+
+[Graph mit 3 Kreisen: KI > ML > DL]
+
+\subsection{Definition und Anwendungen von CNNs}
+\begin{itemize}
+  \item Convolutional Neural Networks (CNNs) sind eine Art von künstlichen neuronalen Netzwerken, die speziell für die Verarbeitung von Daten mit räumlicher Struktur entwickelt wurden.
+  \item CNNs finden Anwendung in verschiedenen Bereichen wie Bildverarbeitung, Computer Vision und Mustererkennung.
+\end{itemize}
+
+\subsection{Wie unterscheiden sich CNNs von anderen Neuronale-Netze Architekturen?}
+\begin{itemize}
+  \item Im Gegensatz zu vollständig verbundenen neuronalen Netzwerken verwenden CNNs räumlich-sensitive Neuronen und feste Gewichtungen, um lokale Muster in den Eingabedaten zu erkennen.
+  \item CNNs verwenden auch Pooling-Operationen, um die Dimensionalität der Eingabedaten zu reduzieren und die Robustheit gegenüber Translationen zu erhöhen.
+\end{itemize}
+
+\subsection{Warum sind CNNs besonders nützlich für Bild- und Videodaten?}
+\begin{itemize}
+  \item CNNs können automatisch Merkmale aus Bildern und Videos extrahieren, ohne manuelle Merkmalsextraktion durchführen zu müssen.
+  \item Durch die Verwendung von faltenden Schichten können CNNs räumliche Hierarchien von Merkmalen lernen, was sie effektiv für die Objekterkennung und Klassifizierung macht.
+  \item CNNs können ohne viel aufwand und vortrainiertem Wissen auf weitere gebiete angepasst werden. Segmentierung von Menschen kann verwendet werden um Objekte zu erkennen.
+  \item CNNs sind auch in der Lage, Translationen, Skalierungen und Verzerrungen in den Eingabedaten zu tolerieren, was für die Verarbeitung von Bildern und Videos von Vorteil ist.
+\end{itemize}
+
+\section{Anwendungen von CNNs}
+
+\subsection{Bildklassifikation}
+\begin{itemize}
+  \item CNNs können verwendet werden, um Bilder automatisch in verschiedene Kategorien zu klassifizieren, z. B. Hund vs. Katze, Auto vs. Fahrrad usw.
+  \item Durch die Nutzung von tieferen Schichten können CNNs komplexe Merkmale wie Texturen, Formen und Strukturen erkennen, um die Bildklassifikation zu verbessern.
+\end{itemize}
+
+\subsection{Objekterkennung}
+\begin{itemize}
+  \item CNNs werden häufig für die Erkennung und Lokalisierung von Objekten in Bildern verwendet, z. B. Personen, Autos, Gebäude usw.
+  \item Durch den Einsatz von Region Proposal Networks (RPNs) können CNNs auch die genauen Begrenzungsrahmen der erkannten Objekte berechnen.
+\end{itemize}
+
+\subsection{Gesichtserkennung}
+\begin{itemize}
+  \item CNNs haben signifikante Fort
+  schritte in der Gesichtserkennung gemacht und werden häufig für die Identifizierung von Personen in Bildern und Videos eingesetzt.
+  \item Durch die Verwendung von CNNs können Gesichtsmerkmale wie Augen, Nase und Mund erkannt und zur Identifizierung von Personen verwendet werden.
+  \item Gesichtserkennung mit CNNs hat eine Vielzahl von Anwendungen, darunter Zugangskontrolle, Überwachungssysteme und biometrische Authentifizierung.
+\end{itemize}
+
+\subsection{Natural Language Processing (NLP)}
+\begin{itemize}
+  \item Obwohl CNNs hauptsächlich für die Verarbeitung von Bildern verwendet werden, können sie auch in bestimmten NLP-Anwendungen eingesetzt werden.
+  \item In der NLP können CNNs zur Klassifizierung von Texten, Sentimentanalyse, maschinellen Übersetzung und Textgenerierung eingesetzt werden.
+  \item Durch die Anwendung von Faltungsschichten auf Textsequenzen können CNNs relevante Merkmale extrahieren und wichtige Informationen für die Klassifizierung liefern.
+\end{itemize}
+
+\subsection{Weitere Anwendungen}
+\begin{itemize}
+  \item Neben den oben genannten Anwendungen finden CNNs in vielen anderen Bereichen Anwendung, wie z. B. medizinische Bildgebung, autonome Fahrzeuge, Spracherkennung und mehr.
+  \item CNNs ermöglichen die Automatisierung und Verbesserung verschiedener Aufgaben, indem sie Muster und Zusammenhänge in den Daten erkennen.
+  \item Durch die kontinuierliche Weiterentwicklung von CNNs eröffnen sich ständig neue Anwendungsmöglichkeiten in verschiedenen Branchen.
+\end{itemize}
+
+\section{Architektur von CNNs}
+
+\subsection{Input Layer}
+\begin{itemize}
+  \item Die Input Layer eines CNNs akzeptiert die Rohdaten, normalerweise Bilder oder Videos, und führt die Initialverarbeitung der Daten durch.
+  \item Die Eingabeschicht besteht aus Neuronen, die jeweils mit bestimmten Bereichen des Eingabebildes verbunden sind.
+  \item Die Input Layer ist normalerweiße einer festen größe angepasst (meist 244x244x3 für RGB)
+\end{itemize}
+
+\subsection{Hidden Layers}
+
+https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/
 
 
+\begin{itemize}
+  \item Hidden Layers sind die Hauptkomponente eines CNNs und bestehen standardmäßig aus Convolutional-Layern, Pooling-Layern, vollständig verbundenen Layern und Aktivierungsfunktionen.
+  \item Convolutional-Layer führen Faltungsoperationen auf den Eingabedaten durch, um Merkmale zu extrahieren.
+  \subitem Die Convolutional Layers sind so tief, wie man auch Merkmale braucht: Die ersten layers (je nach implementierung?) finden einfache / simple merkmale herraus wie kanten oder Kurven (selten, je nach input funktionen)
+  \subitem Weitere Layers kombinieren vorherige Layers und extrahieren kompliziertere Merkmale.
+  \subitem Das kann so weit gehen, dass ganze gesichter oder Objecte erkennt werden. 
+  \item Pooling-Layer reduzieren die Dimensionalität der Daten und erhöhen die Translationssicherheit.
+  \subitem Pooling layers sind zwischen Convolutional layers und dienen der Extraktion von bedeutungsvollen Merkmalen aus den Ausgabedaten der vorherigen Convolutional-Schichten. Sie reduzieren die Dimensionalität der Daten, indem sie die räumliche Ausdehnung der Merkmalskarten verringern. Dies geschieht durch Zusammenfassen oder Aggregieren von Informationen innerhalb lokaler Nachbarschaften.
 
-\section{Architecture of CNNs}
+Der Hauptzweck des Pooling besteht darin, die Anzahl der Parameter und die Rechenkomplexität des Modells zu reduzieren, indem weniger Merkmale beibehalten werden. Durch das Zusammenfassen von Informationen wird auch die Lokalisierungsinvarianz verbessert, da die Position eines bestimmten Merkmals in den Merkmalskarten weniger wichtig wird.
 
-\subsection{Input layer}
-\subsection{Hidden layers}
-\subsection{Output layer}
+Allerdings erhöhen Pooling-Layer nicht unbedingt die Translationssicherheit. Vielmehr kann durch das Zusammenfassen von Informationen während des Pooling-Prozesses ein gewisser Informationsverlust auftreten, da nur die dominanten Merkmale beibehalten werden. Dies kann zu einem Verlust an Feinheiten und detaillierten Informationen führen, die möglicherweise für die genaue Klassifizierung oder Segmentierung von Objekten wichtig sind.
+
+Insgesamt sind Pooling-Layer eine wichtige Komponente von Convolutional Neural Networks (CNNs), da sie die Dimensionalität reduzieren und die Rechenressourcen effizienter nutzen können. Sie sollten jedoch mit Bedacht eingesetzt werden, abhängig von den Anforderungen der spezifischen Aufgabe und dem Trade-off zwischen Dimensionsreduktion und Erhaltung wichtiger Informationen.
+
+Brudder idk...
 
 
+  
+  \item Aktivierungsfunktionen führen nichtlineare Transformationen durch und erhöhen die Ausdrucksfähigkeit des Netzwerks.
+  \item Fully connected layers kommen nur zum Schluss (nicht zwischendurch).
+  \item Vollständig verbundene Schichten dienen der Klassifizierung der extrahierten Merkmale.
+\end{itemize}
+
+\subsection{Output Layers}
+\begin{itemize}
+  \item Die Ausgabeschicht ist die letzte Schicht des CNNs und gibt die endgültige Vorhersage, Klassifizierung oder segmentation aus.
+  \item Je nach Anwendungsfall kann die Ausgabeschicht verschiedene Formen haben, z. B. eine einzelne Neuronenausgabe für binäre Klassifizierung, mehrere Neuronenausgaben für Multi-Klassen-Klassifizierung oder bei unserem projekt eine Ausgabe die genau so groß ist wie das eingangs bild. Also output ist ein weiteres Bild.
+\end{itemize}
 
 \section{Convolutional layers}
 
-\subsection{Pooling layers}
-\subsection{Fully Connected layers}
-\subsection{Activation functions}
-\subsection{Loss functions}
+\subsection{Pooling-Layers}
+\begin{itemize}
+  \item Pooling-Layers reduzieren die Dimensionalität der Daten, indem sie die Aktivierungswerte in bestimmten Bereichen zusammenfassen.
+  \item Typische Pooling-Operationen sind das Max-Pooling und das Average-Pooling, die die maximalen bzw. durchschnittlichen Werte in einem Bereich auswählen.
+  \item Bei CNNs werden im allgemeinen Max-Pooling layers genutzt.
+  \item Pooling-Schichten helfen dabei, die Anzahl der Parameter im Netzwerk zu reduzieren und die räumliche Invarianz gegenüber kleinen Translationen zu erreichen.
+\end{itemize}
+
+\subsection{Fully-Connected-Layers}
+\begin{itemize}
+  \item Fully Connected Layers sind traditionelle neuronale Netzwerk-Schichten, bei denen alle Neuronen mit allen Neuronen der vorherigen Schicht verbunden sind.
+  \item In CNNs werden vollständig verbundene Schichten normalerweise am Ende des Netzwerks verwendet, um die extrahierten Merkmale zu klassifizieren.
+  \item Die Anzahl der Neuronen in den vollständig verbundenen Schichten hängt von der Anzahl der Klassen oder der spezifischen Aufgabe ab.
+  \item Dropout können die Vernetzung der Neuronen minimieren, sodass kein overfitting passiert.
+
+  "The last layer type we are going to discuss is dropout. Dropout is actually a form of regularization that aims to help prevent overfitting by increasing testing accuracy, perhaps at the expense of training accuracy. For each mini-batch in our training set, dropout layers, with probability p, randomly disconnect inputs from the preceding layer to the next layer in the network architecture." source: siehe link oben
+\end{itemize}
+
+\subsection{Aktivierungsfunktionen}
+\begin{itemize}
+  \item Aktivierungsfunktionen werden auf die Ausgaben der Neuronen angewendet und führen nichtlineare Transformationen durch.
+  \item Gängige Aktivierungsfunktionen in CNNs sind die ReLU (Rectified Linear Unit), die Sigmoid-Funktion und die tanh-Funktion.
+  \item Aktivierungsfunktionen helfen dabei, die Fähigkeit des Netzwerks zur Modellierung komplexer Zusammenhänge zu verbessern.
+\end{itemize}
+
+\subsection{Verlustfunktionen}
+\begin{itemize}
+  \item Verlustfunktionen messen den Unterschied zwischen den Vorhersagen des Modells und den tatsächlichen Werten der Daten.
+  \item In der Klassifizierung werden häufig Verlustfunktionen wie die Cross-Entropy-Loss-Funktion verwendet.
+  \item Verlustfunktionen dienen als Grundlage für die Berechnung des Fehlersignals und die Aktualisierung der Gewichte im Netzwerk während des Trainingsprozesses.
+\end{itemize}
+
+So sieht es bei uns aus:
+
+Training [   0/10000] ..........0 ) Loss= 1.1146412
+Training [   1/10000] ..........1 ) Loss= 1.0547378
+Training [   2/10000] ..........2 ) Loss= 1.1281569
+Training [   3/10000] ..........3 ) Loss= 1.1044791
+
+...
+
+Training [7077/10000] ..........7077 ) Loss= 0.059984926
+Training [7078/10000] ..........7078 ) Loss= 0.073117875
+Training [7079/10000] ..........7079 ) Loss= 0.05900609
+Training [7080/10000] ..........7080 ) Loss= 0.040167235
+
+
+
+% Das soll als fazit dienen, keine ahnung du... 
+Indem wir die Architektur und die verschiedenen Schichten eines Convolutional Neural Networks verstehen, können wir die Funktionsweise und die Fähigkeiten dieser leistungsstarken neuronalen Netzwerkarchitektur besser erfassen.
