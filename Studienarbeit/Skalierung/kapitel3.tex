@@ -90,17 +90,23 @@
     \section{Bilineare Interpolation}
     
         Interpolation cool weil, schnell und ergebniss recht schön.
+
+    % Bilinear ist well aus 2 pixel linear interpoliert wird. (Bild farbig)
+    % Die Distanz wir linear berechnet aus den 4 nachbar pixel (Graph 2 punkte)
+    % wird fast überall genutzt (citation und quelle angeben)
     
+    % Vorteile: Schnell und kompilizert zu programmieren, sieht nicht beschissen aus und kann immer angewendet werden
+    % Nachteile: Sieht nicht perfekt aus (Siehe Bicubic oder lanzeros) - ist bei extremen skalierungen nicht super
 
     
-    \begin{figure}
+    \begin{figure}[h]
         \centering
         \includegraphics[width=\textwidth]{img/pixel_verdopplung.png}
         \caption{Beispielgrafik zur Pixelverdopplung.}
         \label{fig:my_label}
     \end{figure}
     
-    \begin{figure}
+    \begin{figure}[h]
         \centering
         \includegraphics{img/pixel_verdopplung_graph.png}
         \caption{Graph über bilineare Skalierung.}
@@ -153,6 +159,12 @@
 
 \subsection{Mathematische Grundlagen}
 
+
+% Erläuterung der mathematischen Grundlagen der bikubischen Interpolation, einschließlich der Verwendung von kubischen Polynomen und der Stichprobentheorie.
+% Herleitung der bikubischen Interpolationsformel und der Eigenschaften der resultierenden Funktion.
+% Diskussion der Vor- und Nachteile der Verwendung kubischer Funktionen für die Interpolation im Vergleich zu anderen Funktionstypen.
+% Überblick über die Rolle der Fourier-Analyse und der Fourier-Transformationen bei der Bildinterpolation und wie sich dies auf die bikubische Interpolation bezieht.
+    
 Die bikubische Interpolation ist ein mathematisches Verfahren zur Schätzung der Werte einer kontinuierlichen Funktion an einer gegebenen Stelle, indem eine Funktion mit kubischen Polynomen verwendet wird, die durch benachbarte Funktionswerte verläuft. Dabei wird das umliegende Gebiet untersucht und die Werte werden basierend auf der Stichprobentheorie geschätzt.
 
 Die bikubische Interpolationsformel ist eine Erweiterung der Bilinearinterpolation auf vier umliegende Pixel und verwendet eine Funktion, die durch benachbarte Funktionswerte verläuft. Die resultierende Funktion ist stetig differenzierbar und besitzt glatte partielle Ableitungen.
@@ -163,6 +175,13 @@ Die Fourier-Analyse und die Fourier-Transformationen spielen eine wichtige Rolle
 
 \subsection{Algorithmische Implementierung}
 
+
+% Überblick über die algorithmischen Schritte bei der bikubischen Interpolation, einschließlich der Auswahl der umgebenden Pixel und der Gewichte sowie der Berechnung der neuen Pixelwerte.
+% Diskussion von Techniken zur Optimierung der Leistung der bikubischen Interpolation, wie z. B. die Vorberechnung von Lookup-Tabellen, Parallelisierung und Speicherverwaltung.
+% Untersuchung von Grenzfällen und Randbedingungen, die bei der bikubischen Interpolation auftreten können, und wie diese effektiv behandelt werden können.
+% Vergleich der algorithmischen Implementierung der bikubischen Interpolation mit anderen Interpolationsverfahren, wie z.B. der bilinearen Interpolation und der Lanczos-Interpolation.
+
+    
 Die bikubische Interpolation erfolgt durch die Auswahl von umgebenden Pixeln und deren Gewichte sowie der Berechnung der neuen Pixelwerte. Eine Möglichkeit zur Optimierung der Leistung besteht darin, Lookup-Tabellen vorzubereiten, Parallelisierungstechniken zu verwenden und die Speicherverwaltung zu optimieren.
 
 Grenzfälle und Randbedingungen können bei der bikubischen Interpolation auftreten und müssen effektiv behandelt werden. Die algorithmische Implementierung der bikubischen Interpolation kann mit anderen Interpolationsverfahren wie der bilinearen Interpolation und der Lanczos-Interpolation verglichen werden.
@@ -170,6 +189,7 @@ Grenzfälle und Randbedingungen können bei der bikubischen Interpolation auftre
 Ein Beispiel für die Implementierung der bikubischen Interpolation in Python ist der folgende Code:
 
 Die Methode `manipulate` der Klasse `BicubicInterpolation` implementiert die bicubische Interpolation für das Vergrößern von Bildern. Der wichtigste Teil des Codes ist die Schleife, die über jedes Pixel einen Kernel berechnet, der die jeweiligen Gewichte der benachbarten Pixel erechnet. In den genannten Zeilen wird ein 4x4-Kern um das aktuelle Pixel herum gebildet und für jeden Pixel im Kern werden die Gewichte berechnet. Dabei wird die `_get_weight`-Funktion aufgerufen, welche auf der Basis einer kubischen Kurve das Gewicht für einen bestimmten Abstand berechnet. Die berechneten Gewichte werden in eine Liste `weights` hinzugefügt. Diese Gewichte dienen später bei der Interpolation des aktuellen Pixels als multiplikative Faktoren für die umliegenden Pixel im Originalbild.
+
 
 \begin{lstlisting}
 weights = []
@@ -181,30 +201,12 @@ for j in range(-1, 3):
 
 \subsection{Analyse der Leistung}
 
-Zur Bewertung der Leistung von Bildinterpolationsverfahren werden verschiedene Kriterien verwendet, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz. Die Leistung der bikubischen Interpolation kann mit anderen Interpolationstechniken anhand von Testbildern und Datensätzen verglichen werden. Dabei werden verschiedene Parameter wie Bildgröße, Auflösung und Inhalt untersucht, um ihre Auswirkungen auf die Leistung der bikubischen Interpolation zu analysieren. %...
+    Zur Bewertung der Leistung von Bildinterpolationsverfahren werden verschiedene Kriterien verwendet, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz. 
+    Die Leistung der bikubischen Interpolation kann mit anderen Interpolationstechniken anhand von Testbildern und Datensätzen verglichen werden. 
+    Dabei werden verschiedene Parameter wie Bildgröße, Auflösung und Inhalt untersucht, um ihre Auswirkungen auf die Leistung der bikubischen Interpolation zu analysieren. %...
 
 
 % Ich hab das obere vom bot schreiben lassn
-
-
-
-
-
-
-
-    \subsection{Mathematische Grundlagen}
-
-    Erläuterung der mathematischen Grundlagen der bikubischen Interpolation, einschließlich der Verwendung von kubischen Polynomen und der Stichprobentheorie.
-    Herleitung der bikubischen Interpolationsformel und der Eigenschaften der resultierenden Funktion.
-    Diskussion der Vor- und Nachteile der Verwendung kubischer Funktionen für die Interpolation im Vergleich zu anderen Funktionstypen.
-    Überblick über die Rolle der Fourier-Analyse und der Fourier-Transformationen bei der Bildinterpolation und wie sich dies auf die bikubische Interpolation bezieht.
-
-    \subsection{Algorithmische Implementierung}
-
-    Überblick über die algorithmischen Schritte bei der bikubischen Interpolation, einschließlich der Auswahl der umgebenden Pixel und der Gewichte sowie der Berechnung der neuen Pixelwerte.
-    Diskussion von Techniken zur Optimierung der Leistung der bikubischen Interpolation, wie z. B. die Vorberechnung von Lookup-Tabellen, Parallelisierung und Speicherverwaltung.
-    Untersuchung von Grenzfällen und Randbedingungen, die bei der bikubischen Interpolation auftreten können, und wie diese effektiv behandelt werden können.
-    Vergleich der algorithmischen Implementierung der bikubischen Interpolation mit anderen Interpolationsverfahren, wie z.B. der bilinearen Interpolation und der Lanczos-Interpolation.
 
     \subsection{Implementation}
     \begin{lstlisting}
@@ -221,12 +223,7 @@ Zur Bewertung der Leistung von Bildinterpolationsverfahren werden verschiedene K
     new_y = np.linspace(0, height-1, new_height)
     return f(new_x, new_y)
     \end{lstlisting}
-    \subsection{Analyse der Leistung}
 
-    Erläuterung der Kriterien, die zur Bewertung der Leistung von Bildinterpolationsverfahren verwendet werden, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz.
-    Vergleich der Leistung der bikubischen Interpolation mit anderen Interpolationstechniken unter Verwendung einer Reihe von Testbildern und Datensätzen.
-    Untersuchung der Auswirkungen verschiedener Parameter wie Bildgröße, Auflösung und Inhalt auf die Leistung der bikubischen Interpolation.
-    Diskussion der potenziellen Einschränkungen und Kompromisse, die mit der Verwendung der bikubischen Interpolation verbunden sind, sowie der Faktoren, die ihre Leistung in verschiedenen Kontexten beeinflussen können.
 
     \subsection{Anwendungen}
 
@@ -242,14 +239,14 @@ Zur Bewertung der Leistung von Bildinterpolationsverfahren werden verschiedene K
 
 
 \section{Lanczos-Interpolation}
-Die Lanczos-Interpolation ist eine Methode zur Rekonstruktion von Werten im Bild aus diskreten Abtastungen. 
-In diesem Abschnitt wird die mathematische Grundlage und die praktische Anwendung der Lanczos-Interpolation kurz erläutert.
+    Die Lanczos-Interpolation ist eine Methode zur Rekonstruktion von Werten im Bild aus diskreten Abtastungen. 
+    In diesem Abschnitt wird die mathematische Grundlage und die praktische Anwendung der Lanczos-Interpolation kurz erläutert.
 
 \subsection{Mathematische Grundlage}
 
-Die Lanczos-Interpolation basiert auf der Idee, ein kontinuierliches Signal $f(x)$ durch eine Summe von gewichteten Basisfunktionen zu approximieren. 
-Dieses Signal können zum Beispiel Farbwerte in einem Bild sein.
-Die Basisfunktionen werden durch das sogenannte Lanczos-Kernel definiert:
+    Die Lanczos-Interpolation basiert auf der Idee, ein kontinuierliches Signal $f(x)$ durch eine Summe von gewichteten Basisfunktionen zu approximieren. 
+    Dieses Signal können zum Beispiel Farbwerte in einem Bild sein.
+    Die Basisfunktionen werden durch das sogenannte Lanczos-Kernel definiert:
 
 \begin{equation}
 MARC HIER Formel aus BILD EINFÜGEN
@@ -309,9 +306,15 @@ Die bicubische Interpolation ist eine Methode, bei der die neuen Pixelwerte aus 
 Diese Methode führt oft zu einer noch glatteren Interpolation als die bilineare Interpolation, aber sie kann auch zu einer Überbetonung von Bildstrukturen führen.
 
 \subsection{Lanczos Interpolation}
-y
 Die Lanczos Interpolation ist eine Methode, bei der die neuen Pixelwerte aus einer Lanczos-Funktion berechnet werden, die aus einer begrenzten Anzahl von nächstgelegenen Pixeln im Originalbild abgeleitet wird. 
 Diese Methode führt oft zu einer sehr glatten Interpolation und reduziert das Rauschen im Bild, aber sie kann auch zu einer gewissen Unschärfe im Bild führen.
+
+\section{Analyse der Leistung}
+
+    Erläuterung der Kriterien, die zur Bewertung der Leistung von Bildinterpolationsverfahren verwendet werden, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz.
+
+    Untersuchung der Auswirkungen verschiedener Parameter wie Bildgröße, Auflösung und Inhalt auf die Leistung der bikubischen Interpolation.
+    Diskussion der potenziellen Einschränkungen und Kompromisse, die mit der Verwendung der bikubischen Interpolation verbunden sind, sowie der Faktoren, die ihre Leistung in verschiedenen Kontexten beeinflussen können.
 
 \subsection{Vergleich und Zusammenfassung}
 

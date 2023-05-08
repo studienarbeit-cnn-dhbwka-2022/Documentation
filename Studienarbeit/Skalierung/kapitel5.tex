@@ -16,19 +16,23 @@
         \subsubsection{Definition und Berechnung von \ac{PSNR}}
             Die Definition von PSNR lautet wie folgt:
             \begin{equation}
-            PSNR = 10 \log_{10} \left( \frac{Peak^2}{MSE} \right) 
+            PSNR = 20 \log_{10} \left( \frac{Peak^2}{MSE} \right) 
             %TODO prüf malob die Formel stimmt. Bin verzweifelt und hab die irwo aus stackoverflow geholt
             \end{equation}
             
             wobei Peak der höchste mögliche Wert des Signals ist, der meist auf 255 bei 8-Bit-Graustufenbildern oder 65535 bei 16-Bit-Graustufenbildern gesetzt wird. %nur so semi verstanden aber die Quellen haben da ünbereingestimmt (stackoverflow help me) 
-            Der Mean Squared Error (MSE) ist definiert als der Durchschnitt der quadrierten Unterschiede zwischen jedem Pixel des Originalbildes und dem rekonstruierten Bild. 
+            Der Mean Squared Error (MSE) ist definiert als der Durchschnitt der quadrierten Unterschiede zwischen jedem Pixel des Originalbildes und dem rekonstruierten Bild.
+
+            Formel MSE: MSE = (1/(m*n))*sum(sum((f-g).^2))
+
+            
             Je höher der PSNR-Wert, desto geringer ist der MSE und desto besser ist die Qualität der Rekonstruktion.
         %TODO Quelle für Formel (wWill kein Stackoverflow link angeben) 
         \subsubsection{Anwendung von PSNR bei der Bewertung von Bildqualität}
-            Obwohl PSNR eine weiz verbreitete Methode zur Bewertung der Qualität von Bildern ist, hat sie auch ihere Limitationen.
-            Zum einen berücksichtigt sie nur die Fehler zwichen Original- und Rekonstruktionsbildern und vernachlässigt andere Faktoren wie Bildverzehrrungen, die durch Komprimierung oder Filterung entstehen können.
-            Zum andern ist der PSNR-Wert nicht sensativ für menschlich wargenommene Verzehrrungen, wie z.B. Farbverschiebungen oder Artefakte.
-            Troz dieser Limitazionen bleibt PSNR eine wichtige Metrik in der Bildverarbeitung und wird oft in der Praxis verwendet, um die Qualität von Bildrekunstruktionen zu bewerten und zu vergleichen.
+            Obwohl PSNR eine weit verbreitete Methode zur Bewertung der Qualität von Bildern ist, hat sie auch ihre Limitationen.
+            Zum einen berücksichtigt sie nur die Fehler zwischen Original- und Rekonstruktionsbildern und vernachlässigt andere Faktoren wie Bildverzerrungen, die durch Komprimierung oder Filterung entstehen können.
+            Zum andern ist der PSNR-Wert nicht sensitiv für menschlich wahrgenommene Verzerrungen, wie z.B. Farbverschiebungen oder Artefakte.
+            Trotz dieser Limitationen bleibt PSNR eine wichtige Metrik in der Bildverarbeitung und wird oft in der Praxis verwendet, um die Qualität von Bildrekonstruktionen zu bewerten und zu vergleichen.
             \footfullcite{korhonen2012peak}
     \subsection{Structural Similarity Index (SSIM)}
 
@@ -42,14 +46,15 @@
         \footfullcite{chen2011fast}
         \subsubsection{Anwendung von SSIM bei der Bewertung von Bildqualität}
         
-            SSIM wird häufg verwendet, um die Qualität von Bildrekunstruktionen zu bewertn. Es hat sich gezeigt, dass SSIM bessr als PSNR die wahrgenomme Bildqulität widrspieglt. 
-            Dies ligt daran, dass SSIM die strukturele Ähnlichkeit zwishen den beiden Bilddern berücksichtigt, währed PSNR nur die Differnz der Pixelwete betrachtet.
+            SSIM wird häufig verwendet, um die Qualität von Bildrekonstruktionen zu bewerten. Es hat sich gezeigt, dass SSIM besser als PSNR die wahrgenommene Bildqualität wiederspiegelt. 
+            Dies liegt daran, dass SSIM die strukturelle Ähnlichkeit zwischen den beiden Bildern berücksichtigt, während PSNR nur die Differenz der Pixelweite betrachtet.
         \footfullcite{1284395}
         \subsubsection{Vorteile von SSIM im Vergleich zu PSNR}
         
             Im Vergleich zum PSNR hat SSIM mehrere Vorteile. Zum einen berücksichtigt es die strukturelle Ähnlichkeit zwischen den beiden Bildern, was zu einer besseren Bewertung der wahrgenommenen Bildqualität führt. 
-            Zum anderen ist SSIMin der Lage, Verzerrungen zu erkennen, die durch Kompression oder andere Arten von Bildverarbeitung verursacht werden, während PSNR dies nicht tut.
+            Zum anderen ist SSIM in der Lage, Verzerrungen zu erkennen, die durch Kompression oder andere Arten von Bildverarbeitung verursacht werden, während PSNR dies nicht tut.
         \footfullcite{5596999}
+        
         \subsubsection{Limitationen von SSIM}
         
             Obwohl SSIM eine bessere Metrik zur Bewertung der Bildqualität als PSNR darstellt, hat es auch seine Limitationen. 
@@ -61,13 +66,15 @@
         MOS basiert auf der Bewertung durch menschliche Beobachter, die gebeten werden, die Qualität von Original- und Rekonstruktionsbildern auf einer Skala von 1 bis 5 oder 1 bis 10 zu bewerten.
         MOS ist eine wichtige Metrik, da sie die subjektive Wahrnehmung der Qualität eines Bildes durch den Betrachter berücksichtigt.
         \footfullcite{sheikh2006image}
+        
     \subsection{Peak Signal-to-Noise Ratio der Y-Komponente (PSNR-Y)}
         Die Y-Komponente im YCbCr-Farbraum enthält die Helligkeitsinformationen des Bildes. 
         Das Peak Signal-to-Noise Ratio der Y-Komponente \ac{PSNR-Y} ist eine spezielle Version des PSNR, die nur die Helligkeitsinformationen des Originalbildes und des rekonstruierten Bildes berücksichtigt. 
         PSNR-Y ist eine wichtige Metrik zur Bewertung der Qualität von Skalierungsmethoden für Graustufen- oder Schwarz-Weiß-Bilder.        
         Diese Qualitätsmetriken sind wichtigeWerkzeuge für diew Bewertung und den Vergleich von Skalierungsmelthoden in der Bildverarbeitung.
-        Es ist jedoch wichtig zu beachten, dass keine einzelne Metrik alle Aspekte der Bildqualität abdeckt. Eine umfassende Bewertung sollte mehrere Metriken kombinieren und auch die subjektive Wahrnehmung %Ich hoffe ich erinnere mich morgen noch an all den Mist, den ich mir gerade in den Schädel gehämmert habe 
+        Es ist jedoch wichtig zu beachten, dass keine einzelne Metrik alle Aspekte der Bildqualität abdeckt. Eine umfassende Bewertung sollte mehrere Metriken kombinieren und auch die subjektive Wahrnehmung 
         \footfullcite{huang2010new}
+        
     \subsection{Computational Speed}
     
         Die Wahl einer Skalierungsmethode hängt nicht nur von der Bildqualität, sondern auch von der benötigten Rechenleistung ab. 
@@ -100,13 +107,13 @@
         Die Evaluation von Skalierungsmethoden in der Bildverarbeitung erfordert eine umfassende und präzise Analyse verschiedener Kriterien, um die optimale Methode auszuwählen. 
         Ein wesentlicher Aspekt bei dieser Bewertung ist der Bildvergleich und die visuelle Bewertung, die auf der subjektiven Wahrnehmung von menschlichen Beobachtern beruhen.
         Die visuelle Bewertung von Bildern durch menschliche Beobachter ermöglicht eine direkte und subjektive Beurteilung der Bildqualität basierend auf wahrgenommenen visuellen Eigenschaften. 
-        Verschiedene Methoden des Bildvergleichs werden eingesetzt, wie beispiellssweise der Side-by-Side-Vergleich, bei dem zwei Bilder direkt miteinander verglichen werden, oder der Triple-Stimulus-Test, bei dem ein Originalbild mit zwei rekonstruierten Bildern verglichen wird.
+        Verschiedene Methoden des Bildvergleichs werden eingesetzt, wie beispielsweise der Side-by-Side-Vergleich, bei dem zwei Bilder direkt miteinander verglichen werden, oder der Triple-Stimulus-Test, bei dem ein Originalbild mit zwei rekonstruierten Bildern verglichen wird.
         Diese Methoden des Bildvergleichs und der visuellen Bewertung werden auch bei der Evaluierung von Skalierungsmethoden angewendet. 
         Durch den Vergleich der rekonstruierten Bilder mit dem Originalbild können verschiedene Skalierungsmethoden anhand ihrer visuellen Qualität beurteilt und verglichen werden. 
-        deis ermöglicht eine umfangreiche Analyse und eine direkte Gegenüberstellung der unterschiedlichen Methoden.
+        dies ermöglicht eine umfangreiche Analyse und eine direkte Gegenüberstellung der unterschiedlichen Methoden.
         Es ist jedoch von entscheidender Bedeutung, die Limitationen und Vorbehalte im Zusammenhang mit der visuellen Bewertung von Bildern zu berücksichtigen. 
         Die subjektive Wahrnehmung kann von Person zu Person variieren und wird auch von anderen Faktoren wie Beleuchtung, Betrachtungsabstand und individuellen Präferenzen beeinflusst. 
-        Darüber hinaus können kompleye visuelle Verzerrungen nicht immer präzise durch die visuelle Bewertung erfasst werden. 
+        Darüber hinaus können komplexe visuelle Verzerrungen nicht immer präzise durch die visuelle Bewertung erfasst werden. 
         Daher sollten bei der Bewertung von Skalierungsmethoden auch objektive Metriken und weitere Evaluierungskriterien einbezogen werden.
         Insgesamt spielt der Bildvergleich und die visuelle Bewertung eine bedeutende Rolle bei der Evaluierung von Skalierungsmethoden in der Bildverarbeitung.
         Durch die Kombination der subjektiven visuellen Bewertung mit objektiven Metriken können fundierte Entscheidungen getroffen werden, um die optimale Methode gemäß den spezifischen Anforderungen der Anwendung auszuwählen. 
@@ -116,16 +123,16 @@
     \subsection{Effektivität und Effizienz}
 
         Die Bewertung von Skalierungsmethoden in der Bildverarbeitung erfordert eine umfassende Betrachtung sowohl der Effektivität, also der Bildqualität, als auch der Effizienz, insbesondere der Computational Speed. 
-        Es besteht ein inhärenter Trade,off zwischen der erzielten Bildqualität und der benötigten Rechenleistung, der bei der Auswahl der optimalen Skalierungsmethode berücksichtigt werden muss.
+        Es besteht ein inhärenter Trade-off zwischen der erzielten Bildqualität und der benötigten Rechenleistung, der bei der Auswahl der optimalen Skalierungsmethode berücksichtigt werden muss.
         Die Effektivität einer Skalierungsmethode bezieht sich auf die erzielte Bildqualität der rekonstruierten Bilder. 
         Eine Methode, die eine höhere Bildqualität liefert, wird in der Regel auch mehr Rechenleistung benötigen und somit langsamer sein als eine Methode mit geringerer Bildqualität. 
         Daher ist es von großer Bedeutung, die gewünschte Bildqualität und die verfügbare Rechenleistung sorgfältig abzuwägen, um die beste Skalierungsmethode zu wählen.
-        Die Evaluierung der Trade-offs zwischen Effektivität und Efizienz erfordert eine gründliche Analyse der Leistungsmerkmale verschiedener Skalierungsmethoden. 
+        Die Evaluierung der Trade-offs zwischen Effektivität und Effizienz erfordert eine gründliche Analyse der Leistungsmerkmale verschiedener Skalierungsmethoden. 
         Hierbei können Kosten-Nutzen-Analysen hilfreich sein, um die Auswirkungen der gewählten Methode auf die Bildqualität und die erforderliche Rechenleistung abzuschätzen. 
         Indem die Kosten in Bezug auf die erzielte Bildqualität bewertet werden, kann die optimale Methode entsprechend den spezifischen Anforderungen des Anwendungsbereichs ausgewählt werden.
         Die Relevanz von Effektivität und Effizienz variiert je nach Anwendungsbereich der Bildverarbeitung. 
         In einigen Fällen, wie beispielsweise medizinischen Bildgebungsverfahren oder hochauflösenden Videoanwendungen, ist eine hohe Bildqualität von größter Bedeutung, selbst wenn dies mit einem höheren Rechenaufwand einhergeht. 
-        In anderen Szenarien, wie in Echtzeeit-Anwendungen oder mobilen Geräten, kann die Effizienz und die schnelle Verarbeitung der Bilder priorisiert werden, auch wenn dies zu einer gewissen Einbuße der Bildqualität führt.
+        In anderen Szenarien, wie in Echtzeit-Anwendungen oder mobilen Geräten, kann die Effizienz und die schnelle Verarbeitung der Bilder priorisiert werden, auch wenn dies zu einer gewissen Einbuße der Bildqualität führt.
         Insgesamt ist es von entscheidender Bedeutung, sowohl die Effektivität als auch die Effizienz bei der Wahl der besten Skalierungsmethode zu berücksichtigen. 
         Die richtige Balance zwischen Bildqualität und erforderlicher Rechenleistung zu finden, ermöglicht die optimale Nutzung von Ressourcen und die Erfüllung der spezifischen Anforderungen des jeweiligen Anwendungsbereichs der Bildverarbeitung.
         \footfullcite{zhang2019efficiency,gu2019comprehensive,hu2020efficient}
