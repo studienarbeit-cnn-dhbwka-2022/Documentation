@@ -155,7 +155,7 @@
             self.newImg.putpixel((x, y), new_pixel)
     \end{lstlisting}\footfullcite{1409828}
     
-\section{Bicubische Interpolation}
+\section{Bikubische Interpolation}
 
 \subsection{Mathematische Grundlagen}
 
@@ -188,7 +188,7 @@ Grenzfälle und Randbedingungen können bei der bikubischen Interpolation auftre
 
 Ein Beispiel für die Implementierung der bikubischen Interpolation in Python ist der folgende Code:
 
-Die Methode `manipulate` der Klasse `BicubicInterpolation` implementiert die bicubische Interpolation für das Vergrößern von Bildern. Der wichtigste Teil des Codes ist die Schleife, die über jedes Pixel einen Kernel berechnet, der die jeweiligen Gewichte der benachbarten Pixel erechnet. In den genannten Zeilen wird ein 4x4-Kern um das aktuelle Pixel herum gebildet und für jeden Pixel im Kern werden die Gewichte berechnet. Dabei wird die `_get_weight`-Funktion aufgerufen, welche auf der Basis einer kubischen Kurve das Gewicht für einen bestimmten Abstand berechnet. Die berechneten Gewichte werden in eine Liste `weights` hinzugefügt. Diese Gewichte dienen später bei der Interpolation des aktuellen Pixels als multiplikative Faktoren für die umliegenden Pixel im Originalbild.
+Die Methode `manipulate` der Klasse `BicubicInterpolation` implementiert die bikubische Interpolation für das Vergrößern von Bildern. Der wichtigste Teil des Codes ist die Schleife, die über jedes Pixel einen Kernel berechnet, der die jeweiligen Gewichte der benachbarten Pixel erechnet. In den genannten Zeilen wird ein 4x4-Kern um das aktuelle Pixel herum gebildet und für jeden Pixel im Kern werden die Gewichte berechnet. Dabei wird die `_get_weight`-Funktion aufgerufen, welche auf der Basis einer kubischen Kurve das Gewicht für einen bestimmten Abstand berechnet. Die berechneten Gewichte werden in eine Liste `weights` hinzugefügt. Diese Gewichte dienen später bei der Interpolation des aktuellen Pixels als multiplikative Faktoren für die umliegenden Pixel im Originalbild.
 
 
 \begin{lstlisting}
@@ -282,7 +282,7 @@ In der Regel werden hierfür spezielle Algorithmen eingesetzt, die auf der effiz
 \section{Zusammenfassung zu Vor- und Nachteilen von Techniken in der Bildverarbeitung}
 
 In der Bildverarbeitung gibt es verschiedene Techniken, die verwendet werden können, um ein Bild zu bearbeiten oder zu manipulieren. 
-In diesem Abschnitt werden wir uns mit einigen gängigen Techniken zur Interpolation von Bildern beschäftigen, nämlich Pixelverdopplung, Nearest Neighbour Interpolation, Bilineare Interpolation, Bicubische Interpolation und Lanczos Interpolation. 
+In diesem Abschnitt werden wir uns mit einigen gängigen Techniken zur Interpolation von Bildern beschäftigen, nämlich Pixelverdopplung, Nearest Neighbour Interpolation, Bilineare Interpolation, Bikubische Interpolation und Lanczos Interpolation. 
 Wir werden jeweils auf die Vor- und Nachteile dieser Techniken eingehen.
 
 \subsection{Pixelverdopplung}
@@ -300,9 +300,9 @@ Diese Methode ist einfach und schnell, aber sie führt oft zu einem "Treppeneffe
 Die bilineare Interpolation ist eine Methode, bei der die neuen Pixelwerte aus einer bilinearen Funktion berechnet werden, die aus den vier nächstgelegenen Pixeln im Originalbild abgeleitet wird. 
 Diese Methode führt oft zu einer glatteren Interpolation als die Nearest Neighbour Interpolation, aber es kann immer noch zu einem "Verwischen" des Bildes kommen.
 
-\subsection{Bicubische Interpolation}
+\subsection{Bikubische Interpolation}
 
-Die bicubische Interpolation ist eine Methode, bei der die neuen Pixelwerte aus einer bicubischen Funktion berechnet werden, die aus den sechzehn nächstgelegenen Pixeln im Originalbild abgeleitet wird.
+Die bikubische Interpolation ist eine Methode, bei der die neuen Pixelwerte aus einer bikubischen Funktion berechnet werden, die aus den sechzehn nächstgelegenen Pixeln im Originalbild abgeleitet wird.
 Diese Methode führt oft zu einer noch glatteren Interpolation als die bilineare Interpolation, aber sie kann auch zu einer Überbetonung von Bildstrukturen führen.
 
 \subsection{Lanczos Interpolation}
