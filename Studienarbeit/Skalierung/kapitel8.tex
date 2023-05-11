@@ -206,33 +206,22 @@ Durch die Struktur der Input Layer können CNNs komplexe visuelle Muster in den 
 
 \subsection{Hidden Layers}
 
-https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/
+%https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/
+%TODO: Grafiken einbauen
 
-
-\begin{itemize}
-  \item Hidden Layers sind die Hauptkomponente eines CNNs und bestehen standardmäßig aus Convolutional-Layern, Pooling-Layern, vollständig verbundenen Layern und Aktivierungsfunktionen.
-  \item Convolutional-Layer führen Faltungsoperationen auf den Eingabedaten durch, um Merkmale zu extrahieren.
-  \subitem Die Convolutional Layers sind so tief, wie man auch Merkmale braucht: Die ersten layers (je nach implementierung?) finden einfache / simple merkmale herraus wie kanten oder Kurven (selten, je nach input funktionen)
-  \subitem Weitere Layers kombinieren vorherige Layers und extrahieren kompliziertere Merkmale.
-  \subitem Das kann so weit gehen, dass ganze gesichter oder Objecte erkennt werden. 
-  \item Pooling-Layer reduzieren die Dimensionalität der Daten und erhöhen die Translationssicherheit.
-  \subitem Pooling layers sind zwischen Convolutional layers und dienen der Extraktion von bedeutungsvollen Merkmalen aus den Ausgabedaten der vorherigen Convolutional-Schichten. Sie reduzieren die Dimensionalität der Daten, indem sie die räumliche Ausdehnung der Merkmalskarten verringern. Dies geschieht durch Zusammenfassen oder Aggregieren von Informationen innerhalb lokaler Nachbarschaften.
-
-Der Hauptzweck des Pooling besteht darin, die Anzahl der Parameter und die Rechenkomplexität des Modells zu reduzieren, indem weniger Merkmale beibehalten werden. Durch das Zusammenfassen von Informationen wird auch die Lokalisierungsinvarianz verbessert, da die Position eines bestimmten Merkmals in den Merkmalskarten weniger wichtig wird.
-
-Allerdings erhöhen Pooling-Layer nicht unbedingt die Translationssicherheit. Vielmehr kann durch das Zusammenfassen von Informationen während des Pooling-Prozesses ein gewisser Informationsverlust auftreten, da nur die dominanten Merkmale beibehalten werden. Dies kann zu einem Verlust an Feinheiten und detaillierten Informationen führen, die möglicherweise für die genaue Klassifizierung oder Segmentierung von Objekten wichtig sind.
-
-Insgesamt sind Pooling-Layer eine wichtige Komponente von Convolutional Neural Networks (CNNs), da sie die Dimensionalität reduzieren und die Rechenressourcen effizienter nutzen können. Sie sollten jedoch mit Bedacht eingesetzt werden, abhängig von den Anforderungen der spezifischen Aufgabe und dem Trade-off zwischen Dimensionsreduktion und Erhaltung wichtiger Informationen.
-
-Brudder idk...
-same bro same
-
-
-  
-  \item Aktivierungsfunktionen führen nichtlineare Transformationen durch und erhöhen die Ausdrucksfähigkeit des Netzwerks.
-  \item Fully connected layers kommen nur zum Schluss (nicht zwischendurch).
-  \item Vollständig verbundene Schichten dienen der Klassifizierung der extrahierten Merkmale.
-\end{itemize}
+Die Hidden Layers bilden die Hauptkomponente eines Convolutional Neural Networks (CNNs) und bestehen standardmäßig aus Convolutional-Layern, Pooling-Layern, vollständig verbundenen Layern und Aktivierungsfunktionen. 
+Diese Schichten spielen eine entscheidende Rolle bei der Verarbeitung und Extraktion von Merkmalen aus den Eingabedaten.
+Die Convolutional-Layer führen Faltungsoperationen auf den Eingabedaten durch, um lokale Muster und Merkmale zu extrahieren. Durch die Anwendung von Filtern auf die Eingabedaten werden wichtige Informationen hervorgehoben und irrelevante Details unterdrückt. 
+Dies ermöglicht es dem CNN, Merkmale wie Kanten, Texturen und Formen zu erkennen, die für die spätere Klassifizierung oder Segmentierung von entscheidender Bedeutung sind.
+Die Pooling-Layer sind für die Reduzierung der Dimensionalität der Daten verantwortlich. 
+Sie ermöglichen es, die Größe der Merkmalskarten zu verkleinern und die Anzahl der Parameter im Modell zu reduzieren. 
+Der Hauptzweck des Pooling besteht darin, die Rechenkomplexität des Modells zu verringern, indem weniger Merkmale beibehalten werden. 
+Durch das Zusammenfassen von Informationen wird auch die Lokalisierungsinvarianz verbessert, da die genaue Position eines bestimmten Merkmals in den Merkmalskarten weniger wichtig wird.
+Jedoch erhöhen Pooling-Layer nicht unbedingt die Translationssicherheit. Während des Pooling-Prozesses kann ein gewisser Informationsverlust auftreten, da nur die dominanten Merkmale beibehalten werden. 
+Dadurch können Feinheiten und detaillierte Informationen verloren gehen, die möglicherweise für die genaue Klassifizierung oder Segmentierung von Objekten von Bedeutung sind.
+Insgesamt sind Pooling-Layer eine wichtige Komponente von CNNs, da sie die Dimensionalität reduzieren und die Rechenressourcen effizienter nutzen können. 
+Es ist jedoch wichtig, sie mit Bedacht einzusetzen, abhängig von den Anforderungen der spezifischen Aufgabe und dem Trade-off zwischen Dimensionsreduktion und dem Erhalt wichtiger Informationen. 
+Die Auswahl der richtigen Pooling-Strategie und -Parameter ist entscheidend, um ein optimales Gleichgewicht zwischen Dimensionalitätsreduktion und Informationsbewahrung zu erreichen.
 
 \subsection{Output Layers}
 \begin{itemize}
