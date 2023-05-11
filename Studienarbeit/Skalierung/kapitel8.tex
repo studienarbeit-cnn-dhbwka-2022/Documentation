@@ -224,10 +224,17 @@ Es ist jedoch wichtig, sie mit Bedacht einzusetzen, abhängig von den Anforderun
 Die Auswahl der richtigen Pooling-Strategie und -Parameter ist entscheidend, um ein optimales Gleichgewicht zwischen Dimensionalitätsreduktion und Informationsbewahrung zu erreichen.
 
 \subsection{Output Layers}
-\begin{itemize}
-  \item Die Ausgabeschicht ist die letzte Schicht des CNNs und gibt die endgültige Vorhersage, Klassifizierung oder segmentation aus.
-  \item Je nach Anwendungsfall kann die Ausgabeschicht verschiedene Formen haben, z. B. eine einzelne Neuronenausgabe für binäre Klassifizierung, mehrere Neuronenausgaben für Multi-Klassen-Klassifizierung oder bei unserem projekt eine Ausgabe die genau so groß ist wie das eingangs bild. Also output ist ein weiteres Bild.
-\end{itemize}
+
+Die Output Layers bilden die letzte Schicht eines Convolutional Neural Networks (CNNs) und sind für die Generierung der endgültigen Vorhersage, Klassifizierung oder Segmentierung verantwortlich. 
+Die Ausgabeschicht ist entscheidend für die Interpretation der durch das CNN ermittelten Merkmale und ermöglicht die Ausgabe der gewünschten Ergebnisse.
+Ähnlich wie bei den Hidden Layers führen Convolutional-Layer auch in der Ausgabeschicht Faltungsoperationen auf den vorverarbeiteten Eingabedaten durch. 
+Diese Operationen dienen dazu, die relevanten Merkmale zu extrahieren und sie für die weitere Verarbeitung und Interpretation verfügbar zu machen. Die in den vorherigen Schichten erlernten Merkmale werden hier zusammengeführt, um eine aussagekräftige Vorhersage oder Klassifizierung zu ermöglichen.
+Die Form der Ausgabeschicht variiert je nach Anwendungsfall. Bei binärer Klassifizierung besteht die Ausgabeschicht in der Regel aus einem einzelnen Neuron, das eine Wahrscheinlichkeit oder Entscheidung für eine der beiden Klassen ausgibt. 
+Bei Multi-Klassen-Klassifizierung hingegen werden mehrere Neuronenausgaben verwendet, um die Wahrscheinlichkeiten oder Entscheidungen für jede einzelne Klasse zu liefern.
+In unserem spezifischen Projekt ist die Ausgabeschicht ein weiteres Bild, das genau die gleiche Größe wie das Eingangsbild hat. 
+Dies ermöglicht die Segmentierung des Eingangsbildes in verschiedene Bereiche oder die Generierung eines verarbeiteten Ausgabebildes mit spezifischen Eigenschaften.
+Die Ausgabeschicht stellt somit das Endergebnis des CNNs dar und ist entscheidend für die Interpretation und Verwendung der ermittelten Merkmale. 
+Durch eine passende Auswahl der Ausgabeschicht können wir die gewünschten Ergebnisse erzielen, sei es eine Klassifizierung, Segmentierung oder die Generierung eines verarbeiteten Ausgabebildes.
 
 \section{Convolutional layers}
 
