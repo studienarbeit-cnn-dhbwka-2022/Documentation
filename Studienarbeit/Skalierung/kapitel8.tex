@@ -193,11 +193,16 @@
 \section{Architektur von CNNs}
 
 \subsection{Input Layer}
-\begin{itemize}
-  \item Die Input Layer eines CNNs akzeptiert die Rohdaten, normalerweise Bilder oder Videos, und führt die Initialverarbeitung der Daten durch.
-  \item Die Eingabeschicht besteht aus Neuronen, die jeweils mit bestimmten Bereichen des Eingabebildes verbunden sind.
-  \item Die Input Layer ist normalerweiße einer festen größe angepasst (meist 244x244x3 für RGB)
-\end{itemize}
+
+Die Input Layer eines Convolutional Neural Networks (CNNs) spielt eine entscheidende Rolle bei der Aufnahme und Vorverarbeitung der Rohdaten, die in der Regel Bilder oder Videos sind. 
+Sie ist die erste Schicht des Netzwerks und ermöglicht den Datenfluss in das CNN.
+Die Eingabeschicht besteht aus einer Anordnung von Neuronen, wobei jedes Neuron mit einem bestimmten Bereich des Eingabebildes verbunden ist. 
+Diese Verbindungen stellen sicher, dass jedes Neuron Informationen aus einem begrenzten lokalen Bereich des Bildes erhält. Auf diese Weise kann das CNN räumliche Informationen über die Daten berücksichtigen und lokalisierte Merkmale erfassen.
+Die Größe der Input Layer ist normalerweise fest vorgegeben, um eine konsistente Verarbeitung der Daten sicherzustellen. 
+Für RGB-Bilder beträgt die typische Größe beispielsweise 244x244x3, wobei die ersten beiden Dimensionen die Breite und Höhe des Bildes repräsentieren und die letzte Dimension die Farbkanäle (Rot, Grün, Blau) darstellt.
+Die Input Layer spielt eine wichtige Rolle bei der Einführung der Daten in das CNN und ermöglicht die weitere Verarbeitung und Extraktion von Merkmalen in den nachfolgenden Schichten. 
+Durch die Struktur der Input Layer können CNNs komplexe visuelle Muster in den Daten erkennen und in der Lage sein, komplexe Aufgaben wie Objekterkennung, Gesichtserkennung und Semantische Segmentierung effektiv zu bewältigen.
+
 
 \subsection{Hidden Layers}
 
