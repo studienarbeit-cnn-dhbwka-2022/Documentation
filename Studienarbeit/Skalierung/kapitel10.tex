@@ -1,11 +1,130 @@
 
-\chapter{Convolutional Neural Network Training Process}
 
-\section{What is training?}
-\section{Training process}
-\section{Training process for CNNs}
+\chapter{Wie haben ist die Architektur von unserem Model}
+KAPITEL 10 NOCH AUSSTEHEND
+Sure! Let's dive deeper into the architecture of the DeepLabV3+ model with a ResNet-50 backbone.
+
+The DeepLabV3+ model consists of two main components: the backbone network and the prediction head.
+
+1. Backbone Network:
+The backbone network is responsible for extracting meaningful features from the input image. In this case, the backbone network is based on the ResNet-50 architecture. ResNet-50 is a deep CNN that has achieved excellent performance in various computer vision tasks. It consists of several convolutional layers grouped into different stages, with residual connections between them to address the vanishing gradient problem. These residual connections enable the network to learn more effectively by propagating gradients through shortcuts.
+
+2. Prediction Head:
+The prediction head takes the features extracted by the backbone network and generates the final predictions. In DeepLabV3+, the prediction head employs atrous (or dilated) convolutions, which have different dilation rates to capture multi-scale information. This allows the model to have both detailed local information and contextual information.
+
+The original DeepLabV3+ model is pretrained on the ImageNet dataset, which contains millions of labeled images from thousands of categories. This pretraining helps the model learn generic visual features that can be fine-tuned for specific tasks.
+
+In the provided code, the pretrained DeepLabV3+ model is loaded with the ResNet-50 backbone. This means that the backbone consists of the initial layers of ResNet-50 responsible for feature extraction. The exact layers and their configurations can be quite complex, but they typically include multiple convolutional layers, pooling layers for downsampling, and residual connections.
+
+The modification in the code is done to the final layer of the model, which is the classifier. In the original DeepLabV3+ model, the classifier is a 1x1 convolutional layer that produces a tensor with dimensions [batch_size, num_classes, height, width]. The number of classes in the original model is 21, as it was trained on the COCO dataset, which includes objects from 21 different categories.
+
+In the provided code, the final layer is replaced with another 1x1 convolutional layer, but with a modified number of output channels. The original number of output channels is 256, which corresponds to the number of features learned by the backbone network. However, in the modified code, the number of output channels is set to 3, indicating that the model will output a tensor with dimensions [batch_size, 3, height, width]. This change in the number of output channels is made to adapt the model for a specific task with three classes instead of the original 21 classes.
+
+Overall, the DeepLabV3+ model with a ResNet-50 backbone is a powerful architecture for semantic segmentation tasks, and by modifying the final layer, the code customizes the model to classify pixels into one of three classes.
+
+
+- Das ist unser code:
+
+Net = torchvision.models.segmentation.deeplabv3_resnet50(pretrained=True)  # Load net
+Net.classifier[4] = torch.nn.Conv2d(256, 3, kernel_size=(1, 1), stride=(1, 1))  # Change final layer to 3 classes
+Net = Net.to(device)
+
+optimizer = torch.optim.Adam(params=Net.parameters(), lr=Learning_Rate)  # Create adam optimizer
+
+
+1. Loading the Model:
+The code begins by loading the DeepLabV3+ model with a ResNet-50 backbone using the torchvision library. DeepLabV3+ is a popular model for semantic segmentation, which means it assigns a class label to each pixel in an input image. The ResNet-50 backbone is a type of convolutional neural network (CNN) that is known for its effectiveness in extracting features from images.
+
+2. Modifying the Final Layer:
+Next, the code modifies the final layer of the loaded model. In the original model, the final layer is a classifier that produces a probability distribution over 21 different classes (such as "person," "car," "dog," etc.). However, in this code, the final layer is replaced with a 1x1 convolutional layer. This modification changes the output of the model to produce a probability distribution over 3 classes instead of 21. The specific values for the kernel size and stride determine the behavior of the convolution operation.
+
+3. Moving the Model to a Device:
+The modified model is then moved to a specified device, which could be either the CPU or a GPU. This step ensures that the computations performed by the model will take place on the selected device. Utilizing a GPU can significantly accelerate the training and inference processes for deep learning models.
+
+4. Creating the Optimizer:
+An optimizer is an algorithm that adjusts the parameters of the model during the training process to minimize the loss function. In this code, an Adam optimizer is created using the torch.optim module from PyTorch. The Adam optimizer is widely used and has been shown to be effective in training deep learning models. It takes as input the parameters of the model (obtained using `Net.parameters()`) and the learning rate (specified by `Learning_Rate`). The learning rate determines the step size at which the optimizer updates the model's parameters based on the computed gradients during backpropagation.
+
+By following this architecture, you have a modified DeepLabV3+ model with a ResNet-50 backbone, capable of segmenting images into one of three classes. The model's parameters will be optimized during training using the Adam optimizer and the specified learning rate.
+
+
+
+\chapter{Convolutional Neural Network Trainings Prozess}
+
+\section{Was ist Training?}
+- Einführung in das Konzept des Trainings von neuronalen Netzwerken
+- Bedeutung des Trainingsprozesses für die Leistungsfähigkeit von künstlichen neuronalen Netzen
+- Warum ist Training notwendig, um ein Convolutional Neural Network (CNN) effektiv einzusetzen?
+
+\section{Trainingprozess}
+- Überblick über den allgemeinen Ablauf des Trainingsprozesses
+- Schritte und Phasen des Trainingsprozesses bei der Verwendung von CNNs
+- Datenverarbeitung und Vorverarbeitung während des Trainingsprozesses
+- Spezifische Aspekte des Trainingsprozesses bei der Verwendung von Convolutional Neural Networks
+- Bedeutung der Convolutional-Schichten und Pooling-Schichten im Trainingprozess
+- Anwendung von Aktivierungsfunktionen während des Trainingsprozesses für CNNs
+
+
+So trainieren wir:
+
+for itr in range(10000):  # Training loop
+    print("Training [%4d/%d] " % (itr, 10000), end="")
+
+    images, ann = LoadBatch()  # Load taining batch
+
+    # Load image
+    images = torch.autograd.Variable(images, requires_grad=False).to(device)
+
+    # Load annotation
+    ann = torch.autograd.Variable(ann, requires_grad=False).to(device)
+
+    # make prediction
+    Pred = Net(images)['out']
+
+    Net.zero_grad()
+
+    # Set loss function
+    criterion = torch.nn.CrossEntropyLoss()
+
+    # Calculate cross entropy loss
+    Loss = criterion(Pred, ann.long())
+
+    # Backpropogate loss
+    Loss.backward()
+
+    # Apply gradient descent change to weight
+    optimizer.step()
+
+    # Get  prediction classes
+    seg = torch.argmax(Pred[0], 0).cpu().detach().numpy()
+    
+    # Save model every 1000 iterations to .torch file
+    if itr % 1000 == 0:torch.save(Net.state_dict(), "torches\\" + str(itr) + ".torch")
+
 \section{Stochastic Gradient Descent (SGD)}
-\section{Backpropagation}
-\section{Hyperparameter tuning}
-\section{Regularization techniques}
+- Erklärung des Stochastic Gradient Descent-Algorithmus und seiner Rolle im Training von CNNs
+- Unterschiede zwischen Gradient Descent und Stochastic Gradient Descent
+- Optimierungsverfahren und Anpassung der Lernrate im SGD-Algorithmus
 
+\section{Backpropagation}
+- Bedeutung von Backpropagation für das Training von neuronalen Netzwerken
+- Funktionsweise von Backpropagation im Kontext von CNNs
+- Verwendung von Backpropagation zur Berechnung der Gradienten während des Trainingsprozesses
+
+\section{Hyperparameter-Tuning}
+- Erklärung des Begriffs "Hyperparameter" und ihre Bedeutung für das Training von CNNs
+- Methoden und Strategien für das Tuning von Hyperparametern
+- Auswirkungen von Hyperparameter-Tuning auf die Leistungsfähigkeit von CNNs
+
+\section{Regularisierungstechniken}
+- Einführung in Regularisierungstechniken und ihre Bedeutung im Trainingsprozess
+- Unterschiedliche Ansätze zur Regularisierung von CNNs, z.B. L1- und L2-Regularisierung
+- Verwendung von Dropout und Data Augmentation als Regularisierungstechniken
+
+
+
+
+
+
+
+
+https://learnopencv.com/deeplabv3-ultimate-guide/

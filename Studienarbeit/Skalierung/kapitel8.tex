@@ -5,6 +5,7 @@
     In diesem Abschnitt werden die fundamentalen Konzepte des maschinellen Lernens und des Deep Learnings erläutert. 
     Das maschinelle Lernen bezieht sich auf einen Prozess, bei dem maschinelle Systeme mithilfe von statistischen Modellen und Algorithmen automatisch aus Erfahrung lernen, ohne dass eine explizite Programmierung erforderlich ist. 
     Das Deep Learning stellt einen spezifischen Teilbereich des maschinellen Lernens dar und konzentriert sich auf die Anwendung von neuronalen Netzwerken mit zahlreichen Schichten, um komplexe abstrakte Repräsentationen zu erlernen.
+    \footfullcite{el2015machine}
     
 \subsection{Definition von maschinellem Lernen}
     
@@ -15,6 +16,7 @@
     Diese Modelle werden trainiert, indem sie mit Eingabedaten gefüttert werden und ihre internen Parameter so angepasst werden, dass sie die gewünschten Ausgabewerte erzeugen. 
     Der Trainingsprozess erfolgt durch die Optimierung von Modellparametern unter Verwendung von mathematischen Optimierungsmethoden wie dem Gradientenabstieg.
     Durch wiederholtes Training und Feinabstimmung der Modelle können sie kontinuierlich verbessert werden, um präzisere Vorhersagen zu generieren oder überlegene Leistungen bei bestimmten Aufgaben zu erzielen.
+    \footfullcite{rebala2019machine,el2015machine}
 
 \subsection{Deep Learning}
 
@@ -26,7 +28,7 @@
     Das Training von Deep-Learning-Modellen erfolgt in der Regel mit Hilfe von großen Datensätzen und leistungsstarken GPUs, um die erforderlichen Berechnungen effizient durchführen zu können. 
     Durch das iterative Training der Netzwerke werden die Gewichtungen und Parameter der einzelnen Neuronen angepasst, um die Fähigkeit des Modells zu verbessern, genaue Vorhersagen zu treffen oder komplexe Aufgaben zu lösen.
     In den folgenden Abschnitten werden wir uns mit den grundlegenden Komponenten und Funktionen von Convolutional Neural Networks (CNNs) befassen, die eine spezielle Art von neuronalen Netzwerken sind, die insbesondere in der Bildverarbeitung weit verbreitet sind.
-    \footfullcite{lecun2015deep,schmidhuber2015deep}
+    \footfullcite{lecun2015deep,schmidhuber2015deep,learning2020deep}
 
 \subsection{Grundlagen von Convolutional Neural Networks}
 
@@ -127,6 +129,7 @@
     Traditionelle Ansätze zur Verarbeitung von visuellen Daten erforderten oft die Definition und Konstruktion von spezifischen Merkmalsvektoren durch Experten. 
     Im Gegensatz dazu können CNNs lernen, hierarchische Merkmale direkt aus den Rohdaten zu extrahieren. 
     Durch die Kombination von Faltungs- und Pooling-Schichten sind CNNs in der Lage, lokale Muster wie Kanten, Texturen und Formen zu erkennen, die zur Identifizierung von Objekten und zur Klassifizierung von Bildern wesentlich sind.
+    \footfullcite{ertel2016grundkurs}
 
 \subsubsection{Lernen räumlicher Hierarchien von Merkmalen}
 
@@ -165,7 +168,8 @@
     Mit Hilfe von trainierten Modellen können CNNs Bilder automatisch in verschiedene Kategorien klassifizieren, wie beispielsweise Hund vs. Katze, Auto vs. Fahrrad usw. Diese Fähigkeit beruht auf der Nutzung tieferer Schichten in einem CNN. 
     Durch diese tieferen Schichten können komplexe Merkmale wie Texturen, Formen und Strukturen erkannt werden, was zu einer verbesserten Bildklassifikation führt. 
     Indem CNNs lernen, spezifische Merkmale auf verschiedenen Abstraktionsebenen zu erfassen, können sie komplexe visuelle Muster in Bildern effizient identifizieren und analysieren.
-
+    \footfullcite{guo2017simple}
+    
 \subsection{Objekterkennung}
 
 	CNNs werden häufig für die Erkennung und Lokalisierung von Objekten in Bildern eingesetzt.
@@ -194,97 +198,127 @@
 
 \subsection{Input Layer}
 
-Die Input Layer eines Convolutional Neural Networks (CNNs) spielt eine entscheidende Rolle bei der Aufnahme und Vorverarbeitung der Rohdaten, die in der Regel Bilder oder Videos sind. 
-Sie ist die erste Schicht des Netzwerks und ermöglicht den Datenfluss in das CNN.
-Die Eingabeschicht besteht aus einer Anordnung von Neuronen, wobei jedes Neuron mit einem bestimmten Bereich des Eingabebildes verbunden ist. 
-Diese Verbindungen stellen sicher, dass jedes Neuron Informationen aus einem begrenzten lokalen Bereich des Bildes erhält. Auf diese Weise kann das CNN räumliche Informationen über die Daten berücksichtigen und lokalisierte Merkmale erfassen.
-Die Größe der Input Layer ist normalerweise fest vorgegeben, um eine konsistente Verarbeitung der Daten sicherzustellen. 
-Für RGB-Bilder beträgt die typische Größe beispielsweise 244x244x3, wobei die ersten beiden Dimensionen die Breite und Höhe des Bildes repräsentieren und die letzte Dimension die Farbkanäle (Rot, Grün, Blau) darstellt.
-Die Input Layer spielt eine wichtige Rolle bei der Einführung der Daten in das CNN und ermöglicht die weitere Verarbeitung und Extraktion von Merkmalen in den nachfolgenden Schichten. 
-Durch die Struktur der Input Layer können CNNs komplexe visuelle Muster in den Daten erkennen und in der Lage sein, komplexe Aufgaben wie Objekterkennung, Gesichtserkennung und Semantische Segmentierung effektiv zu bewältigen.
-
+    Die Input Layer eines Convolutional Neural Networks (CNNs) spielt eine entscheidende Rolle bei der Aufnahme und Vorverarbeitung der Rohdaten, die in der Regel Bilder oder Videos sind. 
+    Sie ist die erste Schicht des Netzwerks und ermöglicht den Datenfluss in das CNN.
+    Die Eingabeschicht besteht aus einer Anordnung von Neuronen, wobei jedes Neuron mit einem bestimmten Bereich des Eingabebildes verbunden ist. 
+    Diese Verbindungen stellen sicher, dass jedes Neuron Informationen aus einem begrenzten lokalen Bereich des Bildes erhält. Auf diese Weise kann das CNN räumliche Informationen über die Daten berücksichtigen und lokalisierte Merkmale erfassen.
+    Die Größe der Input Layer ist normalerweise fest vorgegeben, um eine konsistente Verarbeitung der Daten sicherzustellen. 
+    Für RGB-Bilder beträgt die typische Größe beispielsweise 244x244x3, wobei die ersten beiden Dimensionen die Breite und Höhe des Bildes repräsentieren und die letzte Dimension die Farbkanäle (Rot, Grün, Blau) darstellt.
+    Die Input Layer spielt eine wichtige Rolle bei der Einführung der Daten in das CNN und ermöglicht die weitere Verarbeitung und Extraktion von Merkmalen in den nachfolgenden Schichten. 
+    Durch die Struktur der Input Layer können CNNs komplexe visuelle Muster in den Daten erkennen und in der Lage sein, komplexe Aufgaben wie Objekterkennung, Gesichtserkennung und Semantische Segmentierung effektiv zu bewältigen.
+    \footfullcite{murphy2016overview}
 
 \subsection{Hidden Layers}
 
-%https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/
-%TODO: Grafiken einbauen
-
-Die Hidden Layers bilden die Hauptkomponente eines Convolutional Neural Networks (CNNs) und bestehen standardmäßig aus Convolutional-Layern, Pooling-Layern, vollständig verbundenen Layern und Aktivierungsfunktionen. 
-Diese Schichten spielen eine entscheidende Rolle bei der Verarbeitung und Extraktion von Merkmalen aus den Eingabedaten.
-Die Convolutional-Layer führen Faltungsoperationen auf den Eingabedaten durch, um lokale Muster und Merkmale zu extrahieren. Durch die Anwendung von Filtern auf die Eingabedaten werden wichtige Informationen hervorgehoben und irrelevante Details unterdrückt. 
-Dies ermöglicht es dem CNN, Merkmale wie Kanten, Texturen und Formen zu erkennen, die für die spätere Klassifizierung oder Segmentierung von entscheidender Bedeutung sind.
-Die Pooling-Layer sind für die Reduzierung der Dimensionalität der Daten verantwortlich. 
-Sie ermöglichen es, die Größe der Merkmalskarten zu verkleinern und die Anzahl der Parameter im Modell zu reduzieren. 
-Der Hauptzweck des Pooling besteht darin, die Rechenkomplexität des Modells zu verringern, indem weniger Merkmale beibehalten werden. 
-Durch das Zusammenfassen von Informationen wird auch die Lokalisierungsinvarianz verbessert, da die genaue Position eines bestimmten Merkmals in den Merkmalskarten weniger wichtig wird.
-Jedoch erhöhen Pooling-Layer nicht unbedingt die Translationssicherheit. Während des Pooling-Prozesses kann ein gewisser Informationsverlust auftreten, da nur die dominanten Merkmale beibehalten werden. 
-Dadurch können Feinheiten und detaillierte Informationen verloren gehen, die möglicherweise für die genaue Klassifizierung oder Segmentierung von Objekten von Bedeutung sind.
-Insgesamt sind Pooling-Layer eine wichtige Komponente von CNNs, da sie die Dimensionalität reduzieren und die Rechenressourcen effizienter nutzen können. 
-Es ist jedoch wichtig, sie mit Bedacht einzusetzen, abhängig von den Anforderungen der spezifischen Aufgabe und dem Trade-off zwischen Dimensionsreduktion und dem Erhalt wichtiger Informationen. 
-Die Auswahl der richtigen Pooling-Strategie und -Parameter ist entscheidend, um ein optimales Gleichgewicht zwischen Dimensionalitätsreduktion und Informationsbewahrung zu erreichen.
+    %https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/
+    %TODO: Grafiken einbauen
+    
+    Die Hidden Layers bilden die Hauptkomponente eines Convolutional Neural Networks (CNNs) und bestehen standardmäßig aus Convolutional-Layern, Pooling-Layern, vollständig verbundenen Layern und Aktivierungsfunktionen. 
+    Diese Schichten spielen eine entscheidende Rolle bei der Verarbeitung und Extraktion von Merkmalen aus den Eingabedaten.
+    Die Convolutional-Layer führen Faltungsoperationen auf den Eingabedaten durch, um lokale Muster und Merkmale zu extrahieren. Durch die Anwendung von Filtern auf die Eingabedaten werden wichtige Informationen hervorgehoben und irrelevante Details unterdrückt. 
+    Dies ermöglicht es dem CNN, Merkmale wie Kanten, Texturen und Formen zu erkennen, die für die spätere Klassifizierung oder Segmentierung von entscheidender Bedeutung sind.
+    Die Pooling-Layer sind für die Reduzierung der Dimensionalität der Daten verantwortlich. 
+    Sie ermöglichen es, die Größe der Merkmalskarten zu verkleinern und die Anzahl der Parameter im Modell zu reduzieren. 
+    Der Hauptzweck des Pooling besteht darin, die Rechenkomplexität des Modells zu verringern, indem weniger Merkmale beibehalten werden. 
+    Durch das Zusammenfassen von Informationen wird auch die Lokalisierungsinvarianz verbessert, da die genaue Position eines bestimmten Merkmals in den Merkmalskarten weniger wichtig wird.
+    Jedoch erhöhen Pooling-Layer nicht unbedingt die Translationssicherheit. Während des Pooling-Prozesses kann ein gewisser Informationsverlust auftreten, da nur die dominanten Merkmale beibehalten werden. 
+    Dadurch können Feinheiten und detaillierte Informationen verloren gehen, die möglicherweise für die genaue Klassifizierung oder Segmentierung von Objekten von Bedeutung sind.
+    Insgesamt sind Pooling-Layer eine wichtige Komponente von CNNs, da sie die Dimensionalität reduzieren und die Rechenressourcen effizienter nutzen können. 
+    Es ist jedoch wichtig, sie mit Bedacht einzusetzen, abhängig von den Anforderungen der spezifischen Aufgabe und dem Trade-off zwischen Dimensionsreduktion und dem Erhalt wichtiger Informationen. 
+    Die Auswahl der richtigen Pooling-Strategie und -Parameter ist entscheidend, um ein optimales Gleichgewicht zwischen Dimensionalitätsreduktion und Informationsbewahrung zu erreichen.
+    \footfullcite{pyimagesearch,murphy2016overview}
 
 \subsection{Output Layers}
 
-Die Output Layers bilden die letzte Schicht eines Convolutional Neural Networks (CNNs) und sind für die Generierung der endgültigen Vorhersage, Klassifizierung oder Segmentierung verantwortlich. 
-Die Ausgabeschicht ist entscheidend für die Interpretation der durch das CNN ermittelten Merkmale und ermöglicht die Ausgabe der gewünschten Ergebnisse.
-Ähnlich wie bei den Hidden Layers führen Convolutional-Layer auch in der Ausgabeschicht Faltungsoperationen auf den vorverarbeiteten Eingabedaten durch. 
-Diese Operationen dienen dazu, die relevanten Merkmale zu extrahieren und sie für die weitere Verarbeitung und Interpretation verfügbar zu machen. Die in den vorherigen Schichten erlernten Merkmale werden hier zusammengeführt, um eine aussagekräftige Vorhersage oder Klassifizierung zu ermöglichen.
-Die Form der Ausgabeschicht variiert je nach Anwendungsfall. Bei binärer Klassifizierung besteht die Ausgabeschicht in der Regel aus einem einzelnen Neuron, das eine Wahrscheinlichkeit oder Entscheidung für eine der beiden Klassen ausgibt. 
-Bei Multi-Klassen-Klassifizierung hingegen werden mehrere Neuronenausgaben verwendet, um die Wahrscheinlichkeiten oder Entscheidungen für jede einzelne Klasse zu liefern.
-In unserem spezifischen Projekt ist die Ausgabeschicht ein weiteres Bild, das genau die gleiche Größe wie das Eingangsbild hat. 
-Dies ermöglicht die Segmentierung des Eingangsbildes in verschiedene Bereiche oder die Generierung eines verarbeiteten Ausgabebildes mit spezifischen Eigenschaften.
-Die Ausgabeschicht stellt somit das Endergebnis des CNNs dar und ist entscheidend für die Interpretation und Verwendung der ermittelten Merkmale. 
-Durch eine passende Auswahl der Ausgabeschicht können wir die gewünschten Ergebnisse erzielen, sei es eine Klassifizierung, Segmentierung oder die Generierung eines verarbeiteten Ausgabebildes.
+    Die Output Layers bilden die letzte Schicht eines Convolutional Neural Networks (CNNs) und sind für die Generierung der endgültigen Vorhersage, Klassifizierung oder Segmentierung verantwortlich. 
+    Die Ausgabeschicht ist entscheidend für die Interpretation der durch das CNN ermittelten Merkmale und ermöglicht die Ausgabe der gewünschten Ergebnisse.
+    Ähnlich wie bei den Hidden Layers führen Convolutional-Layer auch in der Ausgabeschicht Faltungsoperationen auf den vorverarbeiteten Eingabedaten durch. 
+    Diese Operationen dienen dazu, die relevanten Merkmale zu extrahieren und sie für die weitere Verarbeitung und Interpretation verfügbar zu machen. Die in den vorherigen Schichten erlernten Merkmale werden hier zusammengeführt, um eine aussagekräftige Vorhersage oder Klassifizierung zu ermöglichen.
+    Die Form der Ausgabeschicht variiert je nach Anwendungsfall. Bei binärer Klassifizierung besteht die Ausgabeschicht in der Regel aus einem einzelnen Neuron, das eine Wahrscheinlichkeit oder Entscheidung für eine der beiden Klassen ausgibt. 
+    Bei Multi-Klassen-Klassifizierung hingegen werden mehrere Neuronenausgaben verwendet, um die Wahrscheinlichkeiten oder Entscheidungen für jede einzelne Klasse zu liefern.
+    In unserem spezifischen Projekt ist die Ausgabeschicht ein weiteres Bild, das genau die gleiche Größe wie das Eingangsbild hat. 
+    Dies ermöglicht die Segmentierung des Eingangsbildes in verschiedene Bereiche oder die Generierung eines verarbeiteten Ausgabebildes mit spezifischen Eigenschaften.
+    Die Ausgabeschicht stellt somit das Endergebnis des CNNs dar und ist entscheidend für die Interpretation und Verwendung der ermittelten Merkmale. 
+    Durch eine passende Auswahl der Ausgabeschicht können wir die gewünschten Ergebnisse erzielen, sei es eine Klassifizierung, Segmentierung oder die Generierung eines verarbeiteten Ausgabebildes.
 
 \section{Convolutional layers}
 
-\subsection{Pooling-Layers}
-\begin{itemize}
-  \item Pooling-Layers reduzieren die Dimensionalität der Daten, indem sie die Aktivierungswerte in bestimmten Bereichen zusammenfassen.
-  \item Typische Pooling-Operationen sind das Max-Pooling und das Average-Pooling, die die maximalen bzw. durchschnittlichen Werte in einem Bereich auswählen.
-  \item Bei CNNs werden im allgemeinen Max-Pooling layers genutzt.
-  \item Pooling-Schichten helfen dabei, die Anzahl der Parameter im Netzwerk zu reduzieren und die räumliche Invarianz gegenüber kleinen Translationen zu erreichen.
-\end{itemize}
+\subsection{Pooling Layers}
 
-\subsection{Fully-Connected-Layers}
-\begin{itemize}
-  \item Fully Connected Layers sind traditionelle neuronale Netzwerk-Schichten, bei denen alle Neuronen mit allen Neuronen der vorherigen Schicht verbunden sind.
-  \item In CNNs werden vollständig verbundene Schichten normalerweise am Ende des Netzwerks verwendet, um die extrahierten Merkmale zu klassifizieren.
-  \item Die Anzahl der Neuronen in den vollständig verbundenen Schichten hängt von der Anzahl der Klassen oder der spezifischen Aufgabe ab.
-  \item Dropout können die Vernetzung der Neuronen minimieren, sodass kein overfitting passiert.
+    Die Pooling Layers spielen eine wichtige Rolle in der Architektur von Convolutional Neural Networks (CNNs). 
+    Ihr Hauptzweck besteht darin, die Dimensionalität der Daten zu reduzieren, indem sie die Aktivierungswerte in bestimmten Bereichen zusammenfassen. 
+    Dies ermöglicht eine effizientere Verarbeitung der Daten und eine Verbesserung der räumlichen Invarianz gegenüber kleinen Translationen.
+    In der Regel werden in CNNs zwei gängige Pooling-Operationen verwendet: das Max-Pooling und das Average-Pooling. 
+    Beim Max-Pooling wird der maximale Aktivierungswert in einem bestimmten Bereich ausgewählt und als Ergebnis verwendet. 
+    Beim Average-Pooling hingegen wird der Durchschnitt der Aktivierungswerte in diesem Bereich berechnet. 
+    Diese Operationen ermöglichen eine Reduktion der Merkmalsdimensionen und helfen dabei, relevante Informationen beizubehalten.
+    In den meisten CNN-Architekturen werden Max-Pooling-Layers eingesetzt, da sie in der Regel bessere Ergebnisse erzielen. 
+    Durch die Auswahl des maximalen Aktivierungswerts wird sichergestellt, dass die dominanten Merkmale erhalten bleiben und die Netzwerkperformance verbessert wird.
+    Pooling-Schichten bieten auch den Vorteil, die Anzahl der Parameter im Netzwerk zu reduzieren. 
+    Durch das Zusammenfassen der Informationen wird die Anzahl der zu lernenden Parameter verringert, was zu einer effizienteren Verarbeitung führt und Overfitting reduzieren kann.
+    Ein weiterer Vorteil von Pooling-Layern besteht darin, dass sie die räumliche Invarianz gegenüber kleinen Translationen fördern. Da nur die relevanten Merkmale beibehalten werden, wird die Position dieser Merkmale in den Merkmalskarten weniger wichtig. 
+    Dies ermöglicht dem CNN, auf ähnliche Merkmale in verschiedenen Bereichen eines Bildes zu reagieren und eine gewisse Robustheit gegenüber Translationen zu erreichen.
+    Zusammenfassend kann gesagt werden, dass Pooling Layers eine wichtige Komponente in der Architektur von CNNs sind. 
+    Sie helfen dabei, die Dimensionalität zu reduzieren, die Anzahl der Parameter zu verringern und die räumliche Invarianz gegenüber Translationen zu verbessern. 
+    Durch die sorgfältige Auswahl und Platzierung von Pooling-Schichten können wir die Effizienz und Leistungsfähigkeit des CNNs steigern.
 
-  "The last layer type we are going to discuss is dropout. Dropout is actually a form of regularization that aims to help prevent overfitting by increasing testing accuracy, perhaps at the expense of training accuracy. For each mini-batch in our training set, dropout layers, with probability p, randomly disconnect inputs from the preceding layer to the next layer in the network architecture." source: siehe link oben
-\end{itemize}
+\subsection{Fully Connected Layers}
+
+    Fully Connected Layers, auch bekannt als vollständig verbundene Schichten, sind traditionelle neuronale Netzwerk-Schichten, bei denen alle Neuronen mit allen Neuronen der vorherigen Schicht verbunden sind. Diese Schichten spielen eine wichtige Rolle in der Architektur von Convolutional Neural Networks (CNNs) und dienen normalerweise am Ende des Netzwerks, um die extrahierten Merkmale zu klassifizieren.   
+    In einem CNN werden vor den vollständig verbundenen Schichten in der Regel Convolutional-Layers und Pooling-Layers verwendet, um Merkmale aus den Eingabedaten zu extrahieren und die Dimensionalität zu reduzieren. Diese Merkmale werden dann in den vollständig verbundenen Schichten verwendet, um eine endgültige Klassifizierung oder Vorhersage durchzuführen.    
+    Die Anzahl der Neuronen in den vollständig verbundenen Schichten hängt von der Anzahl der Klassen oder der spezifischen Aufgabe ab. Wenn beispielsweise ein CNN zur Klassifizierung von Bildern in 10 verschiedene Kategorien verwendet wird, wird die Anzahl der Neuronen in der letzten vollständig verbundenen Schicht in der Regel auf 10 festgelegt, um eine Vorhersage für jede Klasse zu ermöglichen.    
+    Es ist wichtig anzumerken, dass Overfitting ein häufiges Problem in neuronalen Netzwerken ist, insbesondere wenn die Anzahl der Parameter hoch ist. Um Overfitting zu minimieren und die Generalisierungsfähigkeit des Modells zu verbessern, kann Dropout eingesetzt werden. Dropout ist eine Technik, bei der während des Trainings zufällig bestimmte Neuronen und ihre Verbindungen in den vollständig verbundenen Schichten deaktiviert werden. Dadurch wird die Vernetzung der Neuronen reduziert und das Modell wird robuster gegenüber Overfitting.    
+    Zusammenfassend sind Fully Connected Layers ein wesentlicher Bestandteil der Architektur von CNNs. Sie ermöglichen die Klassifizierung der extrahierten Merkmale und spielen eine entscheidende Rolle bei der Ausführung verschiedener Aufgaben. Die Anzahl der Neuronen in den vollständig verbundenen Schichten wird entsprechend der spezifischen Anforderungen der Aufgabe festgelegt. Durch den Einsatz von Techniken wie Dropout kann das Modell vor Overfitting geschützt werden und eine verbesserte Generalisierungsfähigkeit erzielen.
 
 \subsection{Aktivierungsfunktionen}
-\begin{itemize}
-  \item Aktivierungsfunktionen werden auf die Ausgaben der Neuronen angewendet und führen nichtlineare Transformationen durch.
-  \item Gängige Aktivierungsfunktionen in CNNs sind die ReLU (Rectified Linear Unit), die Sigmoid-Funktion und die tanh-Funktion.
-  \item Aktivierungsfunktionen helfen dabei, die Fähigkeit des Netzwerks zur Modellierung komplexer Zusammenhänge zu verbessern.
-\end{itemize}
+
+    Aktivierungsfunktionen spielen eine wichtige Rolle in der Architektur von Convolutional Neural Networks (CNNs). 
+    Sie werden auf die Ausgaben der Neuronen angewendet und führen nichtlineare Transformationen durch. 
+    Diese Funktionen ermöglichen es dem Netzwerk, komplexe Zusammenhänge zu modellieren und eine höhere Ausdrucksfähigkeit zu erreichen.    
+    In CNNs werden verschiedene Aktivierungsfunktionen verwendet, von denen einige besonders häufig anzutreffen sind. 
+    Eine gängige Aktivierungsfunktion ist die ReLU (Rectified Linear Unit), die für positive Eingaben den Wert beibehält und negative Eingaben auf Null setzt. 
+    Die ReLU-Funktion ist bekannt für ihre Einfachheit und Effektivität bei der Behandlung von Vanishing-Gradient-Problemen, bei denen die Gradienten während des Trainings verschwinden können.
+    Eine weitere gängige Aktivierungsfunktion ist die Sigmoid-Funktion, die eine S-förmige Kurve erzeugt. 
+    Sie komprimiert den Wertebereich der Ausgabe auf den Bereich zwischen 0 und 1, wodurch die Funktion gut zur Modellierung von Wahrscheinlichkeiten geeignet ist. 
+    Die Sigmoid-Funktion wird oft in binären Klassifizierungsaufgaben verwendet.    
+    Die tanh-Funktion (Hyperbolic Tangent) ist eine weitere Aktivierungsfunktion, die eine S-förmige Kurve erzeugt, aber im Vergleich zur Sigmoid-Funktion eine symmetrische Ausgabe mit einem Wertebereich zwischen -1 und 1 liefert. 
+    Die tanh-Funktion wird oft in mehrklassigen Klassifizierungsaufgaben eingesetzt.    
+    Die Verwendung von Aktivierungsfunktionen ermöglicht es CNNs, nichtlineare Zusammenhänge zu erlernen und komplexe Muster in den Daten zu erkennen. 
+    Durch die Einführung von Nichtlinearität können CNNs flexibler auf verschiedene Eingabemuster reagieren und ihre Fähigkeit zur Modellierung komplexer Zusammenhänge verbessern.    
+    Zusammenfassend spielen Aktivierungsfunktionen eine wesentliche Rolle in der Architektur von CNNs. 
+    Sie ermöglichen nichtlineare Transformationen der Neuronausgaben und helfen dabei, die Fähigkeit des Netzwerks zur Modellierung komplexer Zusammenhänge zu verbessern. 
+    Die Auswahl der geeigneten Aktivierungsfunktion hängt von der Art der Aufgabe und den spezifischen Anforderungen des Modells ab.
 
 \subsection{Verlustfunktionen}
-\begin{itemize}
-  \item Verlustfunktionen messen den Unterschied zwischen den Vorhersagen des Modells und den tatsächlichen Werten der Daten.
-  \item In der Klassifizierung werden häufig Verlustfunktionen wie die Cross-Entropy-Loss-Funktion verwendet.
-  \item Verlustfunktionen dienen als Grundlage für die Berechnung des Fehlersignals und die Aktualisierung der Gewichte im Netzwerk während des Trainingsprozesses.
-\end{itemize}
 
-So sieht es bei uns aus:
+    Verlustfunktionen sind ein wesentlicher Bestandteil der Architektur von Convolutional Neural Networks (CNNs). 
+    Sie dienen dazu, den Unterschied zwischen den Vorhersagen des Modells und den tatsächlichen Werten der Daten zu messen. 
+    Die Wahl einer geeigneten Verlustfunktion ist entscheidend, um das CNN für die spezifische Aufgabe zu optimieren und die Genauigkeit der Vorhersagen zu verbessern.
+    In der Klassifizierung werden häufig Verlustfunktionen wie die Cross-Entropy-Loss-Funktion verwendet. 
+    Diese Funktion misst den Abstand zwischen den Vorhersagen des Modells und den tatsächlichen Klassenlabels der Daten. Sie wird häufig in Multi-Klassen-Klassifizierungsaufgaben eingesetzt und ermöglicht es dem Netzwerk, die Wahrscheinlichkeiten für jede Klasse zu modellieren und den Fehler basierend auf den Abweichungen von den richtigen Klassenlabels zu berechnen.
+    Die Verlustfunktionen dienen als Grundlage für die Berechnung des Fehlersignals und die Aktualisierung der Gewichte im Netzwerk während des Trainingsprozesses. Durch die Minimierung der Verlustfunktion kann das CNN lernen, die optimalen Gewichtungen zu finden und die Genauigkeit der Vorhersagen zu verbessern.
+    Es ist wichtig zu beachten, dass die Wahl der Verlustfunktion von der spezifischen Aufgabe abhängt. 
+    In einigen Fällen können andere Verlustfunktionen wie die Mean Squared Error (MSE) oder die Binary Cross-Entropy verwendet werden, je nach den Anforderungen der Aufgabe und der Art der Daten.
+    Die Verlustfunktionen spielen eine zentrale Rolle in der Architektur von CNNs, da sie den Unterschied zwischen den Vorhersagen und den tatsächlichen Werten der Daten messen. 
+    Sie dienen als Leitfaden für die Optimierung des Modells während des Trainingsprozesses und helfen dabei, die Genauigkeit der Vorhersagen zu verbessern. 
+    Die Auswahl der richtigen Verlustfunktion ist entscheidend, um die Leistung des CNNs zu maximieren und die gestellte Aufgabe erfolgreich zu lösen.
+    Indem wir die Architektur und die verschiedenen Schichten eines Convolutional Neural Networks verstehen, können wir die Funktionsweise und die Fähigkeiten dieser leistungsstarken neuronalen Netzwerkarchitektur besser erfassen. 
+    \footfullcite{janocha2017loss,gu2018recent}
+%Folgendes einbauen 
+%So sieht es bei uns aus:
 
-Training [   0/10000] ..........0 ) Loss= 1.1146412
-Training [   1/10000] ..........1 ) Loss= 1.0547378
-Training [   2/10000] ..........2 ) Loss= 1.1281569
-Training [   3/10000] ..........3 ) Loss= 1.1044791
+%Training [   0/10000] ..........0 ) Loss= 1.1146412
+%Training [   1/10000] ..........1 ) Loss= 1.0547378
+%Training [   2/10000] ..........2 ) Loss= 1.1281569
+%Training [   3/10000] ..........3 ) Loss= 1.1044791
 
-...
+%...
 
-Training [7077/10000] ..........7077 ) Loss= 0.059984926
-Training [7078/10000] ..........7078 ) Loss= 0.073117875
-Training [7079/10000] ..........7079 ) Loss= 0.05900609
-Training [7080/10000] ..........7080 ) Loss= 0.040167235
+%Training [7077/10000] ..........7077 ) Loss= 0.059984926
+%Training [7078/10000] ..........7078 ) Loss= 0.073117875
+%Training [7079/10000] ..........7079 ) Loss= 0.05900609
+%Training [7080/10000] ..........7080 ) Loss= 0.040167235
 
 
 
 % Das soll als fazit dienen, keine ahnung du... 
-Indem wir die Architektur und die verschiedenen Schichten eines Convolutional Neural Networks verstehen, können wir die Funktionsweise und die Fähigkeiten dieser leistungsstarken neuronalen Netzwerkarchitektur besser erfassen.
