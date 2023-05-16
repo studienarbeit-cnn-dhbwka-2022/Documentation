@@ -279,7 +279,8 @@ def _cubic(x, a=-0.5):
     if abs_x <= 1:
         return (a + 2) * (abs_x ** 3) - (a + 3) * (abs_x ** 2) + 1
     elif abs_x < 2:
-        return a * (abs_x ** 3) - (5 * a) * (abs_x ** 2) + (8 * a) * abs_x - (4 * a)
+        return a * (abs_x ** 3) - (5 * a) * (abs_x ** 2) + (8 * a) *
+abs_x - (4 * a)
     return 0
 
 def _get_weight(distance):
@@ -321,19 +322,23 @@ class BicubicInterpolation(Image):
                     for i in range(-1, 3):
                         ox = ix + i
                         oy = iy + j
-                        if ox < 0 or oy < 0 or ox >= self.width or oy >= self.height:
+                        if ox < 0 or oy < 0 or ox >= self.width or
+oy >= self.height:
                             pixel_value = list(
-                                self.img.getpixel((min(max(ox, 0), self.width - 1), min(max(oy, 0), self.height - 1)))
+                                self.img.getpixel((min(max(ox, 0),
+self.width - 1), min(max(oy, 0), self.height - 1)))
                             )
                         else:
-                            pixel_value = list(self.img.getpixel((ox, oy)))
+                            pixel_value = list(self.img.getpixel(
+(ox, oy)))
 
                         weight_index = (j + 1) * 4 + (i + 1)
                         weight = normalized_weights[weight_index]
                         for k in range(3):
                             new_pixel[k] += weight * pixel_value[k]
 
-                self.newImg.putpixel((x, y), (int(new_pixel[0]), int(new_pixel[1]), int(new_pixel[2])))
+                self.newImg.putpixel((x, y), (int(new_pixel[0]),
+int(new_pixel[1]), int(new_pixel[2])))
 
         return self.save()
     \end{lstlisting}
@@ -377,7 +382,7 @@ Eine sorgfältige Bewertung der spezifischen Anforderungen und der verfügbaren 
     Die Basisfunktionen werden durch das sogenannte Lanczos-Kernel definiert:
 
 \begin{equation}
-MARC HIER Formel aus BILD EINFÜGEN
+    L(x) = \begin{cases} \frac{a \cdot \sin(\pi \cdot x) \cdot \sin(\pi \cdot x / a)}{(\pi \cdot x)^2} & \text{wenn } \left| x \right| < a \\ 0 & \text{sonst} \end{cases}
 \end{equation}
 ~\footfullcite{duchon1979lanczos}
 
@@ -392,10 +397,18 @@ Seien $x_1, x_2, \ldots, x_n$ die Stützstellen des Signals und $y_1, y_2, \ldot
 Die Interpolationsfunktion $s(x)$ kann dann wie folgt berechnet werden:
 
 \begin{equation}
-Interpolationsfunktion bro hilfe @marc
+    s(x) = \sum_{i=1}^{n} y_i \cdot L(x - x_i)
 \end{equation}
 
-wobei $h$ der Abstand zwischen den Stützstellen ist.
+Hierbei ist $L(x - x_i)$ die Lanczos-Kernel-Funktion, die den Beitrag des i-ten Stützpunkts zum interpolierten Signal an der Position x angibt.
+Die Gewichtung erfolgt durch Multiplikation der Abtastung $y_i$ mit dem Wert des Lanczos-Kernels für den Abstand zwischen der Stützstelle $x_i$ und dem Zielpunkt x.
+
+Die Wahl des Parameters $a$ beeinflusst die Schärfe der Interpolation.
+Ein kleinerer Wert von $a$ führt zu einer breiteren Trägerfunktion und einer glatteren Interpolation, während ein größerer Wert von $a$ zu einer schärferen Trägerfunktion und einer detailreicheren Interpolation führt.
+Es ist wichtig zu beachten, dass bei zu großen Werten von $a$ sogenannte Ringing-Artefakte auftreten können, bei denen sich unerwünschte Oszillationen um Kanten oder Kontrastübergänge im Bild bilden.
+
+Insgesamt bietet die Lanczos-Interpolation eine effektive Methode zur Skalierung von Bildern mit Erhaltung von Details und Schärfe.
+Sie ist jedoch rechenaufwändiger als einfachere Interpolationsmethoden, da sie eine Berechnung für jeden Pixel im skalierten Bild erfordert.
 ~\footfullcite{BENTBIB2016233}
 
 \subsection{Praktische Anwendung}
@@ -406,7 +419,51 @@ Ein Anwendungsbeispiel ist die Upsampling von digitalen Bildern, um eine höhere
 Die praktische Umsetzung der Lanczos-Interpolation erfordert die Berechnung der Interpolationskoeffizienten und die Bestimmung der Stützstellen des Signals. 
 In der Regel werden hierfür spezielle Algorithmen eingesetzt, die auf der effizienten Berechnung der Basisfunktionen basieren.
 
-\\Hier Implementierung einfügen (TODO) 
+\begin{lstlisting}
+from backend.image import Image
+import math
+
+class LanczosInterpolation(Image):
+    def __init__(self, path):
+        extend = "lcz"
+        super().__init__(path, extend)
+
+    def lanczos_kernel(self, x, a=2):
+        if x == 0:
+            return 1
+        elif abs(x) >= a:
+            return 0
+        else:
+            return math.sin(math.pi * x) * math.sin(math.pi * x / a) /
+(math.pi ** 2 * x ** 2)
+
+    def manipulate(self, new_size):
+        super().manipulate(new_size)
+
+        for i in range(self.new_width):
+            for j in range(self.new_height):
+                x, y = i * self.width / self.new_width, j *
+self.height / self.new_height
+                u, v = math.floor(x), math.floor(y)
+                s, t = x - u, y - v
+
+                pixel = (0, 0, 0)
+                weight_sum = 0
+
+                for m in range(u - 2, u + 3):
+                    for n in range(v - 2, v + 3):
+                        if 0 <= m < self.width and 0 <= n < self.height:
+                            weight = self.lanczos_kernel(s - (m - u)) *
+self.lanczos_kernel(t - (n - v))
+                            pixel = tuple([p + weight * self.img.getpixel(
+(m, n))[i] for i, p in enumerate(pixel)])
+                            weight_sum += weight
+                if weight_sum > 0:
+                    pixel = tuple([int(p / weight_sum) for p in pixel])
+                    self.newImg.putpixel((i, j), pixel)
+
+        return self.save()
+\end{lstlisting}
 
 \section{Zusammenfassung zu Vor- und Nachteilen von Techniken in der Bildverarbeitung}
 
