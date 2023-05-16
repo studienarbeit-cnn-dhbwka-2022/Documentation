@@ -106,19 +106,36 @@
     % Vorteile: Schnell und kompilizert zu programmieren, sieht nicht beschissen aus und kann immer angewendet werden
     % Nachteile: Sieht nicht perfekt aus (Siehe Bicubic oder lanzeros) - ist bei extremen skalierungen nicht super
 
-    
+        Die bilineare Interpolation ist eine weit verbreitete Methode zur Skalierung von Bildern.
+        Sie basiert auf dem Konzept der linearen Interpolation und wird häufig in Grafikanwendungen und Bildverarbeitungsalgorithmen eingesetzt.
+        Bei der bilinearen Interpolation werden zwei Pixelwerte linear interpoliert, um den Wert eines Zwischenpunkts zu berechnen.
+        Dieser Ansatz führt zu einer relativ schnellen Berechnung und liefert ästhetisch ansprechende Ergebnisse.
+
+        Der Prozess der bilinearen Interpolation bezieht sich auf die Berechnung der Distanz zwischen dem zu interpolierenden Punkt und den umliegenden vier Pixeln.
+        Diese Distanz wird linear verwendet, um gewichtete Durchschnittswerte der umgebenden Pixel zu erzeugen.
+        Dieser Ansatz ermöglicht eine glattere Darstellung von Zwischenwerten im Vergleich zu einfacheren Interpolationsmethoden wie der nächsten Nachbar-Interpolation.
+
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics{img/pixel_verdopplung_graph.png}
+            \caption{Graph über bilineare Skalierung.}
+            \label{fig:graph_uber_bilineare_skalierung}
+        \end{figure}
+
+        Die bilineare Interpolation wird aufgrund ihrer Einfachheit und Effizienz häufig eingesetzt.
+        Sie ist schnell zu implementieren und kann auf unterschiedliche Bildgrößen angewendet werden.
+        Viele Bildbearbeitungssoftware und Grafikbibliotheken nutzen bilineare Interpolation als Standardmethode für die Skalierung von Bildern.
+        Dennoch hat die bilineare Interpolation einige Nachteile, insbesondere bei extremen Skalierungen.
+        Bei sehr großen oder kleinen Skalierungsfaktoren können Artefakte auftreten, die zu einer verminderten Bildqualität führen.
+        In solchen Fällen können fortgeschrittenere Interpolationsverfahren wie Bicubic oder Lanczos eine bessere Wahl sein.
+
+
     \begin{figure}[h]
         \centering
         \includegraphics[width=\textwidth]{img/pixel_verdopplung.png}
         \caption{Beispielgrafik zur Pixelverdopplung.}
         \label{fig:beispielgrafik_zur_pixelverdopplung}
-    \end{figure}
-    
-    \begin{figure}[h]
-        \centering
-        \includegraphics{img/pixel_verdopplung_graph.png}
-        \caption{Graph über bilineare Skalierung.}
-        \label{fig:my_label}
     \end{figure}
     
     
