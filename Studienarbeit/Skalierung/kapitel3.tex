@@ -341,10 +341,21 @@ class BicubicInterpolation(Image):
 
     \subsection{Anwendungen}
 
-    Überblick über die verschiedenen Anwendungen der bikubischen Interpolation in der Bildverarbeitung, einschließlich Bildskalierung und -größenänderung, Bildrotation und -transformation sowie Bildentrauschung und -wiederherstellung.
-    Diskussion der spezifischen Herausforderungen und Möglichkeiten, die sich in verschiedenen Anwendungsbereichen ergeben,
-    z\.B\. in der medizinischen Bildgebung, der Satellitenbildgebung und der Videoverarbeitung.
-    Erforschung der potenziellen Vor- und Nachteile der bikubischen Interpolation in verschiedenen Anwendungen und der Faktoren, die ihre Eignung für bestimmte Aufgaben beeinflussen können.
+Die bikubische Interpolation wird in verschiedenen Anwendungen der Bildverarbeitung eingesetzt und bietet bestimmte Vorteile gegenüber der bilinearen Interpolation.
+Ein Bereich, in dem die bikubische Interpolation besser geeignet sein kann, ist die Bildskalierung und -größenänderung.
+Durch die Verwendung von zusätzlichen benachbarten Pixeln in der Interpolationsmethode kann die bikubische Interpolation feinere Details beibehalten und glattere Übergänge erzeugen, was zu hochwertigeren skalierten Bildern führen kann.
+
+Ein weiterer Anwendungsbereich ist die Bildrotation und -transformation.
+Bei der bikubischen Interpolation werden nicht nur benachbarte Pixel, sondern auch deren benachbarte Pixel berücksichtigt, wodurch eine bessere Anpassung an die gewünschten Rotationen oder Transformationen ermöglicht wird.
+Dies kann zu weniger Verzerrungen und einem insgesamt realistischeren Ergebnis führen.
+
+Die bikubische Interpolation kann auch in der Bildentrauschung und -wiederherstellung nützlich sein.
+Durch die Verwendung von zusätzlichen Pixeln und einer gewichteten Interpolation können Rauschanteile reduziert und verloren gegangene Informationen wiederhergestellt werden.
+Dies kann insbesondere in der medizinischen Bildgebung und der Satellitenbildgebung von Vorteil sein, wo genaue und zuverlässige Bilder erforderlich sind.
+
+Wichtig zu beachten ist, dass die Eignung der bikubischen Interpolation von verschiedenen Faktoren abhängt, einschließlich der Natur des Eingangsbildes, des gewünschten Ausgabekontexts und der verfügbaren Rechenleistung.
+In einigen Fällen kann die bikubische Interpolation aufgrund ihrer erhöhten Berechnungskosten und möglichen Unschärfen weniger geeignet sein.
+Eine sorgfältige Bewertung der spezifischen Anforderungen und der verfügbaren Optionen ist daher umso entscheidender, um die optimale Interpolationsmethode für eine bestimmte Anwendung zu bestimmen.
 
     \subsection{Erweiterungen und Variationen}
 
