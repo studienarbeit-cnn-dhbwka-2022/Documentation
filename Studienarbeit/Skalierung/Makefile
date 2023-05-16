@@ -36,6 +36,7 @@ $(BASE).pdf: *.tex *.bib Makefile.
 	- [ -f $(BASE).idx ] && $(MAKEINDEX) $(BASE)
 	$(BIBTEX) $(BASE)
 	$(LATEX)  $(BASE).tex
+	$(MAKE) clean
 
 pdf:
 	$(LATEX)  $(BASE)
