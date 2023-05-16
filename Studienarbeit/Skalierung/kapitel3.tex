@@ -502,6 +502,34 @@ Diese Methode führt oft zu einer sehr glatten Interpolation und reduziert das R
     Untersuchung der Auswirkungen verschiedener Parameter wie Bildgröße, Auflösung und Inhalt auf die Leistung der bikubischen Interpolation.
     Diskussion der potenziellen Einschränkungen und Kompromisse, die mit der Verwendung der bikubischen Interpolation verbunden sind, sowie der Faktoren, die ihre Leistung in verschiedenen Kontexten beeinflussen können.
 
+    \begin{table}[h]
+        \begin{tabular}{l|l|l|l}
+            Verfahren & Geschwindigkeit & Qualität & Brauchbarkeit \\ \hline \hline
+            Nearest Neighbour & schnell & mäßig & blockige Ergebnisse \\ \hline
+            Bilineare Interpolation & mittel & gut & linearer Effekt \\ \hline
+            Bicubische Interpolation & langsam & sehr gut & glättender Effekt \\ \hline
+            Lanczos-Interpolation & langsam & sehr gut & glättender Effekt \\
+        \end{tabular}
+    \end{table}
+
+Die Beurteilung von Bildinterpolationsverfahren erfolgt anhand diverser Kriterien, welche ihre Leistung charakterisieren.
+Zu den frequent verwendeten Kriterien zählen die visuelle Qualität, die Genauigkeit sowie die Berechnungseffizienz.
+Die visuelle Qualität bezieht sich auf die subjektive Wahrnehmung der Bildqualität nach der Interpolation.
+Wesentliche Aspekte der visuellen Qualität beinhalten die Schärfe der Details, das Vorhandensein von Artefakten (z.B. Unschärfe oder Kantenartefakte) und die allgemeine Ästhetik des interpolierten Bildes.
+Die Genauigkeit eines Interpolationsverfahrens betrifft dessen Fähigkeit, die tatsächlichen Werte oder Strukturen des Originalbildes möglichst präzise zu reproduzieren.
+Eine präzise Interpolation minimiert den Informationsverlust und wahrt die inhärente Qualität des Bildes.
+Die Berechnungseffizienz betrachtet die Laufzeit- und Ressourcenanforderungen des Interpolationsverfahrens.
+Zügige und effiziente Methoden ermöglichen eine reibungslose Verarbeitung großer Datenmengen in Echtzeit oder bei der Stapelverarbeitung.
+
+Beispiele aus dem wirklichen Leben umfassen Ladezeiten für Webseiten, medizinische Bildgebung oder Fernerkundung.
+In wissenschaftlichen Anwendungen wie der medizinischen Bildgebung oder der Fernerkundung ist es von besonderer Bedeutung, dass präzise Messungen und Analysen durchführbar sind.
+Eine präzise Interpolation minimiert den Informationsverlust und wahrt die inhärente Qualität des Bildes.
+Die Berechnungseffizienz spielt eine ausschlaggebende Rolle in Anwendungen wie der Videokodierung oder der Echtzeitbildverarbeitung.
+
+Es ist essenziell zu beachten, dass die Leistung der Interpolationsverfahren von diversen Faktoren abhängt, einschließlich der Bildgröße, der Auflösung, des Inhalts und des Kontextes der Anwendung.
+Ein Verfahren, welches in einer bestimmten Situation gute Ergebnisse erzielt, kann in einer anderen Situation weniger erfolgreich sein.
+Deshalb ist es wichtig, die spezifischen Anforderungen und Beschränkungen einer Anwendung zu berücksichtigen, um das am besten geeignete Interpolationsverfahren auszuwählen.
+
 \subsection{Vergleich und Zusammenfassung}
 
 Insgesamt gibt es keine "beste" Methode zur Interpolation von Bildern, da jede Methode ihre eigenen Vor- und Nachteile hat. 
