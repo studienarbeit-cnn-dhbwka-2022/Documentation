@@ -8,7 +8,7 @@
     Im Rahmen dieser Arbeit werden ausgewählte sowie zentrale Qualitätsmetriken für die Bewertung von Skalierungsmethoden erörtert und diskutiert.
 
     \subsection{\ac{PSNR}}
-        Das Peak Signal-to-Noise Ratio \ac{PSNR} ist eine der am häufigsten verwendeten Metriken zur Bewertung der Qualität von Bildern. 
+        Das Peak Signal-to-Noise Ratio \ac{PSNR} ist eine der am häufigsten verwendeten Metriken zur Bewertung der Qualität von Bildern.
         Es misst die Qualität einer Bildrekonstruktion, indem es den Unterschied zwischen einem Originalbild und einem rekonstruierten Bild berechnet und diesen Unterschied durch das maximale Signal (Peak) und das Rauschen (Noise) im Originalbild teilt. 
         Je höher der PSNR-Wert, desto geringer ist der Unterschied zwischen Original- und Rekonstruktionsbildern und desto besser ist die Qualität der Rekonstruktion.
         \footfullcite{wang2004image}
@@ -16,23 +16,23 @@
         \subsubsection{Definition und Berechnung von \ac{PSNR}}
             Die Definition von PSNR lautet wie folgt:
             \begin{equation}
-            PSNR = 20 \log_{10} \left( \frac{MAX_I}{\sqrt{MSE}} \right) 
+            PSNR = 20 \log_{10} \left( \frac{MAX_I}{\sqrt{MSE}} \right)
             %TODO prüf mal ob die Formel stimmt. Bin verzweifelt und hab die irwo aus stackoverflow geholt
             \end{equation}
 
             Dabei ist $MAX_I$ der maximal mögliche Pixelwert des Bildes.
             Bei der Darstellung von Pixeln mit 8 Bits pro Abtastwert ist dieser Wert 255.
             Allgemeiner ausgedrückt: Wenn die Samples mit linearer PCM mit B Bits pro Sample dargestellt werden, ist MAXI $2^B - 1$\footfullcite{wiki:Peak_signal-to-noise_ratio}.
-            
+
             % wobei Peak der höchste mögliche Wert des Signals ist, der meist auf 255 bei 8-Bit-Graustufenbildern oder 65535 bei 16-Bit-Graustufenbildern gesetzt wird. %nur so semi verstanden aber die Quellen haben da ünbereingestimmt (stackoverflow help me)
 
             \begin{equation}
                 MSE = \frac{1}{n*m} \sum_{i=0}^{n-1} \sum_{i=0}^{m-1} (I(i,j) - K(i,j))^2
             \end{equation}
-            
+
             Der Mean Squared Error \ac{MSE} ist definiert als der Durchschnitt der quadrierten Unterschiede zwischen jedem Pixel des Originalbildes und dem rekonstruierten Bild.
             Je höher der PSNR-Wert, desto geringer ist der \ac{MSE} und desto besser ist die Qualität der Rekonstruktion.
-            
+
         %TODO Quelle für Formel (wWill kein Stackoverflow link angeben) 
         \subsubsection{Anwendung von \ac{PSNR} bei der Bewertung von Bildqualität}
             Obwohl \ac{PSNR} eine weit verbreitete Methode zur Bewertung der Qualität von Bildern ist, hat sie auch ihre Limitationen\footfullcite{sheikh2006image}.
@@ -42,10 +42,10 @@
             \footfullcite{korhonen2012peak}
     \subsection{Structural Similarity Index Measure (SSIM)}
 
-        Der Structural Similarity Index \ac{SSIM} ist eine Metrik zur Bewertung der strukturellen Ähnlichkeit zwischen einem Originalbild und einem rekonstruierten Bild. 
-        Im Gegensatz zum PSNR berücksichtigt der \ac{SSIM} nicht nur die Pixelwerte, sondern auch die Struktur und Textur des Bildes. 
+        Der Structural Similarity Index \ac{SSIM} ist eine Metrik zur Bewertung der strukturellen Ähnlichkeit zwischen einem Originalbild und einem rekonstruierten Bild.
+        Im Gegensatz zum PSNR berücksichtigt der \ac{SSIM} nicht nur die Pixelwerte, sondern auch die Struktur und Textur des Bildes.
         Der \ac{SSIM} berechnet die Ähnlichkeit zwischen den beiden Bildern anhand von drei Faktoren: Helligkeit, Kontrast und Struktur. Die Formel zur Berechnung von \ac{SSIM} ist wie folgt:
-        
+
         \begin{equation}
             \text{SSIM}(x, y) = \frac{{(2\mu_x\mu_y + c_1)(2\sigma_{xy} + c_2)}}{{(\mu_x^2 + \mu_y^2 + c_1)(\sigma_x^2 + \sigma_y^2 + c_2)}}
         \end{equation}
@@ -57,22 +57,22 @@
         Die Konstanten \(c_1\) und \(c_2\) sind kleine Werte, die zur Stabilisierung der Division hinzugefügt werden
         \footfullcite{chen2011fast}\footfullcite{wiki:Structural_similarity}.
 
-        
+
         \subsubsection{Anwendung von SSIM bei der Bewertung von Bildqualität}
         
-            \ac{SSIM} wird häufig verwendet, um die Qualität von Bildrekonstruktionen zu bewerten. Es hat sich gezeigt, dass \ac{SSIM} besser als PSNR die wahrgenommene Bildqualität wiederspiegelt. 
+            \ac{SSIM} wird häufig verwendet, um die Qualität von Bildrekonstruktionen zu bewerten. Es hat sich gezeigt, dass \ac{SSIM} besser als PSNR die wahrgenommene Bildqualität wiederspiegelt.
             Dies liegt daran, dass \ac{SSIM} die strukturelle Ähnlichkeit zwischen den beiden Bildern berücksichtigt, während \ac{PSNR} nur die Differenz der Pixelweite betrachtet.
 
         \subsubsection{Vorteile von SSIM im Vergleich zu PSNR}
         
-            Im Vergleich zum \ac{PSNR} hat \ac{SSIM} mehrere Vorteile. Zum einen berücksichtigt es die strukturelle Ähnlichkeit zwischen den beiden Bildern, was zu einer besseren Bewertung der wahrgenommenen Bildqualität führt. 
+            Im Vergleich zum \ac{PSNR} hat \ac{SSIM} mehrere Vorteile. Zum einen berücksichtigt es die strukturelle Ähnlichkeit zwischen den beiden Bildern, was zu einer besseren Bewertung der wahrgenommenen Bildqualität führt.
             Zum anderen ist \ac{SSIM} in der Lage, Verzerrungen zu erkennen, die durch Kompression oder andere Arten von Bildverarbeitung verursacht werden, während \ac{PSNR} dies nicht tut.
         \footfullcite{5596999}
         
         \subsubsection{Limitationen von SSIM}
         
-            Obwohl \ac{SSIM} eine bessere Metrik zur Bewertung der Bildqualität als \ac{PSNR} darstellt, hat es auch seine Limitationen. 
-            \ac{SSIM} ist anfällig für Helligkeits- und Kontrastunterschiede zwischen den beiden Bildern und kann bei der Bewertung von stark komprimierten Bildern ungenau sein. 
+            Obwohl \ac{SSIM} eine bessere Metrik zur Bewertung der Bildqualität als \ac{PSNR} darstellt, hat es auch seine Limitationen.
+            \ac{SSIM} ist anfällig für Helligkeits- und Kontrastunterschiede zwischen den beiden Bildern und kann bei der Bewertung von stark komprimierten Bildern ungenau sein.
             Auch bei der Anwendung auf Bilder mit unterschiedlichen Strukturen kann die \ac{SSIM} eine ungenaue Bewertung liefern.
         \footfullcite{1284395}
     \subsection{Mean Opinion Score (MOS)}
@@ -83,8 +83,8 @@
         
     \subsection{Peak Signal-to-Noise Ratio der Y-Komponente (PSNR-Y)}
         Die Y-Komponente im YCbCr-Farbraum enthält die Helligkeitsinformationen des Bildes. 
-        Das Peak Signal-to-Noise Ratio der Y-Komponente \ac{PSNR-Y} ist eine spezielle Version des \ac{PSNR}, die nur die Helligkeitsinformationen des Originalbildes und des rekonstruierten Bildes berücksichtigt. 
-        \ac{PSNR}-Y ist eine wichtige Metrik zur Bewertung der Qualität von Skalierungsmethoden für Graustufen- oder Schwarz-Weiß-Bilder.        
+        Das Peak Signal-to-Noise Ratio der Y-Komponente \ac{PSNR-Y} ist eine spezielle Version des \ac{PSNR}, die nur die Helligkeitsinformationen des Originalbildes und des rekonstruierten Bildes berücksichtigt.
+        \ac{PSNR}-Y ist eine wichtige Metrik zur Bewertung der Qualität von Skalierungsmethoden für Graustufen- oder Schwarz-Weiß-Bilder.
         Diese Qualitätsmetriken sind wichtigeWerkzeuge für diew Bewertung und den Vergleich von Skalierungsmelthoden in der Bildverarbeitung.
         Es ist jedoch wichtig zu beachten, dass keine einzelne Metrik alle Aspekte der Bildqualität abdeckt. Eine umfassende Bewertung sollte mehrere Metriken kombinieren und auch die subjektive Wahrnehmung 
         \footfullcite{huang2010new}
@@ -110,7 +110,7 @@
         Ein Nachteil von RMSE ist, dass er nur den Fehler zwischen Pixelwerten betrachtet und keine Berücksichtigung von strukturellen Unterschieden im Bild nimmt. 
         Daher wird RMSE oft in Kombination mit anderen Metriken wie \ac{PSNR} und \ac{SSIM} verwendet, um ein umfassenderes Bild der Bildqualität zu erhalten.
         Abschließend ist zu sagen, dass beider Bewertung von Bildqualität die Wahl der Metrik von der spezifischen Anwendung abhängt. 
-        Während \ac{PSNR} und \ac{SSIM} für die Bewertung von Bildern in vielen Anwendungen ausreichend sein können, kann in anderen Fällen die subjektive Wahrnehmung des menschlichen Betrachters durch MOS eine bessere Metrik sein. 
+        Während \ac{PSNR} und \ac{SSIM} für die Bewertung von Bildern in vielen Anwendungen ausreichend sein können, kann in anderen Fällen die subjektive Wahrnehmung des menschlichen Betrachters durch MOS eine bessere Metrik sein.
         Darüber hinaus ist bei der Wahl einer Skalierungsmethode auch die Messung von Computational Speed und das Abwägen von Trade-offs zwischen Bildqualität und Geschwindigkeit von entscheidender Bedeutung.
         \footfullcite{morad1996role}
         
@@ -150,7 +150,7 @@
             PSNR           & 0.9062        & 7.4351       & 9.8191       & 0.8804        & 0.6886        & 1                                     \\
             SSIM           & 0.9253        & 6.9203       & 8.8069       & 0.9014        & 0.7246        & 22.65                                 \\
             MS-SSIM        & 0.8945        & 8.1969       & 10.384       & 0.8619        & 0.6605        & 48.49                                 \\
-            SSIMplus       & 0.9732        & 4.3192       & 5.3451       & 0.9349        & 0.7888        & 7.83                                  
+            SSIMplus       & 0.9732        & 4.3192       & 5.3451       & 0.9349        & 0.7888        & 7.83
         \end{tabular}
         \caption{Leistungsvergleich zwischen PSNR, SSIM, MS-SSIM, VQM, PQR-Tek, DMOS-Tek, JND-VC,
 DMOS-VC und SSIMplus einschließlich aller Geräte\footfullcite{Rehman_Zeng_Wang_2015}.}
@@ -158,8 +158,8 @@ DMOS-VC und SSIMplus einschließlich aller Geräte\footfullcite{Rehman_Zeng_Wang
         \end{table}
 
 
-        
-        Die Evaluierung der Trade-offs zwischen Effektivität und Effizienz erfordert eine gründliche Analyse der Leistungsmerkmale verschiedener Skalierungsmethoden. 
+
+        Die Evaluierung der Trade-offs zwischen Effektivität und Effizienz erfordert eine gründliche Analyse der Leistungsmerkmale verschiedener Skalierungsmethoden.
         Hierbei können Kosten-Nutzen-Analysen hilfreich sein, um die Auswirkungen der gewählten Methode auf die Bildqualität und die erforderliche Rechenleistung abzuschätzen. 
         Indem die Kosten in Bezug auf die erzielte Bildqualität bewertet werden, kann die optimale Methode entsprechend den spezifischen Anforderungen des Anwendungsbereichs ausgewählt werden.
         Die Relevanz von Effektivität und Effizienz variiert je nach Anwendungsbereich der Bildverarbeitung. 
