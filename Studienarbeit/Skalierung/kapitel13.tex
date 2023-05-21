@@ -1,19 +1,163 @@
 
-% Ist nur als platzhalter gedacht..
-
 \chapter{Tools and Frameworks for CNN Training}
 
 \section{PyTorch}
-Introduce PyTorch as a popular deep learning framework known for its flexibility and dynamic computational graph. Discuss its key features, such as automatic differentiation, GPU acceleration, and extensive support for neural network architectures. Provide examples of PyTorch code snippets to demonstrate its ease of use and showcase its capabilities for CNN training.
+PyTorch ist ein beliebtes Deep-Learning-Framework, das für seine Flexibilität und dynamischen Berechnungsgraphen bekannt ist. Es ermöglicht Entwicklern, ihre neuronalen Netze auf einfache und intuitive Weise zu definieren und zu trainieren. Eine der Schlüsselfunktionen von PyTorch ist die automatische Differentiation, die es ermöglicht, den Gradienten automatisch zu berechnen und so das Training von Modellen zu erleichtern. Es folgt ein Beispiel, das den Prozess des Aufbaus eines einfachen CNNs mit PyTorch veranschaulicht:
+
+\begin{lstlisting}
+import torch
+import torch.nn as nn
+
+# Definition des Convolutional Neural Networks (CNN)
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        self.conv1 = nn.Conv2d(1, 16, kernel_size=3, stride=1, padding=1)
+        self.relu = nn.ReLU()
+        self.maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.fc = nn.Linear(16 * 14 * 14, 10)
+
+    def forward(self, x):
+        out = self.conv1(x)
+        out = self.relu(out)
+        out = self.maxpool(out)
+        out = out.view(out.size(0), -1)
+        out = self.fc(out)
+        return out
+
+# Erzeugung einer Beispiel-Eingabe
+input = torch.randn(1, 1, 28, 28)
+
+# Instanziierung des CNNs
+model = CNN()
+
+# Vorwärtsdurchlauf (Forward pass)
+output = model(input)
+
+# Ausgabe der Vorhersagen
+print(output)
+\end{lstlisting}
+
+Dieses Beispiel zeigt, wie einfach es ist, ein CNN mit PyTorch zu definieren. Das CNN besteht aus Convolutional-Layer, Aktivierungsfunktionen (ReLU), Max-Pooling und einem Fully-Connected-Layer. Durch den Aufruf der `forward`-Methode des Modells mit einer Eingabe kann eine Vorhersage generiert werden.
 
 \section{TensorFlow}
-Discuss TensorFlow, one of the most widely used deep learning frameworks. Explain its static computational graph paradigm and its ability to efficiently utilize GPUs for accelerated training. Discuss TensorFlow's ecosystem, which includes high-level APIs like Keras and TensorFlow 2.0's eager execution mode. Illustrate the usage of TensorFlow through code snippets and highlight its strengths and popularity in the deep learning community.
+TensorFlow ist ein führendes Deep-Learning-Framework, das für seine Flexibilität, Skalierbarkeit und Effizienz bekannt ist. Es verwendet einen statischen Berechnungsgraphen, der eine effiziente Ausführung auf CPUs und GPUs ermöglicht. TensorFlow bietet auch eine breite Palette von Werkzeugen und APIs, darunter Keras, eine benutzerfreundliche High-Level-API. Das folgende Beispiel zeigt die Verwendung von TensorFlow für das Training eines CNNs:
+
+\begin{lstlisting}
+import tensorflow as tf
+from tensorflow.keras import layers
+
+# Definition des Convolutional Neural Networks (CNN)
+model = tf.keras.Sequential([
+    layers.Conv2D(32, kernel_size=3, activation='relu', input_shape=(28, 28, 1)),
+    layers.MaxPooling2D(),
+    layers.Flatten(),
+    layers.Dense(10, activation='softmax')
+])
+
+# Kompilierung des Modells
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+# Laden der Daten und Training des Modells
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+x_train = x_train[..., tf.newaxis] / 255.0
+x_test = x_test[..., tf.newaxis] / 255.0
+
+model.fit(x_train, y_train, batch_size=32, epochs=5)
+
+# Auswertung des Modells
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print('Test Accuracy:', test_acc)
+\end{lstlisting}
+
+In diesem Beispiel wird ein CNN mit TensorFlow und der Keras-API definiert. Das Modell besteht aus Convolutional-Layern, Pooling-Layern, einer Flatten-Schicht und einem Fully-Connected-Layer. Das Modell wird mit dem Adam-Optimizer und der Sparse Categorical Crossentropy als Verlustfunktion kompiliert. Anschließend wird das Modell mit den MNIST-Daten trainiert und ausgewertet.
 
 \section{Keras}
-Introduce Keras as a high-level deep learning library that runs on top of TensorFlow, CNTK, or Theano. Emphasize Keras' user-friendly interface, which simplifies the process of building, training, and evaluating neural networks. Discuss its versatility in supporting various neural network architectures, including CNNs, and its integration with popular backends. Provide examples of Keras code snippets to showcase its simplicity and accessibility.
+Keras ist eine benutzerfreundliche Deep-Learning-Bibliothek, die auf TensorFlow, CNTK oder Theano aufbaut. Sie bietet eine einfache und intuitive Schnittstelle zum Entwerfen, Trainieren und Evaluieren von neuronalen Netzwerken. Hier ist ein Mini-Beispiel, das die Verwendung von Keras für das Training eines CNNs zeigt:
+
+\begin{lstlisting}
+import keras
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+
+# Definition des Convolutional Neural Networks (CNN)
+model = Sequential()
+model.add(Conv2D(32, kernel_size=(3, 3), activation='relu',
+    input_shape=(28, 28, 1)))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Flatten())
+model.add(Dense(10, activation='softmax'))
+
+# Kompilierung des Modells
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Laden der Daten und Training des Modells
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+x_train = x_train[..., None] / 255.0
+x_test = x_test[..., None] / 255.0
+
+model.fit(x_train, y_train, batch_size=32, epochs=5)
+
+# Auswertung des Modells
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print('Test Accuracy:', test_acc)
+\end{lstlisting}
+
+In diesem Beispiel wird ein CNN mit Keras definiert. Das Modell besteht aus Convolutional-Layern, Pooling-Layern, einer Flatten-Schicht und einem Fully-Connected-Layer. Das Modell wird mit dem Adam-Optimizer und der sparse kategorischen Kreuzentropie als Verlustfunktion kompiliert. Anschließend wird das Modell mit den MNIST-Daten trainiert und ausgewertet.
 
 \section{Caffe}
-Discuss Caffe, a deep learning framework widely used for its efficiency and speed in CNN training. Explain Caffe's model definition language, which allows easy specification of network architectures. Discuss Caffe's pre-trained models and model zoo, which provide a vast collection of well-performing models for various tasks. Describe its popularity in computer vision applications and provide examples of Caffe code snippets.
+Caffe ist ein Deep-Learning-Framework, das für seine Effizienz und Geschwindigkeit beim Training von CNNs bekannt ist. Es verwendet eine eigene Modellierungssprache, mit der Netzwerkarchitekturen einfach spezifiziert werden können. Hier ist ein Mini-Beispiel, das die Verwendung von Caffe für das Training eines CNNs zeigt:
 
-\section{Other Popular Frameworks}
-Discuss other notable deep learning frameworks that are commonly used for CNN training. Include frameworks such as MXNet, Theano, and Torch. Highlight their unique features, advantages, and any notable use cases. Briefly explain how they compare to the previously discussed frameworks.
+\begin{lstlisting}
+# Modelldefinition in Caffe
+model = """
+name: "SimpleNet"
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param { shape: { dim: 1 dim: 3 dim: 224 dim: 224 } }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 64
+    kernel_size: 3
+    stride: 1
+    pad: 1
+  }
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "conv1"
+  top: "conv1"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+"""
+
+# Training des Modells mit Caffe
+# ...
+\end{lstlisting}
+
+Dieses Beispiel zeigt die Modelldefinition eines einfachen CNNs in Caffe. Das Modell besteht aus Eingabe-, Convolutional-, ReLU-, Pooling-, Fully-Connected- und Softmax-Schichten. Die Definition erfolgt über eine spezifische Syntax. Anschließend kann das Modell mit Caffe trainiert werden.
+
+\section{Weitere beliebte Frameworks}
+Neben den oben genannten Frameworks gibt es noch weitere beliebte Deep-Learning-Frameworks wie MXNet, Theano und Torch. Diese Frameworks bieten ebenfalls leistungsstarke Funktionen und werden in verschiedenen Anwendungsfällen eingesetzt. MXNet zeichnet sich beispielsweise durch seine Skalierbarkeit aus, Theano war eines der ersten Frameworks, das GPU-Beschleunigung unterstützte, und Torch bietet eine flexible und dynamische Berechnungsgraphen-Engine. Jedes Framework hat seine eigenen Stärken und Vorzüge, die Auswahl kann je nach den Anforderungen und Präferenzen des Anwenders und der Problemstellung variieren.

@@ -17,7 +17,6 @@
             Die Definition von PSNR lautet wie folgt:
             \begin{equation}
             PSNR = 20 \log_{10} \left( \frac{MAX_I}{\sqrt{MSE}} \right)
-            %TODO prüf mal ob die Formel stimmt. Bin verzweifelt und hab die irwo aus stackoverflow geholt
             \end{equation}
 
             Dabei ist $MAX_I$ der maximal mögliche Pixelwert des Bildes.
@@ -75,8 +74,8 @@
             \ac{SSIM} ist anfällig für Helligkeits- und Kontrastunterschiede zwischen den beiden Bildern und kann bei der Bewertung von stark komprimierten Bildern ungenau sein.
             Auch bei der Anwendung auf Bilder mit unterschiedlichen Strukturen kann die \ac{SSIM} eine ungenaue Bewertung liefern.
         \footfullcite{1284395}
-    \subsection{Mean Opinion Score (MOS)}
-        Der Mean Opinion Score \ac{MOS} ist eine subjektive Metrik, die die wahrgenommene Qualität einer Bildrekonstruktion misst.
+    \subsection{Mean Opinion Score}\label{sec:mean-opinion-score}
+        Der \acf{MOS} ist eine subjektive Metrik, die die wahrgenommene Qualität einer Bildrekonstruktion misst.
         MOS basiert auf der Bewertung durch menschliche Beobachter, die gebeten werden, die Qualität von Original- und Rekonstruktionsbildern auf einer Skala von 1 bis 5 oder 1 bis 10 zu bewerten.
         MOS ist eine wichtige Metrik, da sie die subjektive Wahrnehmung der Qualität eines Bildes durch den Betrachter berücksichtigt.
         \footfullcite{sheikh2006image}
@@ -94,7 +93,7 @@
         Die Wahl einer Skalierungsmethode hängt nicht nur von der Bildqualität, sondern auch von der benötigten Rechenleistung ab. 
         Die Computational Speed ist daher ein wichtiger Faktor bei der Auswahl einer Skalierungsmethode.
         Es gibt verschiedene Methoden zur Messung von Computational Speed, wie z.B. die Messung der benötigten Zeit, um ein Bild zu skalieren oder die Berechnung von \ac{FLOPS}. 
-        Eine genauere Messung kann durch die Verwendung von Benchmarks erreicht werden, die es ermöglichen, verschiedene Skalierungsmethoden auf derselben Hardware zu vergleichen.
+        Eine genauere Messung kann durch die Verwendung von Benchmarks erreicht werden, die es ermöglichen, verschiedene Skalierungsmethoden auf derselben Hardware zu vergleichen\footfullcite{hernandez2020measuring}.
         Jedoch muss bei der Messung der Computational Speed berücksichtigt werden, dass die Leistung des verwendeten Computers die Ergebnisse beeinflussen kann. 
         Ein schnellerer Computer kann eine Methode schneller ausführen als ein langsamerer Computer. 
         Daher ist es wichtig, die Messungen auf einem vergleichbaren Computer durchzuführen und die Ergebnisse zu normalisieren.
@@ -104,7 +103,7 @@
         Es können auch Techniken wie progressiver Skalierung verwendet werden, um eine gute Bildqualität mit einer angemessenen Geschwindigkeit zu erreichen.
         \footfullcite{xu2017efficient,choi2019lightweight}
         
-    \subsection{Root-Mean-Square Error (RMSE)}
+    \subsection{Root-Mean-Square Error}
     
         Der Root-Mean-Square Error \ac{RMSE} ist eine Metrik zur Bewertung der Qualität von Bildrekonstruktionen. 
         Ein Nachteil von RMSE ist, dass er nur den Fehler zwischen Pixelwerten betrachtet und keine Berücksichtigung von strukturellen Unterschieden im Bild nimmt. 
@@ -119,20 +118,20 @@
     \subsection{Bildvergleich und visuelle Bewertung}
         
         Die Evaluation von Skalierungsmethoden in der Bildverarbeitung erfordert eine umfassende und präzise Analyse verschiedener Kriterien, um die optimale Methode auszuwählen. 
-        Ein wesentlicher Aspekt bei dieser Bewertung ist der Bildvergleich und die visuelle Bewertung, die auf der subjektiven Wahrnehmung von menschlichen Beobachtern beruhen.
+        Ein wesentlicher Aspekt bei dieser Bewertung ist der Bildvergleich und die visuelle Bewertung, die auf der subjektiven Wahrnehmung von menschlichen Beobachtern beruhen (siehe sec\ref{sec:mean-opinion-score}).
         Die visuelle Bewertung von Bildern durch menschliche Beobachter ermöglicht eine direkte und subjektive Beurteilung der Bildqualität basierend auf wahrgenommenen visuellen Eigenschaften. 
         Verschiedene Methoden des Bildvergleichs werden eingesetzt, wie beispielsweise der Side-by-Side-Vergleich, bei dem zwei Bilder direkt miteinander verglichen werden, oder der Triple-Stimulus-Test, bei dem ein Originalbild mit zwei rekonstruierten Bildern verglichen wird.
         Diese Methoden des Bildvergleichs und der visuellen Bewertung werden auch bei der Evaluierung von Skalierungsmethoden angewendet. 
         Durch den Vergleich der rekonstruierten Bilder mit dem Originalbild können verschiedene Skalierungsmethoden anhand ihrer visuellen Qualität beurteilt und verglichen werden. 
         dies ermöglicht eine umfangreiche Analyse und eine direkte Gegenüberstellung der unterschiedlichen Methoden.
         Es ist jedoch von entscheidender Bedeutung, die Limitationen und Vorbehalte im Zusammenhang mit der visuellen Bewertung von Bildern zu berücksichtigen. 
-        Die subjektive Wahrnehmung kann von Person zu Person variieren und wird auch von anderen Faktoren wie Beleuchtung, Betrachtungsabstand und individuellen Präferenzen beeinflusst. 
+        Die subjektive Wahrnehmung kann von Person zu Person variieren und wird auch von anderen Faktoren wie Beleuchtung, Betrachtungsabstand und individuellen Präferenzen beeinflusst\footfullcite{streijl2016mean}. 
         Darüber hinaus können komplexe visuelle Verzerrungen nicht immer präzise durch die visuelle Bewertung erfasst werden. 
         Daher sollten bei der Bewertung von Skalierungsmethoden auch objektive Metriken und weitere Evaluierungskriterien einbezogen werden.
         Insgesamt spielt der Bildvergleich und die visuelle Bewertung eine bedeutende Rolle bei der Evaluierung von Skalierungsmethoden in der Bildverarbeitung.
         Durch die Kombination der subjektiven visuellen Bewertung mit objektiven Metriken können fundierte Entscheidungen getroffen werden, um die optimale Methode gemäß den spezifischen Anforderungen der Anwendung auszuwählen. 
         Die sorgfältige Berücksichtigung der genannten Limitationen trägt dazu bei, zuverlässige und aussagekräftige Ergebnisse zu erzielen und die Qualität von Bildrekonstruktionen bestmöglich zu bewerten.
-        \footfullcite{ye2012no,wang2004image,eckert1998perceptual}
+        \footfullcite{ye2012no}$^{,}$\footfullcite{wang2004image}$^{,}$\footfullcite{eckert1998perceptual}
     
     \subsection{Effektivität und Effizienz}
 
@@ -150,7 +149,11 @@
             PSNR           & 0.9062        & 7.4351       & 9.8191       & 0.8804        & 0.6886        & 1                                     \\
             SSIM           & 0.9253        & 6.9203       & 8.8069       & 0.9014        & 0.7246        & 22.65                                 \\
             MS-SSIM        & 0.8945        & 8.1969       & 10.384       & 0.8619        & 0.6605        & 48.49                                 \\
+<<<<<<< HEAD
             SSIMplus       & 0.9732        & 4.3192       & 5.3451       & 0.9349        & 0.7888        & 7.83
+=======
+            SSIMplus       & 0.9732        & 4.3192       & 5.3451       & 0.9349        & 0.7888        & 7.83                                  
+>>>>>>> cb62a0c (minor changes)
         \end{tabular}
         \caption{Leistungsvergleich zwischen PSNR, SSIM, MS-SSIM, VQM, PQR-Tek, DMOS-Tek, JND-VC,
 DMOS-VC und SSIMplus einschließlich aller Geräte\footfullcite{Rehman_Zeng_Wang_2015}.}
@@ -158,8 +161,13 @@ DMOS-VC und SSIMplus einschließlich aller Geräte\footfullcite{Rehman_Zeng_Wang
         \end{table}
 
 
+<<<<<<< HEAD
 
         Die Evaluierung der Trade-offs zwischen Effektivität und Effizienz erfordert eine gründliche Analyse der Leistungsmerkmale verschiedener Skalierungsmethoden.
+=======
+        
+        Die Evaluierung der Trade-offs zwischen Effektivität und Effizienz erfordert eine gründliche Analyse der Leistungsmerkmale verschiedener Skalierungsmethoden. 
+>>>>>>> cb62a0c (minor changes)
         Hierbei können Kosten-Nutzen-Analysen hilfreich sein, um die Auswirkungen der gewählten Methode auf die Bildqualität und die erforderliche Rechenleistung abzuschätzen. 
         Indem die Kosten in Bezug auf die erzielte Bildqualität bewertet werden, kann die optimale Methode entsprechend den spezifischen Anforderungen des Anwendungsbereichs ausgewählt werden.
         Die Relevanz von Effektivität und Effizienz variiert je nach Anwendungsbereich der Bildverarbeitung. 
@@ -167,7 +175,11 @@ DMOS-VC und SSIMplus einschließlich aller Geräte\footfullcite{Rehman_Zeng_Wang
         In anderen Szenarien, wie in Echtzeit-Anwendungen oder mobilen Geräten, kann die Effizienz und die schnelle Verarbeitung der Bilder priorisiert werden, auch wenn dies zu einer gewissen Einbuße der Bildqualität führt.
         Insgesamt ist es von entscheidender Bedeutung, sowohl die Effektivität als auch die Effizienz bei der Wahl der besten Skalierungsmethode zu berücksichtigen. 
         Die richtige Balance zwischen Bildqualität und erforderlicher Rechenleistung zu finden, ermöglicht die optimale Nutzung von Ressourcen und die Erfüllung der spezifischen Anforderungen des jeweiligen Anwendungsbereichs der Bildverarbeitung.
+<<<<<<< HEAD
         \footfullcite{zhang2019efficiency}\footfullcite{gu2019comprehensive}\footfullcite{hu2020efficient}
+=======
+        \footfullcite{zhang2019efficiency}$^{,}$\footfullcite{gu2019comprehensive}$^{,}$\footfullcite{hu2020efficient}
+>>>>>>> cb62a0c (minor changes)
 
     \subsection{Zukunftsaussichten und Herausforderungen}
     
@@ -185,5 +197,9 @@ DMOS-VC und SSIMplus einschließlich aller Geräte\footfullcite{Rehman_Zeng_Wang
         Es ist daher wichtig, entsprechende Schutzmechanismen zu entwickeln, um den Missbrauch solcher Technologien zu verhindern und die Privatsphäre und Integrität von Personen zu wahren.
         Zusammenfassend lassen sich die Zukunftsaussichten für die Evaluierung von Skalierungsmethoden als vielversprechend betrachten. 
         Durch die Berücksichtigung technologischer Entwicklungen, die Bewältigung spezifischer Herausforderungen in verschiedenen Anwendungsbereichen, die Nutzung von KI-basierten Evaluierungsmethoden und die Beachtung ethischer und sozialer Implikationen können wir die Qualität und Effizienz von Skalierungsmethoden weiter verbessern und gleichzeitig sicherstellen, dass sie verantwortungsvoll und zum Wohl der Gesellschaft eingesetzt werden.
+<<<<<<< HEAD
         \footfullcite{zhang2015learning}\footfullcite{blau2018perception}\footfullcite{liu2016ssd,zhang2018split}
+=======
+        \footfullcite{zhang2015learning}$^{,}$\footfullcite{blau2018perception}$^{,}$\footfullcite{liu2016ssd,zhang2018split}
+>>>>>>> cb62a0c (minor changes)
 \newpage

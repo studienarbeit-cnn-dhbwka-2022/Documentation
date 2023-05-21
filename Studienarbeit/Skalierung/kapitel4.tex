@@ -2,7 +2,17 @@
 
 
 \chapter{Fortgeschrittene Skalierungsmethoden}
-%Kollege Hase Otter ich muss Abbreviations richtig in LaTeX deklarieren 
+
+In diesem Kapitel werden fortgeschrittene Skalierungsmethoden behandelt.
+Unter Beachtung der Erhaltung der Bildqualität werden Convolutional Neural Networks (CNNs) sowie Deep Learning zur Bildskalierung betrachtet.
+Des Weiteren wird die Super Resolution vorgestellt.
+Super Resolution ist eine Methode zur Generierung hochauflösender Bilder aus niedrigauflösenden Versionen, einschließlich der Wiederherstellung von verlorenen Details.
+
+Ein weiterer Ansatz, ist der Einsatz von Generative Adversarial Networks (GANs), die durch den Wettbewerb zwischen einem Generator-Netzwerk und einem Diskriminator-Netzwerk hochrealistische Bilder erzeugen können.
+Außerdem gibt es die Multiskalenskalierungstechnik, bei der verschiedene Skalierungsfaktoren angewendet werden, um eine ausgewogene Balance zwischen Details und Vergrößerung zu erreichen.
+Abschließend werden die Vor- und Nachteile dieser fortgeschrittenen Methoden vorgestellt, um ein umfassendes Verständnis für ihre Anwendungsmöglichkeiten und Einschränkungen in der Bildverarbeitung zu entwickeln.
+
+
 \section{Convolutional Neural Networks / Deep learning}
     \subsection{Grundlagen von Convolutional Neural Networks (CNNs)}
         Convolutional Neural Networks \ac{CNN} sind eine Art von Deep-Learning-Modell, welches besonders im Hinblick auf die Verarbeitung von Daten mit räumlicher Struktur den aktuellen Stand der Technik darstellt.      
@@ -27,6 +37,16 @@
         Inception wiederum ist für seine Fähigkeit bekannt, die Effizienz von CNNs durch die Verwendung von sogenannten Inception-Modulen zu erhöhen\footfullcite{Zahangir2017}.
         %TODO Grafiken für die Netzwerke raussuchen (BV Vorlesung?)
 
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\textwidth]{img/different_types_of_cnn_nets.jpg}
+            \caption{Verschiedene Architekturen von Image Networks. Oben links vereinfachtest Alex net, unten links inception net, rechts Abbildung der Res net Architektur.}
+            \label{fig:my_label}
+        \end{figure}
+        
+        AlexNet\footfullcite{Aloysius2017} war das erste CNN, das auf einem großen Datensatz erfolgreich angewendet wurde.
+        ResNet zeichnet sich durch seine Fähigkeit aus, sehr tiefe Netzwerke zu trainieren, ohne dass das Problem des Verschwindens des Gradienten auftritt\footfullcite{Pengcheng2020}.  
+        Inception wiederum ist für seine Fähigkeit bekannt, die Effizienz von CNNs durch die Verwendung von sogenannten Inception-Modulen zu erhöhen\footfullcite{Zahangir2017}.
     
     \subsection{Anwendungen von CNNs}
     
@@ -280,7 +300,7 @@ Net = torchvision.models.segmentation.deeplabv3_resnet50(pretrained=True)
         Weiterhin können Regierungsbehörden und andere Organisationen Maßnahmen ergreifen, um den Missbrauch von GANs zu verhindern.   
         Das finden eines Kompromiss aus Forschung und politischer Einschränkung übersteigt jedoch den Rahmen dieser Arbeit.      
     
-\section{Multiscale-Skalierung}
+\section{Multiskalenskalierun}
 
     In vielen Anwendungen der Bildverarbeitung und Computergrafik ist es notwendig, Objekte oder Strukturen in verschiedenen Größenordnungen zu analysieren oder darzustellen.      
     Multiscale-Skalierung bezeichnet Techniken und Vorgehen, die es ermöglichen, Objekte oder Signale auf verschiedenen Skalen zu untersuchen oder zu manipulieren.      
@@ -292,7 +312,11 @@ Net = torchvision.models.segmentation.deeplabv3_resnet50(pretrained=True)
         \textit{Machine learning and multiscale modeling mutually complement one another.}\footfullcite{alber2019integrating}
     \end{center}
     
-    \subsection{Grundlagen von Multiscale-Skalierung}
+    \begin{center}
+        \textit{Machine learning and multiscale modeling mutually complement one another.}\footfullcite{alber2019integrating}
+    \end{center}
+    
+    \subsection{Grundlagen von Multiskalenskalierung}
     
         Multiscale-Skalierung ist ein Konzept aus der Signal- und Bildverarbeitung, das auf der Idee basiert, dass Signale und Bilder aus verschiedenen Skalen von Strukturen aufgebaut sind.
         In der Praxis bedeutet dies, dass ein Signal oder Bild auf verschiedene Skalen abgetastet oder transformiert wird, um Informationen auf verschiedenen Größenskalen zu erhalten.
@@ -327,7 +351,7 @@ Net = torchvision.models.segmentation.deeplabv3_resnet50(pretrained=True)
         In jüngerer Zeit wurde die Multiskalenanalyse auch in Verbindung mit Deep Learning eingesetzt, um Modelle zu entwickeln, die auf verschiedenen Skalen arbeiten können.      
         Ein Beispiel ist das Multiscale Dense Network \ac{MSDN}, das eine skalierbare Architektur für die Bilderkennung bietet, die auf mehreren Skalen arbeiten kann.
     
-    \subsection{Limitationen und zukünftige Forschungsziele von Multiscale-Skalierung}
+    \subsection{Limitierungen und zukünftige Forschungsziele von Multiscale-Skalierung}
         Obwohl die Multiskalenanalyse in vielen Bereichen der Bildverarbeitung und Computer Vision erfolgreich eingesetzt wurde, gibt es auch einige Limitationen.  
         Eines der Hauptprobleme ist die Herausforderung, die richtige Skala für eine bestimmte Aufgabe zu wählen.      
 

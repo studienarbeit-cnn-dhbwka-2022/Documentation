@@ -240,7 +240,8 @@ Eine Möglichkeit zur Optimierung der Leistung besteht darin, Lookup-Tabellen vo
 Grenzfälle und Randbedingungen können bei der bikubischen Interpolation auftreten und müssen effektiv behandelt werden.
 Die algorithmische Implementierung der bikubischen Interpolation kann mit anderen Interpolationsverfahren wie der bilinearen Interpolation und der Lanczos-Interpolation verglichen werden.
 
-Ein Beispiel für die Implementierung der bikubischen Interpolation in Python ist der folgende Code:
+Die Koeffizienten $a_{ij}$ werden basierend auf den umliegenden Pixelwerten und ihren Ableitungen berechnet.
+Dieses Verfahren ermöglicht eine glatte Interpolation zwischen den Pixeln und hinterlasst wenige scharfe Kanten.
 
 Die Methode `manipulate` der Klasse `BicubicInterpolation` implementiert die bikubische Interpolation für das Vergrößern von Bildern.
 Der wichtigste Teil des Codes ist die Schleife, die über jedes Pixel einen Kernel berechnet, der die jeweiligen Gewichte der benachbarten Pixel erechnet.
@@ -249,23 +250,31 @@ Dabei wird die `\_get\_weight`-Funktion aufgerufen, welche auf der Basis einer k
 Die berechneten Gewichte werden in eine Liste `weights` hinzugefügt.
 Diese Gewichte dienen später bei der Interpolation des aktuellen Pixels als multiplikative Faktoren für die umliegenden Pixel im Originalbild.
 
+Eine Möglichkeit zur Optimierung der Leistung besteht darin, Lookup-Tabellen vorzubereiten, Parallelisierungstechniken zu verwenden und die Speicherverwaltung zu optimieren.
+Grenzfälle und Randbedingungen können bei der bikubischen Interpolation auftreten und müssen effektiv behandelt werden.
+Die algorithmische Implementierung der bikubischen Interpolation kann mit anderen Interpolationsverfahren wie der bilinearen Interpolation und der Lanczos-Interpolation verglichen werden.
 
-\begin{lstlisting}
-weights = []
-for j in range(-1, 3):
-    for i in range(-1, 3):
-        weight = _get_weight(i - dx) * _get_weight(dy - j)
-        weights.append(weight)
-\end{lstlisting}
+Unsere Implementierung der bikubischen Interpolation in Python ist im Abschnitt \ref{sec:bicubic-implementation}.
 
 \subsection{Analyse der Leistung}
 
     Zur Bewertung der Leistung von Bildinterpolationsverfahren werden verschiedene Kriterien verwendet, einschließlich der visuellen Qualität, der Genauigkeit und der Berechnungseffizienz. 
     Die Leistung der bikubischen Interpolation kann mit anderen Interpolationstechniken anhand von Testbildern und Datensätzen verglichen werden. 
-    Dabei werden verschiedene Parameter wie Bildgröße, Auflösung und Inhalt untersucht, um ihre Auswirkungen auf die Leistung der bikubischen Interpolation zu analysieren. %...
+    Dabei werden verschiedene Parameter wie Bildgröße, Auflösung und Inhalt untersucht, um ihre Auswirkungen auf die Leistung der bikubischen Interpolation zu analysieren.
 
+    \subsection{Implementation}\label{sec:bicubic-implementation}
+    \begin{lstlisting}[caption={Python-Klasse zur Bikubischen interpolation \url{https://github.com/studienarbeit-cnn-dhbwka-2022/Code/blob/main/backend/skalierungsmethoden/bicubic_interpolation.py}.}]
+import math
+from backend.image import Image
 
-% Ich hab das obere vom bot schreiben lassn
+def _cubic(x, a=-0.5):
+    abs_x = abs(x)
+    if abs_x <= 1:
+        return (a + 2) * (abs_x ** 3) - (a + 3) * (abs_x ** 2) + 1
+    elif abs_x < 2:
+        return a * (abs_x ** 3) - (5 * a) * (abs_x ** 2) + (8 * a) *
+abs_x - (4 * a)
+    return 0
 
     \subsection{Implementation}
     \begin{lstlisting}
@@ -340,8 +349,14 @@ int(new_pixel[1]), int(new_pixel[2])))
 
         return self.save()
     \end{lstlisting}
-
-
+    
+    Die Methode `manipulate` der Klasse `BicubicInterpolation` implementiert die bikubische Interpolation für das Vergrößern von Bildern.
+    Der wichtigste Teil des Codes ist die Schleife, die über jedes Pixel einen Kernel berechnet, der die jeweiligen Gewichte der benachbarten Pixel erechnet.
+    In den genannten Zeilen wird ein 4x4-Kern um das aktuelle Pixel herum gebildet und für jeden Pixel im Kern werden die Gewichte berechnet.
+    Dabei wird die `\_get\_weight`-Funktion aufgerufen, welche auf der Basis einer kubischen Kurve das Gewicht für einen bestimmten Abstand berechnet.
+    Die berechneten Gewichte werden in eine Liste `weights` hinzugefügt.
+    Diese Gewichte dienen später bei der Interpolation des aktuellen Pixels als multiplikative Faktoren für die umliegenden Pixel im Originalbild.
+    
     \subsection{Anwendungen}
 
 Die bikubische Interpolation wird in verschiedenen Anwendungen der Bildverarbeitung eingesetzt und bietet bestimmte Vorteile gegenüber der bilinearen Interpolation.
@@ -385,7 +400,7 @@ Eine sorgfältige Bewertung der spezifischen Anforderungen und der verfügbaren 
 ~\footfullcite{duchon1979lanczos}
 
 Das Lanczos-Kernel hat eine kompakte Trägerfunktion.
-Eine kompakte Träägerformel bedeutet, sie ist nur in einem begrenzten Bereich von Null verschieden. 
+Eine kompakte Trägerformel bedeutet, sie ist nur in einem begrenzten Bereich von Null verschieden. 
 In der Praxis hat dies den Vorteil, dass das Signalrauschen in Bereichen außerhalb des Bereichs im Signalraum reduziert wird und somit eine bessere Interpolation des Signals erreicht werden kann.
 Die Gewichtungen der Basisfunktionen werden durch die Interpolationskoeffizienten bestimmt, die durch die diskreten Abtastungen des Signals berechnet werden.
 

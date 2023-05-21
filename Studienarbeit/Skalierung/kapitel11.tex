@@ -18,8 +18,8 @@
     Es trägt auch zur Reduzierung von Overfitting bei, da das Modell bereits aus einem vielfältigen Datensatz gelernt hat und robuste und diskriminierende Merkmale entwickelt hat.
     Darüber hinaus ermöglicht Transfer Learning, von der Expertise und den Forschungsanstrengungen zu profitieren, die in die Entwicklung vortrainierter Modelle investiert wurden. 
     Viele fortschrittliche Modelle und Architekturen wurden auf groß angelegten Datensätzen vortrainiert und erreichen hohe Genauigkeit bei verschiedenen Benchmark-Aufgaben. 
-    Indem man diese vortrainierten Modelle als Ausgangspunkt nutzen, kann man ihre Architekturen und Merkmalsextraktoren verwenden und sie für eine spezifische Aufgabe abstimmen. Dadurch kann der Lernprozess beschleunigt werden.
-    \footfullcite{pan2010transfer,yosinski2014transfer}
+    Indem man diese vortrainierten Modelle als Ausgangspunkt nutzt, kann man ihre Architekturen und Merkmalsextraktoren verwenden und sie für eine spezifische Aufgabe abstimmen. Dadurch kann der Lernprozess beschleunigt werden.
+    \footfullcite{pan2010transfer}$^{,}$\footfullcite{yosinski2014transfer}
 
 \section{Pre-Trained Models}
 
@@ -39,10 +39,11 @@
 
 \section{Fine-tuning von vortrainierten Modellen}
 
-    Die Feinabstimmung (Fine-tuning) ist ein wichtiger Schritt im Transfer Learning, der es ermöglicht, ein vortrainiertes Modell für eine spezifische Aufgabe anzupassen. 
+    Die Feinabstimmung\footfullcite{alshalali2018fine} (Fine-tuning) ist ein wichtiger Schritt im Transfer Learning, der es ermöglicht, ein vortrainiertes Modell für eine spezifische Aufgabe anzupassen. 
     Bei der Feinabstimmung wird das vortrainierte Modell zunächst als Ausgangspunkt verwendet und anschließend werden die Gewichte des Modells mithilfe eines kleineren, auf die spezifische Aufgabe zugeschnittenen Datensatzes aktualisiert. 
-    Dieser Prozess erlaubt es dem Modell, sich an die spezifischen Merkmale und Nuancen der neuen Aufgabe anzupassen.
-    Der erste Schritt bei der Feinabstimmung besteht darin, das vortrainierte Modell zu laden, das auf einer großen, allgemeinen Aufgabe trainiert wurde. Dieses Modell verfügt bereits über ein gewisses Verständnis von visuellen Merkmalen, das durch das Training auf umfangreichen Datensätzen erworben wurde. 
+    Dieser Prozess erlaubt es dem Modell, sich an die spezifischen Merkmale und Nuancen der neuen Aufgabe anzupassen\footfullcite{han2021pre}.
+    Der erste Schritt bei der Feinabstimmung besteht darin, das vortrainierte Modell zu laden, das auf einer großen, allgemeinen Aufgabe trainiert wurde. 
+    Dieses Modell verfügt bereits über ein gewisses Verständnis von visuellen Merkmalen, das durch das Training auf umfangreichen Datensätzen erworben wurde. 
     Anschließend werden die oberen Schichten des Modells, die für die spezifische Aufgabe weniger relevant sind, eingefroren, um zu verhindern, dass sie während des Trainings aktualisiert werden. 
     Dies ermöglicht es uns, die vortrainierten Merkmale beizubehalten, während wir die Gewichte der unteren Schichten des Modells anpassen.
     Der nächste Schritt besteht darin, ein kleineres, auf die spezifische Aufgabe zugeschnittenes Datenset zu verwenden, um das Modell zu trainieren. 
@@ -51,7 +52,7 @@
     Während des Trainingsprozesses werden die Gewichte der unteren Schichten des Modells aktualisiert, um die Merkmale der neuen Aufgabe besser zu erfassen. 
     Da die oberen Schichten des Modells eingefroren sind, bleiben die bereits erlernten Merkmale erhalten, während die Gewichte der unteren Schichten an die neuen Daten angepasst werden. 
     Dadurch kann das Modell spezifische Muster und Merkmale der neuen Aufgabe erlernen, während es gleichzeitig von den allgemeinen Merkmalen des vortrainierten Modells profitiert.
-    Die Feinabstimmung bietet mehrere Vorteile. 
+    Die Feinabstimmung bietet mehrere Vorteile\footfullcite{jeddi2020simple}. 
     Erstens ermöglicht sie eine schnellere Konvergenz, da das Modell bereits über eine gute initiale Gewichtung verfügt und somit weniger Trainingsiterationen benötigt werden. 
     Zweitens kann die Leistung des Modells durch die Anpassung an die spezifischen Merkmale der neuen Aufgabe verbessert werden.
     Indem das Modell auf die Besonderheiten der neuen Aufgabe abgestimmt wird, kann es genauere Vorhersagen treffen und bessere Ergebnisse erzielen.
@@ -62,11 +63,13 @@
     Dabei werden die Faltungsschichten des vortrainierten Modells genutzt, um Merkmale aus den Eingabedaten zu extrahieren, die anschließend einem neuen Klassifikator oder Regressor zugeführt werden. 
     Dieser Ansatz bietet verschiedene Vorteile, wie zum Beispiel die Möglichkeit, vortrainierte Modelle auf kleineren Datensätzen einzusetzen.
     Bei dieser Methode werden die Gewichte des vortrainierten Modells beibehalten und die oberen Schichten eingefroren, um sicherzustellen, dass die bereits erlernten Merkmale nicht verändert werden. 
+    
     Die Faltungsschichten des Modells dienen dann als Merkmalsextraktoren, die relevante Informationen aus den Eingabedaten extrahieren. 
     Diese Merkmale werden anschließend als Eingabe für einen neuen Klassifikator oder Regressor verwendet, der auf die spezifische Aufgabe abgestimmt ist.
     Der Vorteil dieser Vorgehensweise liegt darin, dass das vortrainierte Modell bereits über ein umfangreiches Wissen verfügt, das auf großen Datensätzen trainiert wurde. 
     Indem wir diese vortrainierten Merkmalsextraktoren verwenden, können wir von dem bereits erlernten Wissen profitieren, ohne das gesamte Modell neu trainieren zu müssen. 
     Dies ist insbesondere dann vorteilhaft, wenn wir nur über einen begrenzten Datensatz verfügen, da das Training eines Modells von Grund auf mit wenigen Daten schwierig sein kann.
+    
     Ein weiterer Vorteil besteht darin, dass die Merkmalsextraktionsschichten des vortrainierten Modells bereits gute Ergebnisse bei der Erkennung allgemeiner Merkmale erzielen. 
     Dies ermöglicht es uns, auch auf kleineren Datensätzen aussagekräftige Merkmale zu extrahieren und sie als Eingabe für den Klassifikator oder Regressor zu verwenden. 
     Somit können wir die Vorteile des vortrainierten Modells nutzen, um bessere Ergebnisse auf unseren spezifischen Aufgaben zu erzielen.
@@ -77,10 +80,10 @@
 
 \section{Anwendung von DeepLabV3 ResNet50}
 
-    In diesem Abschnitt wird die konkrete Umsetzung des Transfer Learning in unserem Projekt durch die Verwendung des DeepLabV3 ResNet50-Modells erläutert.
+    In diesem Abschnitt wird die konkrete Umsetzung des Transfer Learning in unserem Projekt durch die Verwendung des DeepLabV3\footfullcite{chen2017rethinking} ResNet50-Modells\footfullcite{he2016deep} erläutert.
     DeepLabV3 ist eine hochmoderne Architektur, die für semantische Segmentierungsaufgaben entwickelt wurde und für ihre herausragende Leistung in der Bildverarbeitung und Szenenanalyse bekannt ist.
-    Das ResNet50 dient als grundlegende Netzwerkstruktur innerhalb des DeepLabV3-Frameworks und nutzt Residual-Lernen, um das Training tiefer faltungs­basierter neuronaler Netzwerke zu erleichtern.
-    Die Entscheidung, das DeepLabV3 ResNet50-Modell in unserem Projekt zu verwenden, basierte auf einer Vielzahl von Überlegungen.
+    Das ResNet50 dient als grundlegende Netzwerkstruktur innerhalb des DeepLabV3-Frameworks und nutzt Residual-Lernen, um das Training tiefer faltungs-basierter neuronaler Netzwerke zu erleichtern.
+    Die Entscheidung, das DeepLabV3 ResNet50-Modell in unserem Projekt zu verwenden, basierte auf einer Vielzahl von Überlegungen\footnote{Basierend auf einer umfangreichen Prüfung verschiedener Faktoren wurde eine fundierte und vielfältig informierte Entscheidung getroffen. Unter Berücksichtigung des Videos \url{https://www.youtube.com/watch?v=aTYVdK3GNxI} wurden geschickt inspirierende Aspekte in die Entscheidungsfindung eingebunden.}.
     Die Architektur des Modells hat sich insbesondere im Bereich der semantischen Segmentierung als äußerst leistungsstark erwiesen, was eine wesentliche Aufgabe in unseren Projektzielen darstellt.
     Durch den Einsatz des DeepLabV3 ResNet50-Modells kann man das umfangreiche Training und die erlernten Repräsentationen nutzen, die das Modell auf großen Datensätzen erfasst hat.
     Dadurch kann das Netzwerk feine semantische Details in unserem spezifischen Anwendungsbereich erkennen.
@@ -88,6 +91,7 @@
     Ein bemerkenswerter Vorteil besteht darin, dass man das Wissen, das durch vorherige Modelle erlangt wurde, in das Projekt übertragen kann, ohne ein neuronales Netzwerk von Grund auf trainieren zu müssen.
     Das vortrainierte Modell enthält eine Vielzahl von allgemeinen Merkmalen und Mustern, die während der umfangreichen Exposition des Modells gegenüber vielfältigen visuellen Daten während seiner Trainingsphase erlernt wurden.
     Durch die Nutzung dieser erlernten Merkmale kann man die Entwicklungsdauer des Projekts verkürzen und die Rechenbelastung, die mit dem Training eines Modells von Grund auf verbunden ist, verringern.
+    
     Darüber hinaus bietet das DeepLabV3 ResNet50-Modell eine solide Grundlage für die Feinabstimmung, die es ermöglicht, das Netzwerk an spezifische Aufgaben anzupassen.
     Bei der Feinabstimmung werden die vortrainierten Gewichte des Netzwerks beibehalten und an die Feinheiten des Ziel-Datensatzes angepasst.
     Dieser Prozess ermöglicht eine schnellere Konvergenz des Lernprozesses des Modells, verkürzt die Gesamttrainingszeit und verbessert die endgültige Leistung bei der Segmentierungsaufgabe.
@@ -96,11 +100,13 @@
     Zusammenfassend bietet die Einbindung des DeepLabV3 ResNet50-Modells in das Projekt mittels Transfer Learning eine solide Grundlage, um eine präzise semantische Segmentierung zu erreichen. 
     Indem man auf das vorhandene Wissen des Modells zurückgreift und die Vorteile der Feinabstimmung nutzt, kann man die Fachkenntnisse von DeepLabV3 ResNet50 nutzen und sie effektiv auf die einzigartige Anwendungsdomäne anpassen. 
     Diese Vorgehensweise beschleunigt nicht nur den Entwicklungsprozess des Projekts, sondern führt auch zu einer hochwertigen Lösung, indem das Modell von seinem umfangreichen Training mit vielfältigen visuellen Daten profitiert.
+    
     Ein entscheidender Aspekt bei der Anwendung des DeepLabV3 ResNet50-Modells besteht darin, dass die vortrainierten Gewichte des Modells eingefroren bleiben, um die extrahierten Merkmale beizubehalten. 
     Die Faltungsschichten des Modells werden verwendet, um Merkmale aus den Eingabedaten zu extrahieren, die dann in einen neuen Klassifizierer oder Regressor eingespeist werden können. 
     Dieser Ansatz ermöglicht es, die Vorteile des vortrainierten Modells als leistungsstarken Feature-Extraktor zu nutzen, während man gleichzeitig einen neuen, auf die spezifische Aufgabe abgestimmten Klassifizierer oder Regressor trainiert.
     Die Verwendung von vortrainierten Modellen als Feature-Extraktoren bietet eine Reihe von Vorteilen. Insbesondere kann man auf kleineren Datensätzen arbeiten, da die vortrainierten Modelle bereits allgemeine Merkmale gelernt haben, die auf verschiedene Aufgaben übertragbar sind. 
     Dadurch wird der Bedarf an großen Trainingsdatensätzen reduziert, was sowohl die Datenbeschaffung als auch die Rechenressourcen erleichtert. 
     Darüber hinaus ermöglicht die Verwendung von vortrainierten Modellen als Feature-Extraktoren eine schnellere Entwicklung von Modellen, da der Schwerpunkt auf der Anpassung des Klassifizierers oder Regressors liegt, anstatt das gesamte Modell von Grund auf neu zu trainieren.
+    
     Insgesamt bietet die Anwendung des DeepLabV3 ResNet50-Modells als Feature-Extraktor eine effektive Methode des Transfer Learning, um hochwertige Ergebnisse in der semantischen Segmentierungsaufgabe zu erzielen. 
     Durch die Kombination der Stärken des vortrainierten Modells und der Anpassung an die spezifische Anwendungsdomäne kann man die Effizienz verbessern und gleichzeitig genaue und zuverlässige Ergebnisse erzielen.
